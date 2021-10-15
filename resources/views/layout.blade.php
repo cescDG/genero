@@ -26,7 +26,10 @@
     <!-- END: Page Level CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('genero/css/custom/custom.css')}}">
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('foro/vendors/sweetalert/sweetalert.css') }}"> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('genero/vendors/data-tables/css/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css"  href="{{ asset('genero/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('genero/vendors/data-tables/css/select.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('genero/css/pages/data-tables.css') }}">
     <!-- END: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('genero/vendors/materialize-stepper/materialize-stepper.min.css')}} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('genero/vendors/materialize-stepperUno/materialize-stepper.min.css')}} ">
@@ -121,13 +124,57 @@
     <script src="{{ asset('genero/js/scripts/form-wizard.js')}}"></script>
     <script src="{{ asset('genero/vendors/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('genero/vendors/select2/select2.full.min.js') }}"></script>
-    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="{{ asset('genero/vendors/data-tables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('genero/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('genero/vendors/data-tables/js/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('genero/js/scripts/data-tables.js') }}"></script>
+
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
         function cerrarSesion(event) {
             event.preventDefault();
             $("#logout-formm").submit();
         }
+        $.extend(true, $.fn.dataTable.defaults, {
+        "aLengthMenu": [
+            [10, 25, 50, 100, -1],
+            [10, 25, 50, 100, "Todos"]
+        ],
+        "iDisplayLength": 10,
+        "language": {
+            "sProcessing": "Procesando...",
+            "sLengthMenu": "Mostrar _MENU_ registros",
+            "sZeroRecords": "No se encontraron resultados",
+            "sEmptyTable": "Ningún dato disponible en esta tabla =(",
+            "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sSearch": "Buscar:",
+            "sUrl": "",
+            "sInfoThousands": ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad"
+            }
+        }
+    });
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
     </script>
     @stack('scripts')
 </body>

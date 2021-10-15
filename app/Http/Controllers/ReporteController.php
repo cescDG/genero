@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -111,7 +112,9 @@ class ReporteController extends Controller
 
     public function individual()
     {
-       dd("holi");
+       $usuarios = ServidorPulbicoDetail::where('Estado',1)->get();
+
+       return view('reportes.individual', compact('usuarios'));
     }
 
 }
