@@ -44,7 +44,7 @@ class ReporteController extends Controller
 
     public function pdfDependencia(Request $request){
         //dd($request->departamento);
-       
+
        if($request->departamento){
            $respuestas = [];
             $usuarios = ServidorPulbicoDetail::where('id_Departamento',$request->departamento)->get();
@@ -72,7 +72,12 @@ class ReporteController extends Controller
        $preguntas= Preguntas::paginate(5);
         return view('reportes.pregunta', compact('preguntas'));
     }
-    
+
+    public function individual()
+    {
+       dd("holi");
+    }
+
 }
 
 
