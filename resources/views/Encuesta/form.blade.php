@@ -60,7 +60,7 @@
                                                         <div class="input-field col m1">
                                                             <center>
                                                                 <label class="validate">
-                                                                    <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio" value="A" />
+                                                                    <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio" value="A" required/>
                                                                     <span></span>
                                                                 </label>
                                                             </center>
@@ -68,7 +68,7 @@
                                                         <div class="input-field col m1">
                                                             <center>
                                                                 <label class="validate">
-                                                                    <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio" value="B" />
+                                                                    <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio" value="B" required/>
                                                                     <span></span>
                                                                 </label>
                                                             </center>
@@ -76,7 +76,7 @@
                                                         <div class="input-field col m2">
                                                             <center>
                                                                 <label class="validate">
-                                                                    <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio" value="C" />
+                                                                    <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio" value="C" required/>
                                                                     <span></span>
                                                                 </label>
                                                             </center>
@@ -84,7 +84,7 @@
                                                         <div class="input-field col m2">
                                                             <center>
                                                                 <label class="validate">
-                                                                    <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio" value="D" />
+                                                                    <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio" value="D" required/>
                                                                     <span></span>
                                                                 </label>
                                                             </center>
@@ -143,7 +143,7 @@
                                                                 <center>
                                                                     <label class="validate">
                                                                         <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                               value="A" />
+                                                                               value="A" required/>
                                                                         <span></span>
 
                                                                     </label>
@@ -153,7 +153,7 @@
                                                                 <center>
                                                                     <label class="validate">
                                                                         <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                               value="B" />
+                                                                               value="B" required/>
                                                                         <span></span>
 
                                                                     </label>
@@ -163,7 +163,7 @@
                                                                 <center>
                                                                     <label class="validate">
                                                                         <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                               value="C" />
+                                                                               value="C" required/>
                                                                         <span></span>
 
                                                                     </label>
@@ -173,7 +173,7 @@
                                                                 <center>
                                                                     <label class="validate">
                                                                         <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                               value="D" />
+                                                                               value="D" required/>
                                                                         <span></span>
 
                                                                     </label>
@@ -239,7 +239,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="A" />
+                                                                           value="A" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -249,7 +249,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="B" />
+                                                                           value="B" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -259,7 +259,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="C" />
+                                                                           value="C" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -269,7 +269,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="D" />
+                                                                           value="D" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -335,7 +335,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="A" />
+                                                                           value="A" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -345,7 +345,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="B" />
+                                                                           value="B" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -355,7 +355,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="C" />
+                                                                           value="C" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -365,7 +365,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="D" />
+                                                                           value="D" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -431,7 +431,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="A" />
+                                                                           value="A" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -441,7 +441,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="B" />
+                                                                           value="B" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -451,7 +451,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="C" />
+                                                                           value="C" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -461,7 +461,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="D" />
+                                                                           value="D" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -527,7 +527,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="A" />
+                                                                           value="A" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -537,7 +537,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="B" />
+                                                                           value="B" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -547,7 +547,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="C" />
+                                                                           value="C" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -557,7 +557,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="D" />
+                                                                           value="D" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -623,7 +623,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="A" />
+                                                                           value="A" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -633,7 +633,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="B" />
+                                                                           value="B" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -643,7 +643,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="C" />
+                                                                           value="C" required/>
                                                                     <span></span>
 
                                                                 </label>
@@ -653,7 +653,7 @@
                                                             <center>
                                                                 <label class="validate">
                                                                     <input class="with-gap" name="{{$preg->id}}" id="{{$preg->id}}" type="radio"
-                                                                           value="D" />
+                                                                           value="D" required/>
                                                                     <span></span>
 
                                                                 </label>

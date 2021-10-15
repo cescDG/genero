@@ -31,6 +31,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('genero/vendors/materialize-stepper/materialize-stepper.min.css')}} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('genero/vendors/materialize-stepperUno/materialize-stepper.min.css')}} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('genero/css-rtl/pages/form-wizard.css')}} ">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <!-- END: Head-->
 

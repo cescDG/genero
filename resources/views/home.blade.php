@@ -30,10 +30,15 @@
                                 href="http://administracionyfinanzasplem.gob.mx/Documentos/Sistema%20Integral%20de%20Profesionalizacion%20y%20Desarrollo%20de%20Personal.pdf"
                                 style="color: #8A084B !important; font-weight: 600;">Consulta nuestro acuerdo de privacidad aquí.</a></p>
                     </div>
+                    @if(count($respuestas))
+                    <div class="card-action orange lighten-4">
+                        <strong class>ENCUESTA REALIZADA</strong>
+                    </div>
+                    @else
                     <div class="card-action orange lighten-4">
                         <a href="{{route('encuesta.index')}}" class="orange-text">Sí, acepto</a>
-                        <a href="#" class="orange-text">Cancel</a>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
