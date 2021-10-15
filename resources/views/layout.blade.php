@@ -72,7 +72,7 @@
                     <!-- profile-dropdown-->
                     <ul class="dropdown-content" id="profile-dropdown">
                         <li><a class="grey-text text-darken-1" href=""><i class="material-icons">person_outline</i> Perfil</a></li>
-                        <li><a class="grey-text text-darken-1" href=""><i class="material-icons">keyboard_tab</i>Salir</a></li>
+                        <li><a class="grey-text text-darken-1" onclick="cerrarSesion(event)"><i class="material-icons">keyboard_tab</i>Salir</a></li>
                     </ul>
                     <ul class="right hide-on-med-and-down" style="font-size: 11px; line-height : 15px !important">
                         <br>
@@ -111,7 +111,9 @@
             </div>
         </div>
     </footer>
-
+    <form id="logout-formm" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
     <script src="{{ asset('genero/js/vendors.min.js')}}"></script>
     <script src="{{ asset('genero/js/plugins.js')}}"></script>
     <script src="{{ asset('genero/js/search.js')}}"></script>
@@ -123,6 +125,12 @@
     <script src="{{ asset('genero/js/scripts/form-select2.js') }}"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">    
+        function cerrarSesion(event) {
+            event.preventDefault();
+            $("#logout-formm").submit();
+        }
+    </script>
     @stack('scripts')
 </body>
 

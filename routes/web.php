@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\QuizController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,8 +21,8 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 
-
-    Route::resource('encuesta', 'App\Http\Controllers\QuizController')->names('encuesta');
-
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resources([
+        'encuesta' => QuizController::class
+    ]);
 });

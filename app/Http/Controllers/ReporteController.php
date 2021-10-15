@@ -2,25 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Home;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ReporteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-
-    }
-
     public function index()
     {
-        return view('home');
+        //
     }
 
     /**
@@ -47,10 +40,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Home  $home
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Home $home)
+    public function show($id)
     {
         //
     }
@@ -58,10 +51,10 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Home  $home
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Home $home)
+    public function edit($id)
     {
         //
     }
@@ -70,10 +63,10 @@ class HomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Home  $home
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Home $home)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -81,10 +74,10 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Home  $home
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Home $home)
+    public function destroy($id)
     {
         //
     }
