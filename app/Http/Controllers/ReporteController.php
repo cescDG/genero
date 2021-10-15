@@ -43,7 +43,7 @@ class ReporteController extends Controller
 
     public function pdfDependencia(Request $request){
         //dd($request->departamento);
-       
+
        if($request->departamento){
            /*
             $preguntas = Preguntas::whereHas('user',function($q) use($array_servicios){
@@ -73,7 +73,12 @@ class ReporteController extends Controller
        $preguntas= Preguntas::paginate(5);
         return view('reportes.pregunta', compact('preguntas'));
     }
-    
+
+    public function individual()
+    {
+       dd("holi");
+    }
+
 }
 
 

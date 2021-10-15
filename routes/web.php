@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get("reporte/dependencia",  [ReporteController::class, 'dependencia'])->name('reportes.dependencia');
     Route::get("reporte/pregunta",  [ReporteController::class, 'pregunta'])->name('reportes.pregunta');
+    Route::get("reporte/individual",  [ReporteController::class, 'individual'])->name('reportes.individual');
     Route::get('getdireccion/{dependencia_id}', [ReporteController::class, 'obtenerDireccion']);
     Route::get('getdepartamento/{direccion_id}', [ReporteController::class, 'obtenerDepto']);
     route::post("pdf/dependencia", [ReporteController::class, "pdfDependencia"])->name('pdf.dependencia');
