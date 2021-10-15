@@ -72,6 +72,7 @@ class ReporteController extends Controller
        $preguntas= Preguntas::paginate(5);
         return view('reportes.pregunta', compact('preguntas'));
     }
+    
 }
 
 
