@@ -14,7 +14,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        return view('encuesta.index');
+        return view('encuesta.create');
     }
 
     /**
