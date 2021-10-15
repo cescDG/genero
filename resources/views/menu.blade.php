@@ -10,7 +10,7 @@
     <div class="collapsible-body">
         <ul class="collapsible collapsible-sub" data-collapsible="accordion">
             <ul class="collapsible" data-collapsible="accordion">
-                <li><a href=""><span data-i18n="Modern Menu">Dependencia</span></a></li>
+                <li><a href="{{route('reportes.dependencia')}}"><span data-i18n="Modern Menu">Dependencia</span></a></li>
                 <li><a href=""><span data-i18n="Modern Menu">Por preguntas</span></a></li>
             </ul>
         </ul>

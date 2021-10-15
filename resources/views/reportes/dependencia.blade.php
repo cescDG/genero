@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col s12">
                         <h4 align="center">Catálogo de eventos</h4>
-                        @if($evento)
+                        
                         <table id="page-length-option" style="width: 100%" class="display">
                             <thead>
                                 <tr>
@@ -57,26 +57,7 @@
                                 </center>
                             </div>
                         </div>
-                        @else
-                        <div class="card-body">
-                            <div class="container">
-                                <center>
-                                    <img class="collection-item avatar" src="{{ asset('foro/images/logo/warning.png')}}" width="25" height="25" alt="name" class="circle"><strong>     No se encontraron eventos</strong>
-                                </center>
-                            </div>
-                            <br>
-                        </div>
-                        <div class="card-body">
-                            <div class="container">
-                                <center>
-                                    <strong>Si desea registrar un evento pulse:  <a
-                                            href="" class="btn btn-sm btn-secondary"
-                                            style="background-color:rgb(150,0,72);"><i
-                                                class="material-icons left">add</i>Agregar</a></strong>
-                                </center>
-                            </div>
-                        </div>
-                        @endif
+                       
 
                     </div>
                 </div>
