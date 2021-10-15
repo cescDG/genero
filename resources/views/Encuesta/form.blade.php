@@ -5,7 +5,6 @@
                 <div class="row">
                     <h6>Instrucciones: Selecciona la opción en el círculo que corresponda al valor de su respuesta.</h6>
                 </div>
-
                 <ul class="stepper horizontal" id="horizStepper">
                     <li class="step active">
                         <div class="step-title waves-effect">Sección 1</div>
