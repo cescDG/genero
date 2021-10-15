@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title')
-    REGISTRO DE EVENTOS
+    REPORTE DEPENDENCIA
 @endsection
 @section('content')
 <div class="card-body">
@@ -22,38 +22,33 @@
 
                 <div class="row">
                     <div class="col s12">
-                        <h4 align="center">Catálogo de eventos</h4>
+                        <h4 align="center">Reporte Dependencia</h4>
                         
-                        <table id="page-length-option" style="width: 100%" class="display">
-                            <thead>
-                                <tr>
-                                    <th style="width: 60%;"><strong>Tipo de Reunión</strong></th>
-                                    <th style="width: 60%;"><strong>Fecha/Hora</strong></th>
-                                    <th style="width: 60%;"><strong>Medio</strong></th>
-                                    <th style="width: 60%;"><strong>Comisión</strong></th>
-                                    <th style="width: 60%;"><strong>Lugar</strong></th>
-                                    <th style="width: 60%;"><strong>Convocatoria</strong></th>
-                                    <th style="width: 60%;"><strong>Orden del Día</strong></th>
-                                    <th style="width: 60%;"><strong>Acta de la sesión anterior</strong></th>
-                                    <th style="width: 60%;"><strong>Material de Apoyo</strong></th>
-                                    <th style="width: 60%;"><strong>Iniciativas a discutir </strong></th>
-                                    <th style="width: 60%;"><strong>Dictamen</strong></th>
-                                    <th style="width: 60%;"><strong>Observaciones</strong></th>
-                                    <th style="width: 60%;"><strong>Acciones</strong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               
-                            </tbody>
-                        </table>
+                            <div class="input-field col s4">
+                                {!! Form::select('dependencia', $Dependencia, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'dependencia_id']) !!}
+                                <label>Materialize Select</label>
+                            </div>
+                        
+                            <div class="input-field col s4">
+                                {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'direccion_id']) !!}
+                                <label>Materialize Select</label>
+                            </div>
+
+                            <div class="input-field col s4">
+                                {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'departamento_id']) !!}
+                                <label>Materialize Select</label>
+                            </div>
+                                    
+                        
+                                    
                         <div class="card-body">
                             <div class="container">
                                 <br>
                                 <center>
-                                    <strong>Si desea registrar un evento pulse: <br><br><a
+                                    <strong><br><br><a
                                             href="" class="btn btn-sm btn-secondary"
                                             style="background-color:rgb(150,0,72);"><i
-                                                class="material-icons left">add</i>Agregar</a></strong>
+                                                class="material-icons left">archive</i>PDF</a></strong>
                                 </center>
                             </div>
                         </div>
@@ -66,3 +61,36 @@
     </div>
 </div>
 @endsection
+@push("scripts")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#dependencia_id').on('change', function() {
+          
+                $.get('{{ asset("/getdireccion/") }}/' + $(this).val(), function(data) {
+                    $("#direccion_id").find('option').remove();
+                    $("#direccion_id").append('<option value="">SELECCIONE UNA OPCIÓN </option>');
+                    $(data).each(function(i, v) { // indice, valor
+                        $("#direccion_id").append('<option value="' + v.id_Direccion + '">' + v.Nombre + '</option>');
+                    });
+                });
+            
+            });
+
+
+            $('#direccion_id').on('change', function() {
+               
+               $.get('{{ asset("/getdepartamento/") }}/' + $(this).val(), function(data) {
+                   $("#departamento_id").find('option').remove();
+                   $("#departamento_id").append('<option value="">SELECCIONE UNA OPCIÓN </option>');
+                   $(data).each(function(i, v) { // indice, valor
+                       $("#departamento_id").append('<option value="' + v.id_Departamento + '">' + v.Nombre + '</option>');
+                   });
+               });
+           
+           });
+
+
+        });
+    </script>
+@endpush
