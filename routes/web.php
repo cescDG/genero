@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\ReporteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resources([
-        'encuesta' => QuizController::class
+        'encuesta' => QuizController::class,
+        'reportes' => ReporteController::class
     ]);
 });
