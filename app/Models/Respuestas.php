@@ -9,4 +9,8 @@ class Respuestas extends Model
 {
     protected $table="respuestas";
     protected $guarded = ["id","created_at","updated_at","deleted_at"];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

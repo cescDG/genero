@@ -31,12 +31,12 @@
                                 </div>
                             
                                 <div class="input-field col s4">
-                                    {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'direccion_id']) !!}
+                                    {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'direccion_id']) !!}
                                     <label>Materialize Select</label>
                                 </div>
 
                                 <div class="input-field col s4">
-                                    {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'departamento_id']) !!}
+                                    {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'departamento_id']) !!}
                                     <label>Materialize Select</label>
                                 </div>
                                          

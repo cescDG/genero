@@ -17,8 +17,11 @@ class QuizController extends Controller
     public function index()
     {
         $preguntas = Preguntas::all();
+        $idUsuario = auth()->user()->id;
+        $respuestas = Respuestas::where('user_id',$idUsuario)->get();
 
-        return view('encuesta.create', compact('preguntas'));
+
+        return view('encuesta.create', compact('preguntas','respuestas'));
     }
 
     /**
@@ -52,6 +55,8 @@ class QuizController extends Controller
             }
             $i ++;
         }
+
+         return redirect()->route('home')->with('correcto','ok');
     }
 
     /**
