@@ -24,6 +24,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get("reporte/dependencia",  [ReporteController::class, 'dependencia'])->name('reportes.dependencia');
+    Route::get("reporte/pregunta",  [ReporteController::class, 'pregunta'])->name('reportes.pregunta');
+    Route::get('getdireccion/{dependencia_id}', [ReporteController::class, 'obtenerDireccion']);
+    Route::get('getdepartamento/{direccion_id}', [ReporteController::class, 'obtenerDepto']);
+    route::post("pdf/dependencia", [ReporteController::class, "pdfDependencia"])->name('pdf.dependencia');
     Route::resources([
         'encuesta' => QuizController::class,
         'reportes' => ReporteController::class
