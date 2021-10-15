@@ -3,5 +3,5 @@
     INICIO
 @endsection
 @section('content')
-ENCUESTA
+HOLA MUNDO
 @endsection
