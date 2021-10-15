@@ -34,10 +34,7 @@
                     <form class="login-form center-align" method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="">
-                            <center>
-                                <br>
-                                <img src="{{asset('genero/images/logo/logoSec.png')}}" alt="materialize" width="90%" heigth="80%" style="border-radius:5;"/>
-                            </center>
+
                         </div>
                         <br>
                         <div class="row margin">
@@ -66,12 +63,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="input-field col s6">
+                            <div class="input-field col s12">
                                 <button type="submit" class="btn waves-effect waves-light border-round  col s12 bg-primary">Ingresar</button>
                             </div>
-                            <div class="input-field col s6">
-                                <button type="submit" class="btn waves-effect waves-light border-round  col s12 bg-primary"> <a href="{{ asset('genero/images/logo/Manual_JN02082021.pdf')}}" target="_blank"  alt=" avatar" width="100%" class="btn waves-effect waves-light border-round  col s12 bg-primary"/>Manual del usuario </a></button>
-                            </div>
+
                         </div>
                     </form>
                 </div>
