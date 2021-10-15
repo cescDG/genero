@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Preguntas;
 use App\Models\Quiz;
+use App\Models\Respuestas;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -38,7 +39,19 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $servidorP = auth()->user()->id;
+        $respuestas = $request->except('_token');
+
+        for($i=1; $i <=35; $i++){
+            if (isset($respuestas[$i])){
+                $res['pregunta']=$i;
+                $res['respuesta']=$respuestas[$i];
+                $res['user_id']=$servidorP;
+
+                $respuesta = Respuestas::create($res);
+            }
+            $i ++;
+        }
     }
 
     /**

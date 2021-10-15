@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Factores extends Model
 {
-    use HasFactory;
+    protected $table="factores";
+    protected $guarded = ["id","created_at","updated_at","deleted_at"];
 }

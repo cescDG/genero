@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
 {
-    use HasFactory;
+    protected $table="quizzes";
+    protected $guarded = ["id","created_at","updated_at","deleted_at"];
 }

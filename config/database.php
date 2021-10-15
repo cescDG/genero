@@ -67,7 +67,7 @@ return [
             'host'      => env('DB_HOST_SAF', '127.0.0.1'),
             'database'  => env('DB_DATABASE_SAF','adminple_saf'),
             'username'  => env('DB_USERNAME_SAF','adminple_safuser'),
-            'password'  => env('DB_PASSWORD_SAF','intra_59**'),
+            'password'  => env('DB_PASSWORD_SAF','password'),
             'charset'   => 'utf8mb4',
             'strict' => false,
             'collation' => 'utf8mb4_unicode_ci',
