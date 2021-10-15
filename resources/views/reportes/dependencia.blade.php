@@ -23,37 +23,35 @@
                 <div class="row">
                     <div class="col s12">
                         <h4 align="center">Reporte Dependencia</h4>
-                        
-                            <div class="input-field col s4">
-                                {!! Form::select('dependencia', $Dependencia, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'dependencia_id']) !!}
-                                <label>Materialize Select</label>
-                            </div>
-                        
-                            <div class="input-field col s4">
-                                {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'direccion_id']) !!}
-                                <label>Materialize Select</label>
-                            </div>
+                            {!! Form::open(['route'=>'pdf.dependencia', 'method'=>'POST','files' => true, 'role' => 'form','id' => 'frmReporteDep']) !!}
+                                @csrf
+                                <div class="input-field col s4">
+                                    {!! Form::select('dependencia', $Dependencia, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'dependencia_id']) !!}
+                                    <label>Materialize Select</label>
+                                </div>
+                            
+                                <div class="input-field col s4">
+                                    {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'direccion_id']) !!}
+                                    <label>Materialize Select</label>
+                                </div>
 
-                            <div class="input-field col s4">
-                                {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'departamento_id']) !!}
-                                <label>Materialize Select</label>
-                            </div>
-                                    
-                        
-                                    
-                        <div class="card-body">
-                            <div class="container">
-                                <br>
-                                <center>
-                                    <strong><br><br><a
-                                            href="" class="btn btn-sm btn-secondary"
-                                            style="background-color:rgb(150,0,72);"><i
-                                                class="material-icons left">archive</i>PDF</a></strong>
-                                </center>
-                            </div>
-                        </div>
-                       
-
+                                <div class="input-field col s4">
+                                    {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'departamento_id']) !!}
+                                    <label>Materialize Select</label>
+                                </div>
+                                         
+                                <div class="card-body">
+                                    <div class="container">
+                                        <br>
+                                        <center>
+                                            <strong><br><br><button  class="btn btn-sm btn-secondary" type="submit"
+                                                name="action"
+                                                    style="background-color:rgb(150,0,72);" ><i
+                                                        class="material-icons left">archive</i>PDF</button></strong>
+                                        </center>
+                                    </div>
+                                </div>
+                            {!! Form::close() !!}
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Direccion;
 use App\Models\Departamento;
 
@@ -35,5 +36,12 @@ class ReporteController extends Controller
 
     public function obtenerDepto(Request $request){
         return Departamento::where('id_Direccion',$request->direccion_id)->get();
+    }
+
+    public function pdfDependencia(Request $request){
+
+       //dd($request->all());
+       $pdf = PDF::loadView('PDF.dependencia');
+       return $pdf->stream('dependencia.pdf');
     }
 }
