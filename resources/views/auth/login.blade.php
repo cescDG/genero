@@ -43,9 +43,9 @@
                         <div class="row margin">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix pt-2">person_outline</i>
-                                <input id="RFC" type="TEXT" class=" @error('RFC') is-invalid @enderror" name="RFC" value="{{ old('RFC') }}" autocomplete="RFC" autofocus>
-                                <label for="RFC" class="center-align">{{ __('Usuario:') }}</label>
-                                @error('RFC')
+                                <input id="rfc" type="TEXT" class=" @error('rfc') is-invalid @enderror" name="rfc" value="{{ old('rfc') }}" autocomplete="rfc" autofocus>
+                                <label for="rfc" class="center-align">{{ __('Usuario:') }}</label>
+                                @error('rfc')
                                 <small class="red-text ml-7">
                                     {{ $message }}
                                 </small>
