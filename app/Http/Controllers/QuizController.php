@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Preguntas;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class QuizController extends Controller
      */
     public function index()
     {
-        return view('encuesta.create');
+        $preguntas = Preguntas::all();
+
+        return view('encuesta.create', compact('preguntas'));
     }
 
     /**

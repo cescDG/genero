@@ -66,8 +66,13 @@ return [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST_SAF', '127.0.0.1'),
             'database'  => env('DB_DATABASE_SAF','saf'),
+<<<<<<< HEAD
             'username'  => env('DB_USERNAME_SAF','root'),
             'password'  => env('DB_PASSWORD_SAF',''),
+=======
+            'username'  => env('DB_USERNAME_SAF','homestead'),
+            'password'  => env('DB_PASSWORD_SAF','secret'),
+>>>>>>> 19f392d4230214c92966b2656ce7513989a477cc
             'charset'   => 'utf8mb4',
             'strict' => false,
             'collation' => 'utf8mb4_unicode_ci',
