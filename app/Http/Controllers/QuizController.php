@@ -21,7 +21,7 @@ class QuizController extends Controller
         $respuestas = Respuestas::where('user_id',$idUsuario)->get();
 
 
-        return view('encuesta.create', compact('preguntas','respuestas'));
+        return view('Encuesta.create', compact('preguntas','respuestas'));
     }
 
     /**

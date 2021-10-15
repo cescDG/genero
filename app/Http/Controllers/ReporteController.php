@@ -53,6 +53,13 @@ class ReporteController extends Controller
 
         if($request->departamento){
             $respuestas = [];
+            /*
+            $respuestas = Respuestas::with(["user" => function ($q) {
+                    $q->whereHas('servidorPublico', function ($q) {
+                        return $q->where('id_Departamento', 150);
+                    });
+            }])->get();*/
+            //dd($respuestas);
             $usuarios = ServidorPulbicoDetail::where('id_Departamento',$request->departamento)->get();
             foreach ($usuarios as $usuario) {
                 //dd($usuario->user->id);
