@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function servidorPublico()
     {
-        return $this->belongsTo(ServidorPublicoDetail::class, "rfc","N_Usuario")->withDefault(["Nombre" => "Usuario no identificado"]);
+        return $this->belongsTo(ServidorPulbicoDetail::class, "rfc","N_Usuario")->withDefault(["Nombre" => "Usuario no identificado"]);
     }
     public function setPasswordAttribute($v)
     {
