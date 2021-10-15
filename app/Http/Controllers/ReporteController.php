@@ -10,6 +10,7 @@ use App\Models\Direccion;
 use App\Models\Departamento;
 use App\Models\Preguntas;
 use App\Models\Respuestas;
+use App\Models\ServidorPulbicoDetail;
 
 class ReporteController extends Controller
 {
@@ -45,18 +46,16 @@ class ReporteController extends Controller
         //dd($request->departamento);
        
        if($request->departamento){
-           /*
-            $preguntas = Preguntas::whereHas('user',function($q) use($array_servicios){
-                return $q->where("servicio_id",$array_servicios);
-            })->where('estatus_ticket_id', 4)->get();*/
-            $respuestas = Respuestas::with(["user" => function ($q) {
-                $q->with(["servidorPublico" => function ($q) {
-                    $q->with('departamento', function ($q) {
-                        return $q->where('id_Departamento', 150);
-                    });
-                }]);
-
-            }])->get();
+           $respuestas = [];
+            $usuarios = ServidorPulbicoDetail::where('id_Departamento',$request->departamento)->get();
+            foreach ($usuarios as $usuario) {
+                //dd($usuario->user->id);
+                $res = Respuestas::where('user_id',$usuario->user->id)->get();
+                if(!$res->isEmpty()){
+                    array_push($respuestas,$res);
+                }
+            }
+           
             dd($respuestas);
 
        }elseif($request->direccion){

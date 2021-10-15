@@ -25,4 +25,8 @@ class ServidorPulbicoDetail extends Model
     public function departamento(){
         return$this->hasOne(Departamento::class, "id_Departamento", "id_Departamento")->withDefault(["Nombre" => "No identificado"]);
     }
+
+    public function user(){
+        return $this->hasOne(User::class,"rfc","N_Usuario");
+    }
 }
