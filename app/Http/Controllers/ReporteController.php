@@ -45,8 +45,13 @@ class ReporteController extends Controller
     public function pdfDependencia(Request $request){
         //dd($request->departamento);
 
-       if($request->departamento){
-           $respuestas = [];
+        $collection1 = collect([]);
+        $collection2 = collect([]);
+        $collection3 = collect([]);
+        $collection4 = collect([]);
+
+        if($request->departamento){
+            $respuestas = [];
             $usuarios = ServidorPulbicoDetail::where('id_Departamento',$request->departamento)->get();
             foreach ($usuarios as $usuario) {
                 //dd($usuario->user->id);
@@ -55,16 +60,47 @@ class ReporteController extends Controller
                     array_push($respuestas,$res);
                 }
             }
-           
-            dd($respuestas);
+            foreach ($respuestas as $respuesta) {
+                foreach ($respuesta as $item) {
+                    if($item->respuesta == "A"){
+                        $collection1->push([
+                            "id_pregunta" => $item->pregunta,
+                            "respuesta" => $item->respuesta
+                        ]);
 
-       }elseif($request->direccion){
-         dd("preguntas por direccion");
-       }else{
-         dd("preguntas por dependencia");
-       }
-       $pdf = PDF::loadView('PDF.dependencia');
-       return $pdf->stream('dependencia.pdf');
+                    }elseif($item->respuesta == "B"){
+                        $collection2->push([
+                            "id_pregunta" => $item->pregunta,
+                            "respuesta" => $item->respuesta
+                        ]);
+
+                    }elseif ($item->respuesta == "C") {
+                        $collection3->push([
+                            "id_pregunta" => $item->pregunta,
+                            "respuesta" => $item->respuesta
+                        ]);
+
+                    }else{
+                        $collection4->push([
+                            "id_pregunta" => $item->pregunta,
+                            "respuesta" => $item->respuesta
+                        ]);
+
+                    }
+                }
+            }
+              dd($collection1->pluck('id_pregunta')->countBy());
+
+        }elseif($request->direccion){
+            dd("preguntas por direccion");
+
+        }else{
+            dd("preguntas por dependencia");
+
+        }
+
+        $pdf = PDF::loadView('PDF.dependencia');
+        return $pdf->stream('dependencia.pdf');
     }
 
     public function pregunta()
