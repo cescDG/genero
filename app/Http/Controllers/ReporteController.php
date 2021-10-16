@@ -45,7 +45,7 @@ class ReporteController extends Controller
 
     public function pdfDependencia(Request $request){
         //dd($request->departamento);
-
+        $preguntas = Preguntas::all();
         $collection1 = collect([]);
         $collection2 = collect([]);
         $collection3 = collect([]);
@@ -88,7 +88,7 @@ class ReporteController extends Controller
                             "respuesta" => $item->respuesta
                         ]);
 
-                    }else{
+                    }elseif($item->respuesta == "D"){
                         $collection4->push([
                             "id_pregunta" => $item->pregunta,
                             "respuesta" => $item->respuesta
@@ -97,7 +97,15 @@ class ReporteController extends Controller
                     }
                 }
             }
-              dd($collection1->pluck('id_pregunta')->countBy());
+            $sumaA = $collection1->pluck('id_pregunta')->countBy();
+            $sumaB = $collection2->pluck('id_pregunta')->countBy();
+            $sumaC = $collection3->pluck('id_pregunta')->countBy();
+            $sumaD = $collection4->pluck('id_pregunta')->countBy();
+            //dd($sumaD);
+            //dd($preguntas);
+  
+            $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD'));
+            return $pdf->stream('dependencia.pdf');
 
         }elseif($request->direccion){
             dd("preguntas por direccion");
