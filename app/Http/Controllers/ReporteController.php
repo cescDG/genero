@@ -135,6 +135,14 @@ class ReporteController extends Controller
 
 
     public function getDep($id){
+        $respuestas = Respuestas::where('dependencia', $id);
+
+
+        foreach($respuestas as $res){
+            
+
+
+        }
         return view('reportes.show');
 
     }
