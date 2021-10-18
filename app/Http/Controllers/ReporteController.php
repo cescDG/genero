@@ -120,6 +120,7 @@ class ReporteController extends Controller
 
                 }
             }
+
         }
 
         $sumaA = $collection1->pluck('id_pregunta')->countBy();
@@ -133,15 +134,29 @@ class ReporteController extends Controller
 
     public function pregunta()
     {
-       $preguntas= Preguntas::paginate(5);
-        return view('reportes.pregunta', compact('preguntas'));
+        $Dependencia = Arr::pluck(\App\Models\Dependencia::all(), "Nombre","id_Dependencia");
+    //    $preguntas= Preguntas::paginate(5);
+        return view('reportes.pregunta', compact('Dependencia'));
     }
 
     public function individual()
     {
-       $usuarios = ServidorPulbicoDetail::where('Estado',1)->get();
+      $usuarios = ServidorPulbicoDetail::where('Estado',1)->get();
 
        return view('reportes.individual', compact('usuarios'));
+    }
+
+
+    public function getDep($id){
+        return view('reportes.show');
+
+    }
+
+
+    public function verReporte(Request $request){
+        $idUs = $request->id1;
+        $reporte = Respuestas::where('user_id', $idUs)->get();
+        return view('reportes.individualUs', compact('reporte'));
     }
 
 }
