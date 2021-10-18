@@ -53,7 +53,6 @@ class QuizController extends Controller
 
                 $respuesta = Respuestas::create($res);
             }
-            $i ++;
         }
 
          return redirect()->route('home')->with('correcto','ok');
