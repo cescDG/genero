@@ -33,7 +33,8 @@
                                             <th>{{$key->departamento->Nombre}}</th>
                                             <th> <a title="Ver" class="tooltipped" data-position="bottom"
                                                      data-tooltip="Ver"
-                                                     onclick="verReporte({{ $key->id_Usuario}})">
+                                                    href="{{ route('verReporte', [$key->id_Usuario]) }}" target="_blank">
+
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
                                                          fill="currentColor" class="bi bi-card-checklist"
                                                          viewBox="0 0 16 16">
@@ -48,40 +49,9 @@
                                     @endforeach
                                     </tbody>
                             </table>
-                            <div id="repoIndividuralF" style="display: none;">
-
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    @endsection
-
-
-
-@push('scripts')
-    <script type="text/javascript">
-        function verReporte(id) {
-           let id1 = id;
-           console.log(id1);
-           $.ajax({
-                    url: "{{ url('verReporte') }}",
-                    type: 'get',
-                    data: {id1},
-                    success: function (response) {
-                        $('#repoIndividuralF').show();
-                        $('#repoIndividuralF').html(response);
-                    },
-                    error: function (xhr, status, error) {
-                        alert('falló  con exito');
-
-                    }
-                })
-        }
-    </script>
-@endpush
+@endsection

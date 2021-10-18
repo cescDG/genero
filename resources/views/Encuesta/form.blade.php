@@ -46,7 +46,7 @@
                                                  <center>Algunas veces</center>
                                              </div>
                                              <div class="input-field col m2">
-                                                 <center>Lo desconosco</center>
+                                                 <center>Lo desconozco</center>
                                              </div>
                                          </div>
                                          @php $i = 1; @endphp
@@ -124,7 +124,7 @@
                                                 <center>Algunas veces</center>
                                             </div>
                                             <div class="input-field col m2">
-                                                <center>Lo desconosco</center>
+                                                <center>Lo desconozco</center>
                                             </div>
                                         </div>
                                         @php
@@ -220,7 +220,7 @@
                                             <center>Algunas veces</center>
                                         </div>
                                         <div class="input-field col m2">
-                                            <center>Lo desconosco</center>
+                                            <center>Lo desconozco</center>
                                         </div>
                                     </div>
                                     @php
@@ -316,7 +316,7 @@
                                             <center>Algunas veces</center>
                                         </div>
                                         <div class="input-field col m2">
-                                            <center>Lo desconosco</center>
+                                            <center>Lo desconozco</center>
                                         </div>
                                     </div>
                                     @php
@@ -412,7 +412,7 @@
                                             <center>Algunas veces</center>
                                         </div>
                                         <div class="input-field col m2">
-                                            <center>Lo desconosco</center>
+                                            <center>Lo desconozco</center>
                                         </div>
                                     </div>
                                     @php
@@ -508,7 +508,7 @@
                                             <center>Algunas veces</center>
                                         </div>
                                         <div class="input-field col m2">
-                                            <center>Lo desconosco</center>
+                                            <center>Lo desconozco</center>
                                         </div>
                                     </div>
                                     @php
@@ -604,7 +604,7 @@
                                             <center>Algunas veces</center>
                                         </div>
                                         <div class="input-field col m2">
-                                            <center>Lo desconosco</center>
+                                            <center>Lo desconozco</center>
                                         </div>
                                     </div>
                                     @php
