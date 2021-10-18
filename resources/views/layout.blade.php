@@ -79,7 +79,7 @@
                     </ul>
                     <ul class="right hide-on-med-and-down" style="font-size: 11px; line-height : 15px !important">
                         <br>
-                        Bienvenido   ADMINISTRADOR  USUARIO </strong>
+                        Bienvenido(a) {{ mb_strtoupper(auth()->user()->servidorPublico->Nombre) }}</strong>
                         <br>
                         al Sistema.
                     </ul>

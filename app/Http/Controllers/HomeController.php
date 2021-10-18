@@ -24,6 +24,7 @@ class HomeController extends Controller
     {
         $preguntas = Preguntas::all();
         $idUsuario = auth()->user()->id;
+        
         $respuestas = Respuestas::where('user_id',$idUsuario)->get();
         return view('home', compact('respuestas'));
     }
