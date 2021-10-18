@@ -265,7 +265,31 @@ padding-left: 20px;
         <table width="100%" border="0" cellpadding="4">
             <tbody>
                 <tr>
-                    <td align="center" style="font-size: 13px;" bgcolor="#DCD6D4"><strong>   {{ mb_strtoupper($ubicacion->Nombre) }}</strong></td>
+                    <td align="center" style="font-size: 13px;" bgcolor="#DCD6D4"><strong>
+                            {{ mb_strtoupper($ubicacion->Nombre) }}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+    
+        <br>
+        <br>
+        <table width="100%" border="1" cellpadding="4">
+            <tbody>
+                <tr>
+                    <td align="left" width="100%"> TOTAL SI: <STRONG>{{$si}}</STRONG>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" width="100%">TOTAL NO: <strong> {{$no}}</strong> </td>
+                </tr>
+                <tr>
+                    <td align="left" width="100%">TOTAL ALGUNAS VECES: <strong> {{$alg}} </strong> </td>
+                </tr>
+                <tr>
+                    <td align="left" width="100%">TOTAL DESCONOZCO: <strong> {{$desco}} </strong> </td>
                 </tr>
             </tbody>
         </table>
@@ -275,62 +299,72 @@ padding-left: 20px;
         <br>
         @foreach ($preguntas as $pregunta)
 
-        <table  width="100%" style="border:1px solid;">
+            <table width="100%" style="border:1px solid;">
 
-            <thead>
-                <tr>
-                    <th style="width: 50%;">{{ $pregunta->texto }}</th>
-                    <th>Sí</th>
-                    <th>No</th>
-                    <th>Algunas veces</th>
-                    <th>Desconozo</th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">{{ $pregunta->texto }}</th>
+                        <th>Sí</th>
+                        <th>No</th>
+                        <th>Algunas veces</th>
+                        <th>Desconozo</th>
 
-            <tbody>
-                <tr>
-                    <td align="center" width="10%">Total</td>
+                    </tr>
+                </thead>
 
-                        <td align="center" width="10%"  style="color:rgb(150,0,72);">
-                            @foreach($sumaA as $key => $value)
+                <tbody>
+                    <tr>
+                        <td align="center" width="10%"></td>
+
+                        <td align="center" width="10%" style="color:rgb(150,0,72);">
+                            @foreach ($sumaA as $key => $value)
+                                @if ($key == $pregunta->id)
+
+                                    {{ $value }}
+
+
+
+                                @endif
+                            @endforeach
+                        </td>
+
+                        <td align="center" width="10%" style="color:rgb(150,0,72);">
+                            @foreach ($sumaB as $key => $value)
+                                @if ($key == $pregunta->id)
+
+                                        {{ $value }}
+
+                                @endif
+                            @endforeach
+                        </td>
+                        <td align="center" width="10%" style="color:rgb(150,0,72);">
+                            @foreach ($sumaC as $key => $value)
+                                @if ($key == $pregunta->id)
+
+                                        {{ $value }}
+
+                                @endif
+                            @endforeach
+                        </td>
+                        <td align="center" width="10%" style="color:rgb(150,0,72);">
+
+                            @foreach ($sumaD as $key => $value)
                                 @if($key == $pregunta->id)
-                                    {{$value}}
+                                        {{ $value }}
+
                                 @endif
                             @endforeach
                         </td>
 
 
+                    </tr>
 
-                        <td align="center" width="10%"  style="color:rgb(150,0,72);">
-                            @foreach($sumaB as $key => $value)
-                                @if($key == $pregunta->id)
-                                {{$value}}
-                                @endif
-                            @endforeach
-                        </td>
-                        <td align="center" width="10%"  style="color:rgb(150,0,72);">
-                            @foreach($sumaC as $key => $value)
-                                @if($key == $pregunta->id)
-                                {{$value}}
-                                @endif
-                            @endforeach
-                        </td>
-                        <td align="center" width="10%"  style="color:rgb(150,0,72);">
-
-                            @foreach($sumaD as $key => $value)
-                                @if($key == $pregunta->id)
-                                        {{$value}}
-                                @endif
-                            @endforeach
-                        </td>
-
-                </tr>
-
-            </tbody>
-        </table>
+                </tbody>
+            </table>
             <br>
 
-     @endforeach
+        @endforeach
+
     </main>
 </body>
 

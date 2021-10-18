@@ -53,7 +53,10 @@ class ReporteController extends Controller
         $collection3 = collect([]);
         $collection4 = collect([]);
         $respuestas = [];
-
+        $si = 0;
+        $no = 0;
+        $alg = 0;
+        $desco = 0;
         if($request->departamento){
             $ubicacion = Departamento::whereidDepartamento($request->departamento)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Departamento',$request->departamento)->get();
@@ -80,24 +83,28 @@ class ReporteController extends Controller
         foreach ($respuestas as $respuesta) {
             foreach ($respuesta as $item) {
                 if($item->respuesta == "A"){
+                    $si = $si +1;
                     $collection1->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
 
                 }elseif($item->respuesta == "B"){
+                    $no = $no +1;
                     $collection2->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
 
                 }elseif ($item->respuesta == "C") {
+                    $alg = $alg +1;
                     $collection3->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
 
                 }elseif($item->respuesta == "D"){
+                    $desco = $desco +1;
                     $collection4->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
@@ -112,8 +119,11 @@ class ReporteController extends Controller
         $sumaB = $collection2->pluck('id_pregunta')->countBy();
         $sumaC = $collection3->pluck('id_pregunta')->countBy();
         $sumaD = $collection4->pluck('id_pregunta')->countBy();
-
-        $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion'));
+        $datas['si']= $si;
+        $datas['no']= $no;
+        $datas['alg']= $alg;
+        $datas['desco']= $desco;
+        $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','si','no','alg','desco'));
         return $pdf->stream('dependencia.pdf');
 
     }
@@ -141,8 +151,9 @@ class ReporteController extends Controller
         $collection3 = collect([]);
         $collection4 = collect([]);
         $respuestas = [];
+
         $ubicacion = Dependencia::whereidDependencia($id)->first();
-       
+
         $preguntas = Preguntas::all();
         $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$ubicacion->id_Dependencia)->get();
 
@@ -158,12 +169,14 @@ class ReporteController extends Controller
         foreach ($respuestas as $respuesta) {
             foreach ($respuesta as $item) {
                 if($item->respuesta == "A"){
+
                     $collection1->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
 
                 }elseif($item->respuesta == "B"){
+
                     $collection2->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
@@ -171,6 +184,7 @@ class ReporteController extends Controller
 
 
                 }elseif ($item->respuesta == "C") {
+
                     $collection3->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
@@ -178,6 +192,7 @@ class ReporteController extends Controller
 
 
                 }elseif($item->respuesta == "D"){
+
                     $collection4->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
