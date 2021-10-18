@@ -18,6 +18,7 @@ class CreateRespuestasTable extends Migration
             $table->integer('user_id');
             $table->integer('pregunta');
             $table->string('respuesta');
+            $table->integer('dependencia');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
