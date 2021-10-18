@@ -11,9 +11,26 @@
                         <div class="col s12">
                             @if(count($reporte))
                                 <h3 class="card-title mb-0"><strong>DIAGNÓSTICO DE IGUALDAD DE TRATO Y OPORTUNIDADES ENTRE MUJERES Y HOMBRES</strong></h3>
-
-                                <p style="text-align: justify">El presente diagnóstico permitirá visibilizar situaciones de asimetría individual y colectiva entre mujeres y hombres al interior del Poder Legislativo con el propósito de reducir brechas de desigualdad y discriminación en su espacio laboral, asimismo la consolidación de buenas prácticas que promuevan una cultura institucional que integre, como principio básico, la igualdad entre sexos.</p><br>
-                                <p style="text-align: justify">A continuación, se presenta un listado de posibles situaciones que puede estar viviendo. Manifieste las respuestas que mejor describan lo que percibe o siente actualmente en su unidad administrativa de adscripción.</p><br>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <ul class="collapsible popout">
+                                            <li>
+                                                <div class="collapsible-header"><i class="material-icons">help</i>
+                                                    <strong>Ayuda</strong><br>
+                                                </div>
+                                                <div class="collapsible-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12" align="center">
+                                                            <p align="justify">
+                                                                En esta sección podrás consular los resultados de la encuesta aplicada al Servidor Público que seleccionaste.<br>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
 
                                 <table id="striped" class="display">
                                     <thead>
@@ -69,6 +86,11 @@
                                     </tr>
                                 </tbody>
                             </table>
+                                <input type="hidden" name="siV" id="siV" value="<?php echo $si; ?>">
+                                <input type="hidden" name="noV" id="noV" value="<?php echo $no; ?>">
+                                <input type="hidden" name="algV" id="algV" value="<?php echo $alg; ?>">
+                                <input type="hidden" name="descoV" id="descoV" value="<?php echo $desco; ?>">
+
                             @else
                                 <h4 class="text-align center">NO HAY REGISTRO AUN</h4>
                             @endif
@@ -76,12 +98,8 @@
                     </div>
                     <figure class="highcharts-figure">
                         <div id="container"></div>
-                        <p class="highcharts-description">
-                          A basic column chart compares rainfall values between four cities.
-                          Tokyo has the overall highest amount of rainfall, followed by New York.
-                          The chart is making use of the axis crosshair feature, to highlight
-                          months as they are hovered over.
-                        </p>
+                        <p class="highcharts-description" style="text-align: justify">El presente diagnóstico permitirá visibilizar situaciones de asimetría individual y colectiva entre mujeres y hombres al interior del Poder Legislativo con el propósito de reducir brechas de desigualdad y discriminación en su espacio laboral, asimismo la consolidación de buenas prácticas que promuevan una cultura institucional que integre, como principio básico, la igualdad entre sexos.</p><br>
+                        <p class="highcharts-description" style="text-align: justify">A continuación, se presenta un listado de posibles situaciones que puede estar viviendo. Manifieste las respuestas que mejor describan lo que percibe o siente actualmente en su unidad administrativa de adscripción.</p><br>
                       </figure>
                 </div>
             </div>
@@ -94,72 +112,92 @@
 @push('scripts')
         <script>
             $(document).ready(function() {
-                var chart = Highcharts.chart('container', {
-                        chart: {
-                            type: 'column'
-                        },
-                        title: {
-                            text: 'Monthly Average Rainfall'
-                        },
-                        subtitle: {
-                            text: 'Source: WorldClimate.com'
-                        },
-                        xAxis: {
-                            categories: [
-                                'Jan',
-                                'Feb',
-                                'Mar',
-                                'Apr',
-                                'May',
-                                'Jun',
-                                'Jul',
-                                'Aug',
-                                'Sep',
-                                'Oct',
-                                'Nov',
-                                'Dec'
-                            ],
-                            crosshair: true
-                        },
-                        yAxis: {
-                            min: 0,
-                            title: {
-                                text: 'Rainfall (mm)'
-                            }
-                        },
-                        tooltip: {
-                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                            footerFormat: '</table>',
-                            shared: true,
-                            useHTML: true
-                        },
-                        plotOptions: {
-                            column: {
-                                pointPadding: 0.2,
-                                borderWidth: 0
-                            }
-                        },
-                        series: [{
-                            name: 'Tokyo',
-                            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+                var si = document.getElementById("siV").value;
+                let si1 =  parseInt(si);
 
-                        }, {
-                            name: 'New York',
-                            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+                var no = document.getElementById("noV").value;
+                let no1 =  parseInt(no);
 
-                        }, {
-                            name: 'London',
-                            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+                var alg = document.getElementById("algV").value;
+                let alg1 =  parseInt(alg);
 
-                        }, {
-                            name: 'Berlin',
-                            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+                var desco = document.getElementById("descoV").value;
+                let desco1 =  parseInt(desco);
 
-                        }]
-                    });
+                 var chart = Highcharts.chart('container', {
+                     chart: {
+                         type: 'column'
+                     },
+                     title: {
+                         text: 'DIAGNÓSTICO DE IGUALDAD DE TRATO Y OPORTUNIDADES ENTRE MUJERES Y HOMBRES'
+                     },
+                     subtitle: {
+                         text: ''
+                     },
+                     accessibility: {
+                         announceNewData: {
+                             enabled: true
+                         }
+                     },
+                     xAxis: {
+                         type: 'category'
+                     },
+                     yAxis: {
+                         title: {
+                             text: 'Total'
+                         }
 
+                     },
+                     legend: {
+                         enabled: false
+                     },
+                     plotOptions: {
+                         series: {
+                             borderWidth: 0,
+                             dataLabels: {
+                                 enabled: true,
+                                 format: '{point.y:.1f}%'
+                             }
+                         }
+                     },
+
+                     tooltip: {
+                         headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                         pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                     },
+
+                     series: [
+                         {
+                             name: "Respuestas",
+                             colorByPoint: true,
+                             data: [
+                                 {
+                                     name: "Sí",
+                                     y: si1,
+                                     drilldown: "Sí"
+                                 },
+                                 {
+                                     name: "No",
+                                     y: no1,
+                                     drilldown: "No"
+                                 },
+                                 {
+                                     name: "Algunas veces",
+                                     y: alg1,
+                                     drilldown: "Algunas veces"
+                                 },
+                                 {
+                                     name: "Desconozco",
+                                     y: desco1,
+                                     drilldown: "Desconozco"
+                                 }
+                             ]
+                         }
+                     ],
+                     drilldown: {
+
+                     }
+                 });
             })
     </script>
 @endpush
