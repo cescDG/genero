@@ -27,17 +27,17 @@
                                 @csrf
                                 <div class="input-field col s4">
                                     {!! Form::select('dependencia', $Dependencia, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'dependencia_id']) !!}
-                                    <label>Materialize Select</label>
+                                    <label>Seleccione Dependencia</label>
                                 </div>
                             
                                 <div class="input-field col s4">
                                     {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'direccion_id']) !!}
-                                    <label>Materialize Select</label>
+                                    <label>Seleccione Direccion</label>
                                 </div>
 
                                 <div class="input-field col s4">
                                     {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'departamento_id']) !!}
-                                    <label>Materialize Select</label>
+                                    <label>Seleccione Departamento</label>
                                 </div>
                                          
                                 <div class="card-body">
