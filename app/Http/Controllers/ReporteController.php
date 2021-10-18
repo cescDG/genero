@@ -53,44 +53,46 @@ class ReporteController extends Controller
         $respuestas = [];
 
         if($request->departamento){
-            
-            /*
-            $respuestas = Respuestas::with(["user" => function ($q) {
-                    $q->whereHas('servidorPublico', function ($q) {
-                        return $q->where('id_Departamento', 150);
-                    });
-            }])->get();*/
-            //dd($respuestas);
             $ubicacion = Departamento::whereidDepartamento($request->departamento)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Departamento',$request->departamento)->get();
+            $respuestas = Respuestas::with(["user" => function ($q) {
+                $q->whereHas('servidorPublico', function ($q) {
+                    return $q->where('id_Departamento', $ubicacion->id);
+                });
+            }])->get();
  
 
         }elseif($request->direccion){
             $ubicacion = Direccion::whereidDireccion($request->direccion)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Direccion',$request->direccion)->get();
+            $respuestas = Respuestas::with(["user" => function ($q) {
+                $q->whereHas('servidorPublico', function ($q) {
+                    return $q->where('id_Departamento', $ubicacion->id);
+                });
+            }])->get();
             
 
         }elseif($request->dependencia){
             $ubicacion = Departamento::whereidDependencia($request->dependencia)->first();
-            $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$request->dependencia)->get();  
+            $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$request->dependencia)->get();
+            $respuestas = Respuestas::with(["user" => function ($q)use ($ubicacion) {
+                $q->whereHas('servidorPublico', function ($q) use ($ubicacion) {
+                    return $q->where('id_Departamento', $ubicacion->id);
+                });
+            }])->get();  
           
         }
- 
+ /*
         foreach ($usuarios as $usuario) {
-            //dd($usuario->user->id);
             if($usuario->user){
                 $res = Respuestas::where('user_id',$usuario->user->id)->get();
                 if(!$res->isEmpty()){
                     array_push($respuestas,$res);
                 }
             }   
-        }
-        /*
-        $respuestas = Respuestas::with(["user" => function ($q) {
-            $q->whereHas('servidorPublico', function ($q) {
-                return $q->where('id_Departamento', 150);
-            });
-        }])->get();*/
+        }*/
+        
+       
 
         foreach ($respuestas as $respuesta) {
             foreach ($respuesta as $item) {
