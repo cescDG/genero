@@ -15,7 +15,7 @@ use App\Http\Controllers\ReporteController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
