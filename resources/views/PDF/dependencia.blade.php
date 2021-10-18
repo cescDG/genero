@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card mb-5 shadow-sm border-0 shadow-hover">
             <div class="card-header">
-                <h3 style="text-align: center;">REPORTE DE DEPENDENCIA</h3>
+                <h3 style="text-align: center;">REPORTE DE {{$ubicacion->Nombre}}</h3>
             </div>
             <div class="card-body">
                 @foreach ($preguntas as $pregunta)
