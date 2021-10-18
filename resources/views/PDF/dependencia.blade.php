@@ -7,8 +7,71 @@
                 <h3 style="text-align: center;">REPORTE DE DEPENDENCIA</h3>
             </div>
             <div class="card-body">
+                @foreach ($preguntas as $pregunta)
 
-                <p>HOlA</p>
+
+                    <table class="striped" style="border:1px solid;">
+
+                        <thead>
+                            <tr>
+                                <th>{{ $pregunta->texto }}</th>
+                                <th>Sí</th>
+                                <th>No</th>
+                                <th>Algunas veces</th>
+                                <th>Desconozo</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Total</td>
+                               
+                                    <td>
+                                        @foreach($sumaA as $key => $value)
+                                            @if($key == $pregunta->id)
+                                                {{$value}}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                   
+
+                              
+                                    <td>
+                                        @foreach($sumaB as $key => $value)
+                                            @if($key == $pregunta->id)
+                                            {{$value}}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                 
+
+                               
+                                    <td>
+                                        @foreach($sumaC as $key => $value)
+                                            @if($key == $pregunta->id)
+                                            {{$value}}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                  
+
+                                    <td>
+
+                                        @foreach($sumaD as $key => $value)
+                                            @if($key == $pregunta->id)
+                                                    {{$value}}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                  
+                            </tr>   
+                            
+                        </tbody>
+                    </table>
+                        <br>
+
+                 @endforeach
+                
             </div>
         </div>
 @endsection
