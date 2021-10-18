@@ -60,7 +60,7 @@ class ReporteController extends Controller
                     return $q->where('id_Departamento', $ubicacion->id);
                 });
             }])->get();
- 
+
 
         }elseif($request->direccion){
             $ubicacion = Direccion::whereidDireccion($request->direccion)->first();
@@ -70,7 +70,7 @@ class ReporteController extends Controller
                     return $q->where('id_Departamento', $ubicacion->id);
                 });
             }])->get();
-            
+
 
         }elseif($request->dependencia){
             $ubicacion = Departamento::whereidDependencia($request->dependencia)->first();
@@ -79,8 +79,8 @@ class ReporteController extends Controller
                 $q->whereHas('servidorPublico', function ($q) use ($ubicacion) {
                     return $q->where('id_Departamento', $ubicacion->id);
                 });
-            }])->get();  
-          
+            }])->get();
+
         }
  /*
         foreach ($usuarios as $usuario) {
@@ -89,10 +89,10 @@ class ReporteController extends Controller
                 if(!$res->isEmpty()){
                     array_push($respuestas,$res);
                 }
-            }   
+            }
         }*/
-        
-       
+
+
 
         foreach ($respuestas as $respuesta) {
             foreach ($respuesta as $item) {
@@ -154,7 +154,7 @@ class ReporteController extends Controller
 
 
         foreach($respuestas as $res){
-            
+
 
 
         }
@@ -163,12 +163,36 @@ class ReporteController extends Controller
     }
 
 
-    public function verReporte(Request $request){
-        $idUs = $request->id1;
+    public function verReporte($id){
+        $idUs = $id;
         $reporte = Respuestas::where('user_id', $idUs)->get();
-        return view('reportes.individualUs', compact('reporte'));
-    }
+        $si = 0;
+        $no = 0;
+        $alg = 0;
+        $desco = 0;
 
+        foreach ($reporte as $repo){
+            if($repo->respuesta == 'A'){
+                $si = $si +1;
+            }
+            if($repo->respuesta == 'B'){
+                $no = $no +1;
+            }
+            if($repo->respuesta == 'C'){
+                $alg = $alg +1;
+            }
+            if($repo->respuesta == 'D'){
+                $desco = $desco +1;
+            }
+        }
+
+        $datas['si']= $si;
+        $datas['no']= $no;
+        $datas['alg']= $alg;
+        $datas['desco']= $desco;
+
+        return view('reportes.individualUs', compact('reporte','si','no','alg','desco','datas'));
+    }
 }
 
 
