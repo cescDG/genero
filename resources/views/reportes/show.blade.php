@@ -14,27 +14,70 @@
                 <div class="row">
                     <div class="col s12">
                         <h4 align="center">Preguntas</h4>
+                        @foreach ($preguntas as $pregunta)
+
+
                         <table class="striped" style="border:1px solid;">
+    
                             <thead>
-                              <tr>
-                                  <th>{{ $pregunta->texto }}</th>
-                                  <th>Sí</th>
-                                  <th>No</th>
-                                  <th>Algunas veces</th>
-                                  <th>Desconozo</th>
-                              </tr>
+                                <tr>
+                                    <th>{{ $pregunta->texto }}</th>
+                                    <th>Sí</th>
+                                    <th>No</th>
+                                    <th>Algunas veces</th>
+                                    <th>Desconozo</th>
+                                </tr>
                             </thead>
+    
                             <tbody>
-                              <tr>
-                                <td>Legislatura</td>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                              </tr>
+                                <tr>
+                                    <td>Total</td>
+                                   
+                                        <td>
+                                            @foreach($sumaA as $key => $value)
+                                                @if($key == $pregunta->id)
+                                                    {{$value}}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                       
+    
+                                  
+                                        <td>
+                                            @foreach($sumaB as $key => $value)
+                                                @if($key == $pregunta->id)
+                                                {{$value}}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                     
+    
+                                   
+                                        <td>
+                                            @foreach($sumaC as $key => $value)
+                                                @if($key == $pregunta->id)
+                                                {{$value}}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                      
+    
+                                        <td>
+    
+                                            @foreach($sumaD as $key => $value)
+                                                @if($key == $pregunta->id)
+                                                        {{$value}}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                      
+                                </tr>   
+                                
                             </tbody>
-                          </table>
-                          <br>
+                        </table>
+                            <br>
+    
+                     @endforeach
                         <div class="card-body">
                             <div class="container">
                                 <br>
