@@ -135,9 +135,6 @@ class ReporteController extends Controller
 
 
     public function getDep($id){
-        $usuarios = ServidorPulbicoDetail::all();
-        dd($usuarios);
-
         return view('reportes.show');
 
     }
