@@ -45,19 +45,14 @@ class QuizController extends Controller
     {
         $servidorP = auth()->user()->id;
         $spd = ServidorPulbicoDetail::where('N_Usuario', auth()->user()->rfc)->get();
-        dd($spd);
         $respuestas = $request->except('_token');
-
-
-
-
-
-
         for($i=1; $i <=35; $i++){
             if (isset($respuestas[$i])){
                 $res['pregunta']=$i;
                 $res['respuesta']=$respuestas[$i];
                 $res['user_id']=$servidorP;
+                $res['dependencia']=$spd[0]->id_Dependencia;
+
 
                 $respuesta = Respuestas::create($res);
             }
