@@ -83,28 +83,28 @@ class ReporteController extends Controller
         foreach ($respuestas as $respuesta) {
             foreach ($respuesta as $item) {
                 if($item->respuesta == "A"){
-                    $si = $si +1;
+                    $si +=1;
                     $collection1->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
 
                 }elseif($item->respuesta == "B"){
-                    $no = $no +1;
+                    $no +=1;
                     $collection2->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
 
                 }elseif ($item->respuesta == "C") {
-                    $alg = $alg +1;
+                    $alg +=1;
                     $collection3->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
 
                 }elseif($item->respuesta == "D"){
-                    $desco = $desco +1;
+                    $desco +=1;
                     $collection4->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
