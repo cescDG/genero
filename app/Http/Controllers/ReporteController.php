@@ -103,7 +103,7 @@ class ReporteController extends Controller
             $sumaD = $collection4->pluck('id_pregunta')->countBy();
             //dd($sumaD);
             //dd($preguntas);
-  
+
             $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD'));
             return $pdf->stream('dependencia.pdf');
 
@@ -121,8 +121,9 @@ class ReporteController extends Controller
 
     public function pregunta()
     {
-       $preguntas= Preguntas::paginate(5);
-        return view('reportes.pregunta', compact('preguntas'));
+        $Dependencia = Arr::pluck(\App\Models\Dependencia::all(), "Nombre","id_Dependencia");
+    //    $preguntas= Preguntas::paginate(5);
+        return view('reportes.pregunta', compact('Dependencia'));
     }
 
     public function individual()
@@ -130,6 +131,14 @@ class ReporteController extends Controller
        $usuarios = ServidorPulbicoDetail::where('Estado',1)->get();
 
        return view('reportes.individual', compact('usuarios'));
+    }
+
+    public function getDep($id){
+        $usuarios = ServidorPulbicoDetail::all();
+        dd($usuarios);
+
+        return view('reportes.show');
+
     }
 
 }
