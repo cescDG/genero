@@ -14,12 +14,12 @@ class ServidorPulbicoDetail extends Model
     protected $guarded = ["id_Usuario", "created_at", "updated_at","delete_at"];
 
     public function dependencia(){
-        return$this->belongsTo(Dependencia::class,"id_Dependencia","id_Dependencia")->withDefault(["Nombre" => "No identificado"]);
+        return $this->hasOne(Dependencia::class,"id_Dependencia","id_Dependencia")->withDefault(["Nombre" => "No identificado"]);
 
     }
 
     public function direccion(){
-        return$this->belongsTo(Direccion::class)->withDefault(["Nombre" => "No identificado"]);
+        return$this->hasOne(Direccion::class)->withDefault(["Nombre" => "No identificado"]);
     }
 
     public function departamento(){

@@ -56,4 +56,8 @@ class User extends Authenticatable
             $this->attributes['password'] = app('hash')->make(trim($v));
         }
     }
+    public function respuestas()
+    {
+        return $this->hasMany(Respuestas::class);
+    }
 }
