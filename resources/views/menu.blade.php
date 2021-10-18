@@ -6,6 +6,7 @@
     </h1>
 
 <li><a href="{{route('home')}}"><i class="material-icons ">home</i><span data-i18n="Modern Menu">Inicio</span></a></li>
+@if(auth()->user()->rfc =='DEGC941209' || auth()->user()->rfc =='DIRG940621' || auth()->user()->rfc =='MATD810802' || auth()->user()->rfc =='DOOJ900120')
 <li class="bold"><a class="collapsible-header  waves-effect color-bg-nav-menu active" href="JavaScript:void(0)"><i class="material-icons">visibility</i><span class="menu-title" data-i18n="Templates">Reportes</span></a>
     <div class="collapsible-body">
         <ul class="collapsible collapsible-sub" data-collapsible="accordion">
@@ -17,4 +18,5 @@
         </ul>
     </div>
 </li>
+@endif
 </ul>
