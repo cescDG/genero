@@ -29,4 +29,8 @@ class ServidorPulbicoDetail extends Model
     public function user(){
         return $this->hasOne(User::class,"rfc","N_Usuario");
     }
+
+    public function respuestas(){
+        return $this->belongsTo(Respuestas::class,"user_id","id_Usuario");
+    }
 }

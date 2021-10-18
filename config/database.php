@@ -68,6 +68,7 @@ return [
             'database'  => env('DB_DATABASE_SAF','adminple_saf'),
             'username'  => env('DB_USERNAME_SAF','adminple_safuser'),
             'password'  => env('DB_PASSWORD_SAF','intra_59**'),
+
 //            'username'  => env('DB_USERNAME_SAF','homestead'),
 //            'password'  => env('DB_PASSWORD_SAF','secret'),
 
