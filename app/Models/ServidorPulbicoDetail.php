@@ -19,7 +19,7 @@ class ServidorPulbicoDetail extends Model
     }
 
     public function direccion(){
-        return$this->hasOne(Direccion::class)->withDefault(["Nombre" => "No identificado"]);
+        return$this->hasOne(Direccion::class, "id_Direccion", "id_Direccion")->withDefault(["Nombre" => "No identificado"]);
     }
 
     public function departamento(){

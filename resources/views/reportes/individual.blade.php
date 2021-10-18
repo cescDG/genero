@@ -24,16 +24,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ( $usuarios as $usuario => $key)
+                                    @foreach ( $usuarios as $usuario)
                                         <tr>
-                                            <th>{{$key->Nombre}}</th>
-                                            <th>{{$key->N_Usuario}}</th>
-                                            <th>{{$key->dependencia->Nombre}}</th>
-                                            <th>{{$key->direccion->Nombre}}</th>
-                                            <th>{{$key->departamento->Nombre}}</th>
+                                            <th>{{$usuario->Nombre}}</th>
+                                            <th>{{$usuario->N_Usuario}}</th>
+                                            <th>{{$usuario->dependencia->Nombre}}</th>
+                                            <th>{{$usuario->direccion->Nombre}}</th>
+                                            <th>{{$usuario->departamento->Nombre}}</th>
                                             <th> <a title="Ver" class="tooltipped" data-position="bottom"
                                                      data-tooltip="Ver"
-                                                    href="{{ route('verReporte', [$key->id_Usuario]) }}" target="_blank">
+                                                    href="{{ route('verReporte', [$usuario->id_Usuario]) }}" target="_blank">
 
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
                                                          fill="currentColor" class="bi bi-card-checklist"
