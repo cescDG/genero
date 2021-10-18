@@ -61,20 +61,20 @@ class ReporteController extends Controller
         }elseif($request->direccion){
             $ubicacion = Direccion::whereidDireccion($request->direccion)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Direccion',$request->direccion)->get();
-           
+
         }elseif($request->dependencia){
             $ubicacion = Departamento::whereidDependencia($request->dependencia)->first();
-            $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$request->dependencia)->get();  
-          
+            $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$request->dependencia)->get();
+
         }
- 
+
         foreach ($usuarios as $usuario) {
             if($usuario->user){
                 $res = Respuestas::where('user_id',$usuario->user->id)->get();
                 if(!$res->isEmpty()){
                     array_push($respuestas,$res);
                 }
-            }   
+            }
         }
 
         foreach ($respuestas as $respuesta) {
@@ -135,25 +135,26 @@ class ReporteController extends Controller
 
     public function getDep($id){
 
-        
+
         $collection1 = collect([]);
         $collection2 = collect([]);
         $collection3 = collect([]);
         $collection4 = collect([]);
         $respuestas = [];
         $ubicacion = Dependencia::whereidDependencia($id)->first();
-        $preguntas = Preguntas::all();
-        $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$ubicacion->id_Dependencia)->get();  
        
+        $preguntas = Preguntas::all();
+        $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$ubicacion->id_Dependencia)->get();
+
         foreach ($usuarios as $usuario) {
             if($usuario->user){
                 $res = Respuestas::where('user_id',$usuario->user->id)->get();
                 if(!$res->isEmpty()){
                     array_push($respuestas,$res);
                 }
-            }   
+            }
         }
-        
+
         foreach ($respuestas as $respuesta) {
             foreach ($respuesta as $item) {
                 if($item->respuesta == "A"){
@@ -191,7 +192,7 @@ class ReporteController extends Controller
         $sumaB = $collection2->pluck('id_pregunta')->countBy();
         $sumaC = $collection3->pluck('id_pregunta')->countBy();
         $sumaD = $collection4->pluck('id_pregunta')->countBy();
-      
+
         return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion'));
 
 
