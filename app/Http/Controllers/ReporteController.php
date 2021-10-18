@@ -127,11 +127,16 @@ class ReporteController extends Controller
 
     public function individual()
     {
-       $usuarios = ServidorPulbicoDetail::where('Estado',1)->get();
+      $usuarios = ServidorPulbicoDetail::where('Estado',1)->get();
 
        return view('reportes.individual', compact('usuarios'));
     }
 
+    public function verReporte(Request $request){
+        $idUs = $request->id1;
+        $reporte = Respuestas::where('user_id', $idUs)->get();
+        return view('reportes.individualUs', compact('reporte'));
+    }
 }
 
 
