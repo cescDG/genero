@@ -136,7 +136,7 @@ class ReporteController extends Controller
 
 
     public function getDep($id){
-<<<<<<< HEAD
+
         
         $collection1 = collect([]);
         $collection2 = collect([]);
@@ -193,17 +193,7 @@ class ReporteController extends Controller
         $sumaD = $collection4->pluck('id_pregunta')->countBy();
       
         return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion'));
-=======
-        $respuestas = Respuestas::where('dependencia', $id);
 
-
-        foreach($respuestas as $res){
-            
-
-
-        }
-        return view('reportes.show');
->>>>>>> 3b05e039e1636e84c407a4913f2cdae40227d267
 
     }
 
