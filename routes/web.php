@@ -37,4 +37,8 @@ Route::middleware(['auth'])->group(function () {
         'encuesta' => QuizController::class,
         'reportes' => ReporteController::class
     ]);
+    Route::get('/logout', function(){
+        Auth::logout();
+        return Redirect::to('login');
+    });
 });

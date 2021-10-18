@@ -75,7 +75,7 @@
                     <!-- profile-dropdown-->
                     <ul class="dropdown-content" id="profile-dropdown">
                         <li><a class="grey-text text-darken-1" href=""><i class="material-icons">person_outline</i> Perfil</a></li>
-                        <li><a class="grey-text text-darken-1" onclick="cerrarSesion(event)"><i class="material-icons">keyboard_tab</i>Salir</a></li>
+                        <li><a class="grey-text text-darken-1"href="{{ route('logout') }}"><i class="material-icons">keyboard_tab</i>Salir</a></li>
                     </ul>
                     <ul class="right hide-on-med-and-down" style="font-size: 11px; line-height : 15px !important">
                         <br>
