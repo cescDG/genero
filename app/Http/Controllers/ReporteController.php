@@ -13,6 +13,9 @@ use App\Models\Dependencia;
 use App\Models\Preguntas;
 use App\Models\Respuestas;
 use App\Models\ServidorPulbicoDetail;
+use App\Exports\DependenciaExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ReporteController extends Controller
 {
@@ -220,6 +223,76 @@ class ReporteController extends Controller
 
     }
 
+
+    public function generarExcel($id){
+
+
+        $collection1 = collect([]);
+        $collection2 = collect([]);
+        $collection3 = collect([]);
+        $collection4 = collect([]);
+        $respuestas = [];
+
+        $ubicacion = Dependencia::whereidDependencia($id)->first();
+
+        $preguntas = Preguntas::all();
+        $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$ubicacion->id_Dependencia)->get();
+
+        foreach ($usuarios as $usuario) {
+            if($usuario->user){
+                $res = Respuestas::where('user_id',$usuario->user->id)->get();
+                if(!$res->isEmpty()){
+                    array_push($respuestas,$res);
+                }
+            }
+        }
+
+        foreach ($respuestas as $respuesta) {
+            foreach ($respuesta as $item) {
+                if($item->respuesta == "A"){
+
+                    $collection1->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+                }elseif($item->respuesta == "B"){
+
+                    $collection2->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+
+                }elseif ($item->respuesta == "C") {
+
+                    $collection3->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+
+                }elseif($item->respuesta == "D"){
+
+                    $collection4->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+                }
+            }
+
+        }
+
+        $sumaA = $collection1->pluck('id_pregunta')->countBy();
+        $sumaB = $collection2->pluck('id_pregunta')->countBy();
+        $sumaC = $collection3->pluck('id_pregunta')->countBy();
+        $sumaD = $collection4->pluck('id_pregunta')->countBy();
+
+        return Excel::download(new DependenciaExport($sumaA, $sumaB, $sumaC, $sumaD ), "dependencias.xlsx");
+
+
+    }
 
     public function verReporte($id){
         $idUs = $id;

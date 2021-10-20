@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getdepartamento/{direccion_id}', [ReporteController::class, 'obtenerDepto']);
     route::post("pdf/dependencia", [ReporteController::class, "pdfDependencia"])->name('pdf.dependencia');
     Route::GET('verReporte/{id}', 'App\Http\Controllers\ReporteController@verReporte')->name('verReporte');
+    Route::get('imprimir/{id}', [ReporteController::class, 'generarExcel']);
     Route::resources([
         'encuesta' => QuizController::class,
         'reportes' => ReporteController::class
