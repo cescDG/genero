@@ -267,7 +267,7 @@ padding-left: 20px;
             <tbody>
                 <tr>
                     <td align="center" style="font-size: 13px;" bgcolor="#DCD6D4"><strong>
-                            {{ mb_strtoupper($ubicacion->Nombre) }}</strong></td>
+                            {{ mb_strtoupper($ubicacion->nombre_completo) }}</strong></td>
                 </tr>
             </tbody>
         </table>
