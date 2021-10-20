@@ -17,6 +17,7 @@ use App\Exports\DependenciaExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 
+
 class ReporteController extends Controller
 {
     /**
@@ -292,7 +293,7 @@ class ReporteController extends Controller
         $sumaC = $collection3->pluck('id_pregunta')->countBy();
         $sumaD = $collection4->pluck('id_pregunta')->countBy();
 
-        return Excel::download(new DependenciaExport($sumaA, $sumaB, $sumaC, $sumaD ), "dependencias.xlsx");
+        return Excel::download(new DependenciaExport($sumaA, $sumaB, $sumaC, $sumaD, $ubicacion,$preguntas ), "dependencias.xlsx");
 
 
     }
