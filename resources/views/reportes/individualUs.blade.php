@@ -46,7 +46,7 @@
 
                                     @foreach ( $reporte as $report)
                                         <tr>
-                                            <th align="justify">{{$report->preguntas->texto}}</th>
+                                            <th><p style="text-align: left;">{{$report->preguntas->texto}}</p></th>
                                             <th align="justify">
                                                 @if($report->respuesta == 'A')
                                                     1
@@ -98,9 +98,7 @@
                     </div>
                     <figure class="highcharts-figure">
                         <div id="container"></div>
-                        <p class="highcharts-description" style="text-align: justify">El presente diagnóstico permitirá visibilizar situaciones de asimetría individual y colectiva entre mujeres y hombres al interior del Poder Legislativo con el propósito de reducir brechas de desigualdad y discriminación en su espacio laboral, asimismo la consolidación de buenas prácticas que promuevan una cultura institucional que integre, como principio básico, la igualdad entre sexos.</p><br>
-                        <p class="highcharts-description" style="text-align: justify">A continuación, se presenta un listado de posibles situaciones que puede estar viviendo. Manifieste las respuestas que mejor describan lo que percibe o siente actualmente en su unidad administrativa de adscripción.</p><br>
-                      </figure>
+                    </figure>
                 </div>
             </div>
         </div>
