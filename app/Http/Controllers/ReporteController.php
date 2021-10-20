@@ -137,8 +137,15 @@ class ReporteController extends Controller
 
     public function individual()
     {
-      $usuarios = ServidorPulbicoDetail::where('Estado',1)->get();
+        $usuarioss = ServidorPulbicoDetail::all();
 
+        $usuarios = [];
+        foreach ($usuarioss as $us){
+            $respuestas = Respuestas::where('user_id', $us->id_Usuario)->first();
+            if($respuestas){
+                array_push($usuarios,$us);
+            }
+        }
        return view('reportes.individual', compact('usuarios'));
     }
 
