@@ -50,6 +50,9 @@ class ReporteController extends Controller
     public function pdfDependencia(Request $request){
 
         //dd($request->departamento);
+        date_default_timezone_set('America/Mexico_City');
+        $timestam = date('Y-m-d H:i:s');
+        $dia = date('Y-m-d');
         $preguntas = Preguntas::all();
         $collection1 = collect([]);
         $collection2 = collect([]);
@@ -126,7 +129,7 @@ class ReporteController extends Controller
         $datas['no']= $no;
         $datas['alg']= $alg;
         $datas['desco']= $desco;
-        $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','si','no','alg','desco'));
+        $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','si','no','alg','desco','dia'));
         return $pdf->stream('dependencia.pdf');
 
     }

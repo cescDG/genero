@@ -240,7 +240,10 @@ padding-left: 20px;
             white-space: pre !important;
         }
 
-        p {}
+        p {
+            font-size: 10px;
+            text-align: right;
+        }
 
         .page_break {
             page-break-before: always;
@@ -250,6 +253,7 @@ padding-left: 20px;
 </head>
 
 <body>
+   <p style="color:rgb(150,0,72);">Fecha: {{$dia}}</p>
     <header>
         <br>
         <center>
