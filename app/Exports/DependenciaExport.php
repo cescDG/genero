@@ -2,17 +2,26 @@
 
 namespace App\Exports;
 
-use Maatwebsite\Excel\Concerns\FromCollection;
+
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class RegionalUsers implements FromView
+class DependenciaExport implements FromView
 {
-    public $sumaA;
-    public function __construct($sumaA)
+    public $sumaA,$sumaB,$sumaC,$sumaD, $ubicacion,$preguntas ;
+    public function __construct($sumaA,$sumaB,$sumaC,$sumaD,$ubicacion,$preguntas )
     {
         $this->sumaA = $sumaA;
+        $this->sumaB = $sumaB;
+        $this->sumaC = $sumaC;
+        $this->sumaD = $sumaD;
+        $this->ubicacion = $ubicacion;
+        $this->preguntas = $preguntas;
     }
+
+
+
+
     /**
      *
      *
@@ -22,7 +31,13 @@ class RegionalUsers implements FromView
     public function view(): view
     {
         $sumaA = $this->sumaA;
+        $sumaB = $this->sumaB;
+        $sumaC = $this->sumaC;
+        $sumaD = $this->sumaD;
+        $preguntas = $this->preguntas;
 
-        return view('reportes.printExc', compact('sumaA'));
+        $ubicacion = $this->ubicacion;
+
+        return view('reportes.printExc', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion'));
     }
 }
