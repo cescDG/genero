@@ -254,14 +254,15 @@ padding-left: 20px;
         <br>
         <center>
             <div class="row">
-                <img src="{{ asset('genero/images/logo/logoSec.png') }}" alt=" avatar" style="width: 80%;" />
+                <img src="{{ asset('genero/images/logo/membrete2.jpg') }}" alt=" avatar" style="width: 90%;" />
+
             </div>
-            <br><br>
+
         </center>
     </header>
     <main>
         <br>
-        <br><br>
+
         <table width="100%" border="0" cellpadding="4">
             <tbody>
                 <tr>
@@ -271,101 +272,110 @@ padding-left: 20px;
             </tbody>
         </table>
         <br>
-        <br>
-        <br>
-    
-        <br>
-        <br>
+
         <table width="100%" border="1" cellpadding="4">
             <tbody>
                 <tr>
-                    <td align="left" width="100%"> TOTAL SI: <STRONG>{{$si}}</STRONG>
+                    <td align="left" width="100%"> TOTAL SI: <STRONG>{{ $si }}</STRONG>
                     </td>
                 </tr>
                 <tr>
-                    <td align="left" width="100%">TOTAL NO: <strong> {{$no}}</strong> </td>
+                    <td align="left" width="100%">TOTAL NO: <strong> {{ $no }}</strong> </td>
                 </tr>
                 <tr>
-                    <td align="left" width="100%">TOTAL ALGUNAS VECES: <strong> {{$alg}} </strong> </td>
+                    <td align="left" width="100%">TOTAL ALGUNAS VECES: <strong> {{ $alg }} </strong> </td>
                 </tr>
                 <tr>
-                    <td align="left" width="100%">TOTAL DESCONOZCO: <strong> {{$desco}} </strong> </td>
+                    <td align="left" width="100%">TOTAL DESCONOZCO: <strong> {{ $desco }} </strong> </td>
                 </tr>
             </tbody>
         </table>
         <br>
-        <br>
-        <br>
-        <br>
-        @foreach ($preguntas as $pregunta)
 
+        <div class="row">
             <table width="100%" style="border:1px solid;">
 
-                <thead>
-                    <tr>
-                        <th style="width: 50%;">{{ $pregunta->texto }}</th>
-                        <th>Sí</th>
-                        <th>No</th>
-                        <th>Algunas veces</th>
-                        <th>Desconozo</th>
 
-                    </tr>
-                </thead>
+                @foreach ($preguntas as $pregunta)
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">{{ $pregunta->texto }}</th>
+                            <th>Sí</th>
+                            <th>No</th>
+                            <th>Algunas veces</th>
+                            <th>Desconozo</th>
 
-                <tbody>
-                    <tr>
-                        <td align="center" width="10%"></td>
+                        </tr>
+                    </thead>
 
-                        <td align="center" width="10%" style="color:rgb(150,0,72);">
-                            @foreach ($sumaA as $key => $value)
-                                @if ($key == $pregunta->id)
+                    <tbody>
+                        <tr>
+                            <td align="center" width="10%"></td>
 
-                                    {{ $value }}
-
-
-
-                                @endif
-                            @endforeach
-                        </td>
-
-                        <td align="center" width="10%" style="color:rgb(150,0,72);">
-                            @foreach ($sumaB as $key => $value)
-                                @if ($key == $pregunta->id)
+                            <td align="center" width="10%" style="color:rgb(150,0,72);">
+                                @foreach ($sumaA as $key => $value)
+                                    @if ($key == $pregunta->id)
 
                                         {{ $value }}
 
-                                @endif
-                            @endforeach
-                        </td>
-                        <td align="center" width="10%" style="color:rgb(150,0,72);">
-                            @foreach ($sumaC as $key => $value)
-                                @if ($key == $pregunta->id)
+
+
+                                    @endif
+                                @endforeach
+                            </td>
+
+                            <td align="center" width="10%" style="color:rgb(150,0,72);">
+                                @foreach ($sumaB as $key => $value)
+                                    @if ($key == $pregunta->id)
 
                                         {{ $value }}
 
-                                @endif
-                            @endforeach
-                        </td>
-                        <td align="center" width="10%" style="color:rgb(150,0,72);">
+                                    @endif
+                                @endforeach
+                            </td>
+                            <td align="center" width="10%" style="color:rgb(150,0,72);">
+                                @foreach ($sumaC as $key => $value)
+                                    @if ($key == $pregunta->id)
 
-                            @foreach ($sumaD as $key => $value)
-                                @if($key == $pregunta->id)
                                         {{ $value }}
 
-                                @endif
-                            @endforeach
-                        </td>
+                                    @endif
+                                @endforeach
+                            </td>
+                            <td align="center" width="10%" style="color:rgb(150,0,72);">
+
+                                @foreach ($sumaD as $key => $value)
+                                    @if ($key == $pregunta->id)
+                                        {{ $value }}
+
+                                    @endif
+                                @endforeach
+                            </td>
 
 
-                    </tr>
+                        </tr>
 
-                </tbody>
+                    </tbody>
+
+                @endforeach
+
             </table>
             <br>
-
-        @endforeach
+        </div>
 
     </main>
+    <br>
+    <br>
+    <br>
+    <footer>
+
+        <center>
+            <div class="row">
+                <img src="{{ asset('genero/images/logo/membrete3.png') }}" alt=" avatar" style="width: 90%;" />
+            </div>
+
+        </center>
+    </footer>
 </body>
 
 </html>
