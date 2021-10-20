@@ -13,7 +13,7 @@
             <div class="section section-data-tables">
                 <div class="row">
                     <div class="col s12">
-                        <h4 align="center">{{$ubicacion->Nombre}}</h4>
+                        <h4 align="center">{{$ubicacion->nombre_completo}}</h4>
                         @foreach ($preguntas as $pregunta)
                             <table class="striped" style="border:1px solid;">
 
