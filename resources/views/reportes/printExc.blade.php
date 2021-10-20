@@ -1,11 +1,11 @@
 
-        <h4 align="center">{{$ubicacion->Nombre}}</h4>
+        <h4>{{$ubicacion->Nombre}}</h4>
         @foreach ($preguntas as $pregunta)
-            <table class="striped" style="border:1px solid;">
+            <table >
 
                 <thead>
                     <tr>
-                        <th style="width: 50%;">{{ $pregunta->texto }}</th>
+                        <th >{{ $pregunta->texto }}</th>
                         <th>Sí</th>
                         <th>No</th>
                         <th>Algunas veces</th>
