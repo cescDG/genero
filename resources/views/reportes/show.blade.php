@@ -19,11 +19,11 @@
 
                                 <thead>
                                     <tr>
-                                        <th style="width: 50%;">{{ $pregunta->texto }}</th>
+                                        <th style="width: 50%;"><p style="text-align: left">{{ $pregunta->texto }}</p> </th>
                                         <th>Sí</th>
                                         <th>No</th>
                                         <th>Algunas veces</th>
-                                        <th>Desconozo</th>
+                                        <th>Desconozco</th>
                                     </tr>
                                 </thead>
 
