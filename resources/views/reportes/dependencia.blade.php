@@ -30,14 +30,14 @@
                                 </div>
 
                                 <div class="input-field col s4">
-                                    {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'direccion_id']) !!}
+                                    {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'direccion_id', 'disabled' => 'true']) !!}
 
                                     <label>Seleccione Direccion</label>
 
                                 </div>
 
                                 <div class="input-field col s4">
-                                    {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'departamento_id']) !!}
+                                    {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'departamento_id', 'disabled' => 'true']) !!}
 
                                     <label>Seleccione Departamento</label>
 
@@ -74,6 +74,7 @@
                     $(data).each(function(i, v) { // indice, valor
                         $("#direccion_id").append('<option value="' + v.id_Direccion + '">' + v.Nombre + '</option>');
                     });
+                    $("#direccion_id").prop('disabled', false);
                 });
 
             });
@@ -88,6 +89,7 @@
                        $("#departamento_id").append('<option value="' + v.id_Departamento + '">' + v.Nombre + '</option>');
                    });
                });
+               $("#departamento_id").prop('disabled', false);
 
            });
 
