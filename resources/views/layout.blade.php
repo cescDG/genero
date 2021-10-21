@@ -59,6 +59,7 @@
                             </a>
                         </li>
                     </ul>
+
                     <ul class="navbar-list right" >
                         <li>
                             <a class="waves-effect waves-block waves-light notification-button" href="" data-target="notifications-dropdown">
