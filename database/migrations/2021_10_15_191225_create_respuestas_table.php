@@ -15,10 +15,9 @@ class CreateRespuestasTable extends Migration
     {
         Schema::create('respuestas', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->string('user_rfc');
             $table->integer('pregunta');
             $table->string('respuesta');
-            $table->integer('dependencia');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

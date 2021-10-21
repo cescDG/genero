@@ -80,7 +80,7 @@ class ReporteController extends Controller
 
         foreach ($usuarios as $usuario) {
             if($usuario->user){
-                $res = Respuestas::where('user_id',$usuario->user->id)->get();
+                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
                 if(!$res->isEmpty()){
                     array_push($respuestas,$res);
                 }
@@ -148,7 +148,7 @@ class ReporteController extends Controller
 
         $usuarios = [];
         foreach ($usuarioss as $us){
-            $respuestas = Respuestas::where('user_id', $us->id_Usuario)->first();
+            $respuestas = Respuestas::where('user_rfc', $us->user->rfc)->first();
             if($respuestas){
                 array_push($usuarios,$us);
             }
@@ -173,7 +173,7 @@ class ReporteController extends Controller
 
         foreach ($usuarios as $usuario) {
             if($usuario->user){
-                $res = Respuestas::where('user_id',$usuario->user->id)->get();
+                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
                 if(!$res->isEmpty()){
                     array_push($respuestas,$res);
                 }
@@ -244,7 +244,7 @@ class ReporteController extends Controller
 
         foreach ($usuarios as $usuario) {
             if($usuario->user){
-                $res = Respuestas::where('user_id',$usuario->user->id)->get();
+                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
                 if(!$res->isEmpty()){
                     array_push($respuestas,$res);
                 }
@@ -300,7 +300,7 @@ class ReporteController extends Controller
 
     public function verReporte($id){
         $idUs = $id;
-        $reporte = Respuestas::where('user_id', $idUs)->get();
+        $reporte = Respuestas::where('user_rfc', $idUs)->get();
         $si = 0;
         $no = 0;
         $alg = 0;
