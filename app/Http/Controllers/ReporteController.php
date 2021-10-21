@@ -73,7 +73,7 @@ class ReporteController extends Controller
             $usuarios = ServidorPulbicoDetail::where('id_Direccion',$request->direccion)->get();
 
         }elseif($request->dependencia){
-            $ubicacion = Departamento::whereidDependencia($request->dependencia)->first();
+            $ubicacion = Dependencia::whereidDependencia($request->dependencia)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$request->dependencia)->get();
 
         }
