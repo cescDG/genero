@@ -24,16 +24,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ( $usuarios as $usuario => $key)
+                                    @foreach ( $usuarios as $usuario)
                                         <tr>
-                                            <th>{{$key->Nombre}}</th>
-                                            <th>{{$key->N_Usuario}}</th>
-                                            <th>{{$key->dependencia->Nombre}}</th>
-                                            <th>{{$key->direccion->Nombre}}</th>
-                                            <th>{{$key->departamento->Nombre}}</th>
+                                            <th>{{$usuario->Nombre}}</th>
+                                            <th>{{$usuario->N_Usuario}}</th>
+                                            <th>{{$usuario->dependencia->Nombre}}</th>
+                                            <th>{{$usuario->direccion->Nombre}}</th>
+                                            <th>{{$usuario->departamento->Nombre}}</th>
                                             <th> <a title="Ver" class="tooltipped" data-position="bottom"
                                                      data-tooltip="Ver"
-                                                     onclick="verReporte({{ $key->id_Usuario}})">
+                                                    href="{{ route('verReporte', [$usuario->id_Usuario]) }}" target="_blank">
+
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
                                                          fill="currentColor" class="bi bi-card-checklist"
                                                          viewBox="0 0 16 16">
@@ -48,40 +49,9 @@
                                     @endforeach
                                     </tbody>
                             </table>
-                            <div id="repoIndividuralF" style="display: none;">
-
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    @endsection
-
-
-
-@push('scripts')
-    <script type="text/javascript">
-        function verReporte(id) {
-           let id1 = id;
-           console.log(id1);
-           $.ajax({
-                    url: "{{ url('verReporte') }}",
-                    type: 'get',
-                    data: {id1},
-                    success: function (response) {
-                        $('#repoIndividuralF').show();
-                        $('#repoIndividuralF').html(response);
-                    },
-                    error: function (xhr, status, error) {
-                        alert('falló  con exito');
-
-                    }
-                })
-        }
-    </script>
-@endpush
+@endsection

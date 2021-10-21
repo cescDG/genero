@@ -7,10 +7,7 @@
     <div class="container">
         <div class="section">
             <div class="height-30vh">
-                <center>
-                    <img src="{{asset('foro/images/logo/logoSec.png')}}" alt="materialize" width="40%" heigth="40%"
-                        style="border-radius:15;" />
-                </center>
+               
             </div>
         </div>
     </div>
@@ -27,25 +24,31 @@
                                 @csrf
                                 <div class="input-field col s4">
                                     {!! Form::select('dependencia', $Dependencia, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'dependencia_id']) !!}
-                                    <label>Materialize Select</label>
-                                </div>
-                            
-                                <div class="input-field col s4">
-                                    {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'direccion_id']) !!}
-                                    <label>Materialize Select</label>
+
+                                    <label>Seleccione Dependencia</label>
+
                                 </div>
 
                                 <div class="input-field col s4">
-                                    {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'departamento_id']) !!}
-                                    <label>Materialize Select</label>
+                                    {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'direccion_id', 'disabled' => 'true']) !!}
+
+                                    <label>Seleccione Direccion</label>
+
                                 </div>
-                                         
+
+                                <div class="input-field col s4">
+                                    {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'departamento_id', 'disabled' => 'true']) !!}
+
+                                    <label>Seleccione Departamento</label>
+
+                                </div>
+
                                 <div class="card-body">
                                     <div class="container">
                                         <br>
                                         <center>
                                             <strong><br><br><button  class="btn btn-sm btn-secondary" type="submit"
-                                                name="action"
+                                                name="action" formtarget="_blank"
                                                     style="background-color:rgb(150,0,72);" ><i
                                                         class="material-icons left">archive</i>PDF</button></strong>
                                         </center>
@@ -64,20 +67,21 @@
         $(document).ready(function () {
 
             $('#dependencia_id').on('change', function() {
-          
+
                 $.get('{{ asset("/getdireccion/") }}/' + $(this).val(), function(data) {
                     $("#direccion_id").find('option').remove();
                     $("#direccion_id").append('<option value="">SELECCIONE UNA OPCIÓN </option>');
                     $(data).each(function(i, v) { // indice, valor
                         $("#direccion_id").append('<option value="' + v.id_Direccion + '">' + v.Nombre + '</option>');
                     });
+                    $("#direccion_id").prop('disabled', false);
                 });
-            
+
             });
 
 
             $('#direccion_id').on('change', function() {
-               
+
                $.get('{{ asset("/getdepartamento/") }}/' + $(this).val(), function(data) {
                    $("#departamento_id").find('option').remove();
                    $("#departamento_id").append('<option value="">SELECCIONE UNA OPCIÓN </option>');
@@ -85,7 +89,8 @@
                        $("#departamento_id").append('<option value="' + v.id_Departamento + '">' + v.Nombre + '</option>');
                    });
                });
-           
+               $("#departamento_id").prop('disabled', false);
+
            });
 
 

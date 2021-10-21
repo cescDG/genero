@@ -9,9 +9,14 @@ use Illuminate\Support\Arr;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Direccion;
 use App\Models\Departamento;
+use App\Models\Dependencia;
 use App\Models\Preguntas;
 use App\Models\Respuestas;
 use App\Models\ServidorPulbicoDetail;
+use App\Exports\DependenciaExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 
 class ReporteController extends Controller
 {
@@ -44,77 +49,168 @@ class ReporteController extends Controller
     }
 
     public function pdfDependencia(Request $request){
+
         //dd($request->departamento);
+        date_default_timezone_set('America/Mexico_City');
+        $timestam = date('Y-m-d H:i:s');
+        $dia = date('Y-m-d');
         $preguntas = Preguntas::all();
         $collection1 = collect([]);
         $collection2 = collect([]);
         $collection3 = collect([]);
         $collection4 = collect([]);
         $respuestas = [];
-
+        $si = 0;
+        $no = 0;
+        $alg = 0;
+        $desco = 0;
         if($request->departamento){
             $ubicacion = Departamento::whereidDepartamento($request->departamento)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Departamento',$request->departamento)->get();
-            $respuestas = Respuestas::with(["user" => function ($q) {
-                $q->whereHas('servidorPublico', function ($q) {
-                    return $q->where('id_Departamento', $ubicacion->id);
-                });
-            }])->get();
- 
 
         }elseif($request->direccion){
             $ubicacion = Direccion::whereidDireccion($request->direccion)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Direccion',$request->direccion)->get();
-            $respuestas = Respuestas::with(["user" => function ($q) {
-                $q->whereHas('servidorPublico', function ($q) {
-                    return $q->where('id_Departamento', $ubicacion->id);
-                });
-            }])->get();
-            
 
         }elseif($request->dependencia){
-            $ubicacion = Departamento::whereidDependencia($request->dependencia)->first();
+            $ubicacion = Dependencia::whereidDependencia($request->dependencia)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$request->dependencia)->get();
-            $respuestas = Respuestas::with(["user" => function ($q)use ($ubicacion) {
-                $q->whereHas('servidorPublico', function ($q) use ($ubicacion) {
-                    return $q->where('id_Departamento', $ubicacion->id);
-                });
-            }])->get();  
-          
+
         }
- /*
+
         foreach ($usuarios as $usuario) {
             if($usuario->user){
-                $res = Respuestas::where('user_id',$usuario->user->id)->get();
+                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
                 if(!$res->isEmpty()){
                     array_push($respuestas,$res);
                 }
-            }   
-        }*/
-        
-       
+            }
+        }
 
         foreach ($respuestas as $respuesta) {
             foreach ($respuesta as $item) {
                 if($item->respuesta == "A"){
+                    $si +=1;
                     $collection1->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
 
                 }elseif($item->respuesta == "B"){
+                    $no +=1;
                     $collection2->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
 
                 }elseif ($item->respuesta == "C") {
+                    $alg +=1;
                     $collection3->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
 
                 }elseif($item->respuesta == "D"){
+                    $desco +=1;
+                    $collection4->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+                }
+            }
+
+        }
+
+        $sumaA = $collection1->pluck('id_pregunta')->countBy();
+        $sumaB = $collection2->pluck('id_pregunta')->countBy();
+        $sumaC = $collection3->pluck('id_pregunta')->countBy();
+        $sumaD = $collection4->pluck('id_pregunta')->countBy();
+        $datas['si']= $si;
+        $datas['no']= $no;
+        $datas['alg']= $alg;
+        $datas['desco']= $desco;
+
+
+        $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','si','no','alg','desco','dia'));
+        return $pdf->stream('dependencia.pdf');
+
+    }
+
+    public function pregunta()
+    {
+        $Dependencia = Arr::pluck(\App\Models\Dependencia::all(), "Nombre","id_Dependencia");
+    //    $preguntas= Preguntas::paginate(5);
+        return view('reportes.pregunta', compact('Dependencia'));
+    }
+
+    public function individual()
+    {
+        $usuarioss = ServidorPulbicoDetail::all();
+
+        $usuarios = [];
+        foreach ($usuarioss as $us){
+            if($us->user){
+                $respuestas = Respuestas::where('user_rfc', $us->user->rfc)->first();
+                if($respuestas){
+                    array_push($usuarios,$us);
+                }
+            }
+        }
+       return view('reportes.individual', compact('usuarios'));
+    }
+
+
+    public function getDep($id){
+
+
+        $collection1 = collect([]);
+        $collection2 = collect([]);
+        $collection3 = collect([]);
+        $collection4 = collect([]);
+        $respuestas = [];
+
+        $ubicacion = Dependencia::whereidDependencia($id)->first();
+
+        $preguntas = Preguntas::all();
+        $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$ubicacion->id_Dependencia)->get();
+
+        foreach ($usuarios as $usuario) {
+            if($usuario->user){
+                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
+                if(!$res->isEmpty()){
+                    array_push($respuestas,$res);
+                }
+            }
+        }
+
+        foreach ($respuestas as $respuesta) {
+            foreach ($respuesta as $item) {
+                if($item->respuesta == "A"){
+
+                    $collection1->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+                }elseif($item->respuesta == "B"){
+
+                    $collection2->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+
+                }elseif ($item->respuesta == "C") {
+
+                    $collection3->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+
+                }elseif($item->respuesta == "D"){
+
                     $collection4->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
@@ -130,45 +226,112 @@ class ReporteController extends Controller
         $sumaC = $collection3->pluck('id_pregunta')->countBy();
         $sumaD = $collection4->pluck('id_pregunta')->countBy();
 
-        $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion'));
-        return $pdf->stream('dependencia.pdf');
-    }
+        return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion'));
 
-    public function pregunta()
-    {
-        $Dependencia = Arr::pluck(\App\Models\Dependencia::all(), "Nombre","id_Dependencia");
-    //    $preguntas= Preguntas::paginate(5);
-        return view('reportes.pregunta', compact('Dependencia'));
-    }
 
-    public function individual()
-    {
-      $usuarios = ServidorPulbicoDetail::where('Estado',1)->get();
-
-       return view('reportes.individual', compact('usuarios'));
     }
 
 
-    public function getDep($id){
-        $respuestas = Respuestas::where('dependencia', $id);
+    public function generarExcel($id){
 
 
-        foreach($respuestas as $res){
-            
+        $collection1 = collect([]);
+        $collection2 = collect([]);
+        $collection3 = collect([]);
+        $collection4 = collect([]);
+        $respuestas = [];
 
+        $ubicacion = Dependencia::whereidDependencia($id)->first();
+
+        $preguntas = Preguntas::all();
+        $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$ubicacion->id_Dependencia)->get();
+
+        foreach ($usuarios as $usuario) {
+            if($usuario->user){
+                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
+                if(!$res->isEmpty()){
+                    array_push($respuestas,$res);
+                }
+            }
+        }
+
+        foreach ($respuestas as $respuesta) {
+            foreach ($respuesta as $item) {
+                if($item->respuesta == "A"){
+
+                    $collection1->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+                }elseif($item->respuesta == "B"){
+
+                    $collection2->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+
+                }elseif ($item->respuesta == "C") {
+
+                    $collection3->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+
+                }elseif($item->respuesta == "D"){
+
+                    $collection4->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+                }
+            }
 
         }
-        return view('reportes.show');
+
+        $sumaA = $collection1->pluck('id_pregunta')->countBy();
+        $sumaB = $collection2->pluck('id_pregunta')->countBy();
+        $sumaC = $collection3->pluck('id_pregunta')->countBy();
+        $sumaD = $collection4->pluck('id_pregunta')->countBy();
+
+        return Excel::download(new DependenciaExport($sumaA, $sumaB, $sumaC, $sumaD, $ubicacion,$preguntas ), "dependencias.xlsx");
+
 
     }
 
+    public function verReporte($id){
+        $user = User::find($id);
+        $reporte = Respuestas::where('user_rfc', $user->rfc)->get();
+        $si = 0;
+        $no = 0;
+        $alg = 0;
+        $desco = 0;
 
-    public function verReporte(Request $request){
-        $idUs = $request->id1;
-        $reporte = Respuestas::where('user_id', $idUs)->get();
-        return view('reportes.individualUs', compact('reporte'));
+        foreach ($reporte as $repo){
+            if($repo->respuesta == 'A'){
+                $si = $si +1;
+            }
+            if($repo->respuesta == 'B'){
+                $no = $no +1;
+            }
+            if($repo->respuesta == 'C'){
+                $alg = $alg +1;
+            }
+            if($repo->respuesta == 'D'){
+                $desco = $desco +1;
+            }
+        }
+
+        $datas['si']= $si;
+        $datas['no']= $no;
+        $datas['alg']= $alg;
+        $datas['desco']= $desco;
+
+        return view('reportes.individualUs', compact('reporte','si','no','alg','desco','datas'));
     }
-
 }
 
 

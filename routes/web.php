@@ -15,26 +15,29 @@ use App\Http\Controllers\ReporteController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get("reporte/dependencia",  [ReporteController::class, 'dependencia'])->name('reportes.dependencia');
     Route::get("reporte/pregunta",  [ReporteController::class, 'pregunta'])->name('reportes.pregunta');
     Route::get("reporte/individual",  [ReporteController::class, 'individual'])->name('reportes.individual');
     Route::get('getdireccion/{dependencia_id}', [ReporteController::class, 'obtenerDireccion']);
-
     Route::get('getDep/{id}', [ReporteController::class, 'getDep']);
-
     Route::get('getdepartamento/{direccion_id}', [ReporteController::class, 'obtenerDepto']);
     route::post("pdf/dependencia", [ReporteController::class, "pdfDependencia"])->name('pdf.dependencia');
-    Route::GET('/verReporte', 'App\Http\Controllers\ReporteController@verReporte')->name('verReporte');
+    Route::GET('verReporte/{id}', 'App\Http\Controllers\ReporteController@verReporte')->name('verReporte');
+    Route::get('imprimir/{id}', [ReporteController::class, 'generarExcel']);
     Route::resources([
         'encuesta' => QuizController::class,
         'reportes' => ReporteController::class
     ]);
+    Route::get('/logout', function(){
+        Auth::logout();
+        return Redirect::to('login');
+    });
 });

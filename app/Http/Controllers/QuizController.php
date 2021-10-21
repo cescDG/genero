@@ -18,9 +18,10 @@ class QuizController extends Controller
     public function index()
     {
         $preguntas = Preguntas::all();
-        $idUsuario = auth()->user()->id;
-        $respuestas = Respuestas::where('user_id',$idUsuario)->get();
-
+        $usuario = auth()->user();
+        
+        $respuestas = Respuestas::where('user_rfc',$usuario->rfc)->get();
+       
 
         return view('Encuesta.create', compact('preguntas','respuestas'));
     }
@@ -43,17 +44,15 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        $servidorP = auth()->user()->id;
-        $spd = ServidorPulbicoDetail::where('N_Usuario', auth()->user()->rfc)->get();
+        $servidorP = auth()->user();
         $respuestas = $request->except('_token');
+        
         for($i=1; $i <=35; $i++){
             if (isset($respuestas[$i])){
                 $res['pregunta']=$i;
                 $res['respuesta']=$respuestas[$i];
-                $res['user_id']=$servidorP;
-                $res['dependencia']=$spd[0]->id_Dependencia;
-
-
+                $res['user_rfc']=$servidorP->rfc;
+                
                 $respuesta = Respuestas::create($res);
             }
         }

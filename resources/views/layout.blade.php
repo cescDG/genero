@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="{{ asset('genero/vendors/select2/select2-materialize.css') }}" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 </head>
 <!-- END: Head-->
 
@@ -74,11 +75,11 @@
                     <!-- profile-dropdown-->
                     <ul class="dropdown-content" id="profile-dropdown">
                         <li><a class="grey-text text-darken-1" href=""><i class="material-icons">person_outline</i> Perfil</a></li>
-                        <li><a class="grey-text text-darken-1" onclick="cerrarSesion(event)"><i class="material-icons">keyboard_tab</i>Salir</a></li>
+                        <li><a class="grey-text text-darken-1"href="{{ route('logout') }}"><i class="material-icons">keyboard_tab</i>Salir</a></li>
                     </ul>
                     <ul class="right hide-on-med-and-down" style="font-size: 11px; line-height : 15px !important">
                         <br>
-                        Bienvenido   ADMINISTRADOR  USUARIO </strong>
+                        Bienvenido(a) {{ mb_strtoupper(auth()->user()->servidorPublico->Nombre) }}</strong>
                         <br>
                         al Sistema.
                     </ul>
@@ -129,6 +130,12 @@
 <script src="{{ asset('genero/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('genero/vendors/data-tables/js/dataTables.select.min.js') }}"></script>
 <script src="{{ asset('genero/js/scripts/data-tables.js') }}"></script>
+
+
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/data.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
 
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

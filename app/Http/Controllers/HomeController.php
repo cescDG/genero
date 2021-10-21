@@ -23,8 +23,9 @@ class HomeController extends Controller
     public function index()
     {
         $preguntas = Preguntas::all();
-        $idUsuario = auth()->user()->id;
-        $respuestas = Respuestas::where('user_id',$idUsuario)->get();
+        $usuario = auth()->user();
+
+        $respuestas = Respuestas::where('user_rfc',$usuario->rfc)->get();
         return view('home', compact('respuestas'));
     }
 

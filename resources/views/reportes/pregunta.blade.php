@@ -36,7 +36,10 @@
                                             <button class="btn btn-sm btn-secondary" type="submit" name="action"
                                                 style="background-color:rgb(150,0,72);" onclick="searchDep()">
                                                 <i class="material-icons left">archive</i>Aceptar</button>
-                                                </strong>
+                                            <button class="btn btn-sm btn-secondary" style="background-color:rgb(150,0,72);"
+                                                onclick="imprimir()">
+                                                <i class="material-icons left">archive</i>Excel</button>
+                                        </strong>
                                     </center>
                                 </div>
                             </div>
@@ -51,22 +54,50 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
-        function searchDep(){
+        function searchDep() {
             var dep = $("#dependencia_id").val();
             console.log(dep);
             $.ajax({
                 type: 'GET',
-                url :   "{{ url('getDep') }}"+"/" + dep,
-                beforeSend: function() {
-                },
-                success:  function (response) {
+                url: "{{ url('getDep') }}" + "/" + dep,
+                beforeSend: function() {},
+                success: function(response) {
                     $("#detailDep").show();
                     $("#detailDep").html(response);
-                },error(){
+                },
+                error() {
                     alert('error');
                 }
             });
         }
 
+        function imprimir() {
+            console.log("si")
+            var dep = $("#dependencia_id").val();
+            $.ajax({
+                url: "{{ url('imprimir') }}" + "/" + dep,
+                type: 'GET',
+                data: {},
+                xhrFields: {
+                    responseType: 'blob'
+                },
+                beforeSend: function() {
+                    $(".loader").show()
+                },
+                success: function(response) {
+                    var blob = new Blob([response]);
+                    console.log('rsp');
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = "Reporte.xlsx";
+                    link.click();
+                    $(".loader").hide();
+
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            })
+        }
     </script>
 @endpush
