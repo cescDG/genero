@@ -48,7 +48,7 @@
                                         <br>
                                         <center>
                                             <strong><br><br><button  class="btn btn-sm btn-secondary" type="submit"
-                                                name="action"
+                                                name="action" formtarget="_blank"
                                                     style="background-color:rgb(150,0,72);" ><i
                                                         class="material-icons left">archive</i>PDF</button></strong>
                                         </center>

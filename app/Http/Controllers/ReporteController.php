@@ -130,6 +130,8 @@ class ReporteController extends Controller
         $datas['no']= $no;
         $datas['alg']= $alg;
         $datas['desco']= $desco;
+
+
         $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','si','no','alg','desco','dia'));
         return $pdf->stream('dependencia.pdf');
 
@@ -148,9 +150,11 @@ class ReporteController extends Controller
 
         $usuarios = [];
         foreach ($usuarioss as $us){
-            $respuestas = Respuestas::where('user_rfc', $us->user->rfc)->first();
-            if($respuestas){
-                array_push($usuarios,$us);
+            if($us->user){
+                $respuestas = Respuestas::where('user_rfc', $us->user->rfc)->first();
+                if($respuestas){
+                    array_push($usuarios,$us);
+                }
             }
         }
        return view('reportes.individual', compact('usuarios'));
@@ -299,8 +303,8 @@ class ReporteController extends Controller
     }
 
     public function verReporte($id){
-        $idUs = $id;
-        $reporte = Respuestas::where('user_rfc', $idUs)->get();
+        $user = User::find($id);
+        $reporte = Respuestas::where('user_rfc', $user->rfc)->get();
         $si = 0;
         $no = 0;
         $alg = 0;
