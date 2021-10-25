@@ -118,6 +118,12 @@ class LibrosController extends Controller
         }
         return view('libros.verSolicitudes', compact('libros'));
     }
+    public function getLibros(Request $request)
+    {
+        $search = $request->search;
+        $libros = Libros::orderby('nombre', 'asc')->select('id','nombre','autor')->where('nombre', 'like', '%' .$search . '%')->get();
+        return view('libros.busqueda', compact('libros'));
+    }
 
     public function aprobar($id){
         $solicitud = Solicitud::where('libro_id', $id)->where('status',0)->orwhere('status',1)->first();
