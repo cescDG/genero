@@ -18,17 +18,16 @@
                 <div class="card-alert card orange lighten-5">
                     <div class="card-content orange-text darken-1">
                         <br>
-                        <p align="justify" style="color: black;">El presente diagnóstico permitirá visibilizar situaciones desigualdad individual y colectiva entre mujeres y hombres al interior del Poder Legislativo,
-                            con el propósito de establecer buenas prácticas que promuevan una cultura institucional que integre como principio básico la igualdad y se reduzcan las brechas de inequidad
-                            y discriminación en su espacio laboral.<br>
-
-                            Manifieste las respuestas que mejor describan las posibles situaciones que percibe o siente actualmente en su unidad administrativa de adscripción.</p>
+                        <p align="justify" style="font-size: 18px;"><strong>Objetivo</strong></p><br>
+                        <p align="justify" style="color: black;">Visibilizar situaciones de desigualdad individual y colectiva entre mujeres y hombres al interior del Poder Legislativo, con el propósito de establecer buenas prácticas que promuevan una cultura institucional que integre como principio básico la igualdad y se reduzcan las brechas de inequidad y discriminación en su espacio laboral.</p>
+                       <br>
+                        <br>
+                        <p align="justify" style="font-size: 16px;"><strong>Instrucciones de llenado</strong></p><br>
+                        <p align="justify" style="color: black;">Por favor, lea cuidadosamente cada una de las preguntas que conforman las siete secciones del diagnóstico y manifieste en el botón de opción, la respuesta que mejor describa su opinión de la unidad administrativa de adscripción. </p>
                         <br><br>
-                        <p style="color: black;">A continuación, selecciona la casilla para
-                            aceptar términos y condiciones de privacidad y uso de
-                            información. <a
-                                href="{{asset('genero/pdf/Aviso.pdf')}}" target="_blank"
-                                style="color: #8A084B !important; font-weight: 600;">Consulta nuestro acuerdo de privacidad aquí.</a></p>
+                        <p align="justify" style="font-size: 16px;"><strong> <a href="{{asset('genero/pdf/Aviso.pdf')}}" target="_blank"
+                                                                                style="color: #8A084B !important; font-weight: 600;">Consulta nuestro acuerdo de privacidad aquí.</a></strong></p><br>
+
                     </div>
                     @if(count($respuestas))
                     <div class="card-action orange lighten-4">
