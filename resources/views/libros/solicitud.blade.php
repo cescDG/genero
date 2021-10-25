@@ -33,11 +33,18 @@
                                 </div>
                             </li>
                         </ul>
-                        <span><strong>Instrucciones:</strong> Selecciona la opción en el círculo que corresponda al valor de su respuesta. </span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col m8">
+                    <div class="input-field col m12" >
+                        <div class="input-field col m12">
+                            <center><img class="imagen" src="{{ asset('genero/images/libros/'.$libro->id.'.png')}}" width="30%" height="30%" style="border-radius: 20px;"  alt="name" class="circle" title="Titulo: {{$libro->nombre}} / Autor: {{$libro->autor}}"></center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col m12">
                         <div class="row">
                             <div class="input-field col m6">
                                 <div class="form-group">
@@ -75,11 +82,6 @@
                                     </button>
                                 </center>
                             </div>
-                        </div>
-                    </div>
-                    <div class="input-field col m4" >
-                        <div class="input-field col m12">
-                            <center><img class="imagen" src="{{ asset('genero/images/libros/'.$libro->id.'.png')}}" width="50%" height="50%"  alt="name" class="circle" title="Titulo: {{$libro->nombre}} / Autor: {{$libro->autor}}"></center>
                         </div>
                     </div>
                 </div>
