@@ -9,8 +9,8 @@
             -webkit-border-radius: 10%;
             box-shadow: 0px 0px 15px 15px #ec731e;
             -webkit-box-shadow: 0px 0px 15px 15px #ec731e;
-            -webkit-transform: scale(2.0);
-            transform: scale(2.0)
+            -webkit-transform: scale(1.4);
+            transform: scale(1.4)
         }
 
     </style>
