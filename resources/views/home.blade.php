@@ -7,6 +7,12 @@
     <div id="contenedor">
         <br>
         <div class="row">
+            <div class="input-field col m10"></div>
+            <div class="input-field col m2">
+                <a href="{{route('libros.index')}}"><i class="material-icons" style="color:#ec731e; ">book</i><span data-i18n="Modern Menu">Prestamo de libros</span></a>
+            </div>
+        </div>
+        <div class="row">
             <div class="input-field col m2"></div>
             <div class="input-field col m8">
                 <div class="card-alert card orange lighten-5">

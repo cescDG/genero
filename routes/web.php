@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\LibrosController;
+use \App\Http\Controllers\SolicitudesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,10 +34,18 @@ Route::middleware(['auth'])->group(function () {
     route::post("pdf/dependencia", [ReporteController::class, "pdfDependencia"])->name('pdf.dependencia');
     Route::GET('verReporte/{id}', 'App\Http\Controllers\ReporteController@verReporte')->name('verReporte');
     Route::get('imprimir/{id}', [ReporteController::class, 'generarExcel']);
+    Route::get('solicitar/{id}', 'App\Http\Controllers\SolicitudesController@solicitar')->name('solicitar');
+    Route::get('solicitudes', 'App\Http\Controllers\LibrosController@solicitudes')->name('solicitudes');
+    Route::get('aprobar/{id}', 'App\Http\Controllers\LibrosController@aprobar')->name('aprobar');
+    Route::get('busquedaLibro/{id}', 'App\Http\Controllers\LibrosController@busquedaLibro')->name('busquedaLibro');
+
     Route::resources([
         'encuesta' => QuizController::class,
-        'reportes' => ReporteController::class
+        'reportes' => ReporteController::class,
+        'libros' => LibrosController::class,
+        'solicitud' => SolicitudesController::class
     ]);
+
     Route::get('/logout', function(){
         Auth::logout();
         return Redirect::to('login');
