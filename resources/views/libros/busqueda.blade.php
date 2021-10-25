@@ -3,23 +3,21 @@
         @foreach ($libros as $libro)
         <div class="input-field col s4">
             <div class="form-group">
-                {{-- <h1 style="text-align: center">{{ $libro->nombre }}</h1> --}}
                 <center>
                     @if (isset($libro->disponible))
                         <img class="imagen"
                             src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
-                           style="
+                            style="
                         width: 190px;
                         height: 190px;
-                       "
-                            title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
-                            <br>
+                       " title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
+                        <br>
                         <strong>Disponible a partir del {{ $libro->disponible }}</strong>
                     @else
                         <a href="{{ route('solicitar', [$libro->id]) }}">
                             <img class="imagen"
                                 src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
-                               style="
+                                style="
                         width: 190px;
                         height: 190px;
                        " alt="name" class="circle"
