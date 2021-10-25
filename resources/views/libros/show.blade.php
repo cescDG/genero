@@ -4,63 +4,134 @@
 @endsection
 @section('content')
     <style>
-        .imagen:hover{
-            border-radius:50%;
-            -webkit-border-radius:10%;
+        .imagen:hover {
+            border-radius: 50%;
+            -webkit-border-radius: 10%;
             box-shadow: 0px 0px 15px 15px #ec731e;
             -webkit-box-shadow: 0px 0px 15px 15px #ec731e;
-            -webkit-transform:scale(1.3);
-            transform:scale(1.3)
+            -webkit-transform: scale(1.3);
+            transform: scale(1.3)
         }
+
     </style>
-
-    <div class="card-body">
-        <div class="row">
-            <div class="input-field col m1"></div>
-            <div class="input-field col m10">
-                <input type="text" name="buscar" id="buscar" placeholder="Buscar" style="border-radius: 15px;" onkeyup="pucho();">
+    <div class="container">
+        <div class="section">
+            <div class="card">
+                <div class="col s12">
+                    <div id="search-wrapper" class="card z-depth-0 search-image center-align p-35">
+                        <div class="card-content">
+                        <h5 class="center-align mb-3">Búsqueda</h5>
+                        <input placeholder="Ingresa búsqueda..." id="buscarLib" name="buscarLib" class="search-box validate white search-circle search-shadow"  onkeyup="buscarL();">
+                        </div>
+                    </div>
+                    </div>
+                    <div id='showLib' style="display: none;"></div>
+                    <div id='showLib1'>
+                        <div class="row">
+                            <div class="col m12 s12" align="center">
+                                @foreach ($libros as $libro)
+                                    <div class="col m4 s12" >
+                                        <h1 style="text-align: center">{{ $libro->nombre }}</h1>
+                                        <center>
+                                            @if (isset($libro->disponible))
+                                                <img class="imagen"
+                                                    src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}" width="50%"
+                                                    height="50%" alt="name" class="circle"
+                                                    title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}"><br>
+                                                <strong>Disponible a partir del {{ $libro->disponible }}</strong>
+                                            @else
+                                                <a href="{{ route('solicitar', [$libro->id]) }}">
+                                                    <img class="imagen"
+                                                        src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
+                                                        width="50%" height="50%" alt="name" class="circle"
+                                                        title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}"><br>
+                                                    <strong>Disponible</strong>
+                                                </a>
+                                            @endif
+                                        </center>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
             </div>
-        </div>
-        <div id="busqueda"></div>
 
-        <div class="row">
-            @foreach($libros as $libro)
-                <div class="col m4">
-                    <h1 style="text-align: center">{{$libro->nombre}}</h1>
-                    <center>
-                        @if(isset($libro->disponible))
-                            <img class="imagen" src="{{ asset('genero/images/libros/'.$libro->id.'.png')}}" width="50%" height="50%"  alt="name" class="circle" title="Titulo: {{$libro->nombre}} / Autor: {{$libro->autor}}"><br>
-                            <strong>Disponible a partir del {{$libro->disponible}}</strong>
-                        @else
-                        <a href="{{route('solicitar', [$libro->id])}}">
-                            <img class="imagen" src="{{ asset('genero/images/libros/'.$libro->id.'.png')}}" width="50%" height="50%"  alt="name" class="circle" title="Titulo: {{$libro->nombre}} / Autor: {{$libro->autor}}"><br>
-                            <strong>Disponible</strong>
-                        </a>
-                        @endif
-                    </center>
-                </div>
-            @endforeach
         </div>
     </div>
-@endsection
-@push('script')
-    <script type="text/javascript">
-        function pucho(){
-            alert("holi")
-            var busca = document.getElementById("buscar").value;
-            alert(busca)
-            {{--$.ajax({--}}
-            {{--    type: 'GET',--}}
-            {{--    data :{busca},--}}
-            {{--    url :   "{{ url('busquedaLibro') }}",--}}
-            {{--    // success: function (response) {--}}
-            {{--    //   //  location.reload();--}}
-            {{--    //     console.log('si');--}}
-            {{--    // },error: function(xhr, status, error) {--}}
-            {{--    //     console.log('no');--}}
-            {{--    // }--}}
-            {{--});--}}
-        }
 
+
+
+
+    {{-- <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="input-field col m1"></div>
+                <div class="input-field col m10">
+                    <input type="text" name="buscarLib" id="buscarLib" placeholder="Buscar"
+                        style="border-radius: 50px; border-color: black" onkeyup="buscarL();">
+                </div>
+            </div>
+            <div id='showLib' style="display: none;"></div>
+            <div id='showLib1'>
+                <div class="row">
+                    <div class="col s12">
+                        @foreach ($libros as $libro)
+                            <div class="col m4">
+                                <h1 style="text-align: center">{{ $libro->nombre }}</h1>
+                                <center>
+                                    @if (isset($libro->disponible))
+                                        <img class="imagen"
+                                            src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}" width="50%"
+                                            height="50%" alt="name" class="circle"
+                                            title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}"><br>
+                                        <strong>Disponible a partir del {{ $libro->disponible }}</strong>
+                                    @else
+                                        <a href="{{ route('solicitar', [$libro->id]) }}">
+                                            <img class="imagen"
+                                                src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
+                                                width="50%" height="50%" alt="name" class="circle"
+                                                title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}"><br>
+                                            <strong>Disponible</strong>
+                                        </a>
+                                    @endif
+                                </center>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+@endsection
+@push('scripts')
+    <script type="text/javascript">
+        function buscarL() {
+            var search = $("#buscarLib").val();
+            console.log('holi');
+            console.log(search);
+            if (search == '') {
+                $("#showLib1").show();
+                $("#showLib").hide();
+            }
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('getLibros') }}",
+                data: {
+                    search
+                },
+                beforeSend: function() {},
+                success: function(response) {
+                    $("#showLib1").hide();
+                    $("#showLib").show();
+                    $("#showLib").html(response);
+                },
+                error() {
+                    console.log('Falló con exito');
+                }
+            });
+
+
+
+        }
     </script>
 @endpush

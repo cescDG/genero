@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('solicitudes', 'App\Http\Controllers\LibrosController@solicitudes')->name('solicitudes');
     Route::get('aprobar/{id}', 'App\Http\Controllers\LibrosController@aprobar')->name('aprobar');
     Route::get('busquedaLibro/{id}', 'App\Http\Controllers\LibrosController@busquedaLibro')->name('busquedaLibro');
+    Route::get('getLibros', 'App\Http\Controllers\LibrosController@getLibros')->name('getLibros');
 
     Route::resources([
         'encuesta' => QuizController::class,
