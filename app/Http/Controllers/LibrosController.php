@@ -24,6 +24,7 @@ class LibrosController extends Controller
                 $libro['disponible'] = $solicitudes->fecha_entrega_sistema;
             }
         }
+   
         return view('libros.show', compact('libros'));
     }
 
@@ -121,7 +122,15 @@ class LibrosController extends Controller
     public function getLibros(Request $request)
     {
         $search = $request->search;
-        $libros = Libros::orderby('nombre', 'asc')->select('id','nombre','autor')->where('nombre', 'like', '%' .$search . '%')->get();
+        $libros = Libros::orderby('nombre', 'asc')->select('*')->where('nombre', 'like', '%' .$search . '%')->get();
+
+        foreach ($libros as $libro){
+            $solicitudes = Solicitud::where('status','!=','2')->where('libro_id', $libro->id)->first();
+            if ($solicitudes){
+                $libro['disponible'] = $solicitudes->fecha_entrega_sistema;
+            }
+        }
+
         return view('libros.busqueda', compact('libros'));
     }
 

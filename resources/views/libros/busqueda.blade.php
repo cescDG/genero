@@ -2,8 +2,10 @@
     <div class="row">
         @foreach ($libros as $libro)
         <div class="input-field col s4">
+            
             <div class="form-group">
                 <center>
+
                     @if (isset($libro->disponible))
                         <img class="imagen"
                             src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"

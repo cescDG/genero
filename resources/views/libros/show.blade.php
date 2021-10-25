@@ -28,13 +28,15 @@
                 </div>
                 <div id='showLib' style="display: none;"></div>
                 <div id='showLib1'>
+                    a
                     <div class="row">
                         <div class="col-12" align="center">
                             @foreach ($libros as $libro)
                                 <div class="input-field col s4">
                                     <div class="form-group">
+                                   
                                         <center>
-                                            @if (isset($libro->disponible))
+                                            @if ($libro->disponible)
                                                 <img class="imagen"
                                                     src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
                                                     style="
@@ -76,10 +78,13 @@
             var search = $("#buscarLib").val();
             console.log('holi');
             console.log(search);
+
             if (search == '') {
-                $("#showLib1").show();
-                $("#showLib").hide();
+                var search ='o';
+                // $("#showLib1").show();
+                // $("#showLib").hide();
             }
+            console.log(search);
             $.ajax({
                 type: 'GET',
                 url: "{{ url('getLibros') }}",
