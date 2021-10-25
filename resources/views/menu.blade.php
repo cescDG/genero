@@ -18,5 +18,8 @@
         </ul>
     </div>
 </li>
+<li><a href="{{route('solicitudes')}}"><i class="material-icons ">book</i><span data-i18n="Modern Menu">Libros</span></a></li>
+
+
 @endif
 </ul>
