@@ -22,7 +22,6 @@
             <br>
         </div>
         @else
-        <h2> Diagnóstico de igualdad de trato y oportunidades entre mujeres y hombres</h2>
 
         {!! Form::open(['route'=>'encuesta.store', 'method'=>'POST', 'files' => true, 'role' => 'form', 'id' => '']) !!}
         @include('Encuesta.form')

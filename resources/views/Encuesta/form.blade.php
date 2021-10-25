@@ -16,9 +16,7 @@
                                         <div class="collapsible-body">
                                             <div class="row">
                                                 <div class="col-md-12" align="center">
-                                                    <p align="justify"> El presente diagnóstico permitirá visibilizar situaciones de asimetría individual y colectiva entre mujeres y hombres al interior del Poder Legislativo con el propósito de reducir brechas de desigualdad y discriminación en su espacio laboral, asimismo la consolidación de buenas prácticas que promuevan una cultura institucional que integre, como principio básico, la igualdad entre sexos. <br>
-                                                        A continuación, se presenta un listado de posibles situaciones que puede estar viviendo. Manifieste las respuestas que mejor describan lo que percibe o siente actualmente en su unidad administrativa de adscripción.
-                                                    </p>
+                                                    <p align="justify"> Cualquier problema técnico comunicarse a la Dirección de Informática Ext. 5515.</p>
                                                 </div>
                                             </div>
                                         </div>
