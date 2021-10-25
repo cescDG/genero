@@ -82,16 +82,16 @@
                     responseType: 'blob'
                 },
                 beforeSend: function() {
-                    $(".loader").show()
+
                 },
                 success: function(response) {
                     var blob = new Blob([response]);
-                    console.log('rsp');
+                  
                     var link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);
                     link.download = "Reporte.xlsx";
                     link.click();
-                    $(".loader").hide();
+
 
                 },
                 error: function(error) {
