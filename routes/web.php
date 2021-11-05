@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('solicitar/{id}', 'App\Http\Controllers\SolicitudesController@solicitar')->name('solicitar');
     Route::get('solicitudes', 'App\Http\Controllers\LibrosController@solicitudes')->name('solicitudes');
     Route::get('aprobar/{id}', 'App\Http\Controllers\LibrosController@aprobar')->name('aprobar');
+    Route::get('pdf', 'App\Http\Controllers\LibrosController@pdf')->name('pdf');
     Route::get('busquedaLibro/{id}', 'App\Http\Controllers\LibrosController@busquedaLibro')->name('busquedaLibro');
     Route::get('getLibros', 'App\Http\Controllers\LibrosController@getLibros')->name('getLibros');
 
@@ -44,7 +45,8 @@ Route::middleware(['auth'])->group(function () {
         'encuesta' => QuizController::class,
         'reportes' => ReporteController::class,
         'libros' => LibrosController::class,
-        'solicitud' => SolicitudesController::class
+        'solicitud' => SolicitudesController::class,
+        'datosG' => \App\Http\Controllers\DatosGeneralesUController::class
     ]);
 
     Route::get('/logout', function(){

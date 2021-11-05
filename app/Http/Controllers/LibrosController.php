@@ -7,6 +7,12 @@ use App\Models\Solicitud;
 use App\Models\Validacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\Models\ServidoresPublicosCentralizada;
+use App\Models\ServidorPulbicoDetail;
+use App\Models\Departamento;
+use App\Models\Dependencia;
+use App\Models\Direccion;
 
 class LibrosController extends Controller
 {
@@ -24,7 +30,7 @@ class LibrosController extends Controller
                 $libro['disponible'] = $solicitudes->fecha_entrega_sistema;
             }
         }
-   
+
         return view('libros.show', compact('libros'));
     }
 
@@ -138,6 +144,29 @@ class LibrosController extends Controller
         $solicitud = Solicitud::where('libro_id', $id)->where('status',0)->orwhere('status',1)->first();
         $validacion =Arr::pluck(Validacion::all(), "tipo", "id");
         return view('libros.aprobar', compact('solicitud','validacion'));
+    }
+
+    public function pdf(Request $request)
+    {
+        // dd('hjd');
+
+        $data = Solicitud::select('solicituds.solicitante', 'solicituds.fecha_recoleccion','solicituds.hora_recoleccion','solicituds.fecha_entrega_usuario','solicituds.created_at','libros.nombre','libros.autor')
+        ->join('libros', 'libros.id', '=', 'solicituds.libro_id')->where('solicituds.libro_id', $request->id)->where('solicituds.status', '1')
+        ->get();
+        $sp =  ServidoresPublicosCentralizada::where('Estado',1)->where('N_Usuario', $data[0]->solicitante)->get();
+
+
+
+        $dir =  Direccion::where('id_Direccion',$sp[0]->id_Direccion)->first();
+        $departamento =  Departamento::where('id_Departamento', $sp[0]->id_Departamento)->first();
+
+
+        // $usuarios = ServidorPulbicoDetail::where('id_Departamento',140)->first();
+        // dd();
+
+
+        $pdf = PDF::loadView('libros.pdfPrestamo', compact('data','dir','departamento','sp'));
+        return $pdf->stream('dependencia.pdf');
     }
 
     public function busquedaLibro(Request $request){

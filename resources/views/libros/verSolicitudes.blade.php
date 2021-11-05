@@ -39,11 +39,17 @@
                                                                href="{{ route('aprobar', [$libro->id]) }}">
                                                                 <i class="material-icons iconlegislatura">visibility</i>
                                                             </a>
+
                                                         @elseif($libro->status == 'Prestado')
                                                             <a title="ver" class="tooltipped" data-position="bottom" data-tooltip="Ver"
-                                                               href="{{ route('aprobar', [$libro->id])}}">
+                                                               href="{{ route('pdf', [$libro->id])}}">
                                                                 <i class="material-icons iconlegislatura">visibility</i>
                                                             </a>
+
+                                                            <a  title="PDF" data-position="bottom" data-tooltip="PDF"
+                                                            onclick="pdf({{$libro->id}});" class=" tooltipped ">
+                                                             <i class="material-icons iconlegislatura">picture_as_pdf</i>
+                                                         </a>
                                                         @endif
                                                     @endif
                                                 </td>
@@ -60,3 +66,39 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+<script type="text/javascript">
+        function pdf(id) {
+            let idLi = id;
+            console.log(id);
+            $.ajax({
+                url: "{{ url('pdf') }}",
+                type: 'GET',
+                data: {
+                    id
+                    },
+                xhrFields: {
+                    responseType: 'blob'
+                },
+                beforeSend: function() {
+                    // $(".loader").show()
+                },
+                success: function(response) {
+                    var blob = new Blob([response]);
+                    console.log(blob);
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = "formatoPrestamo.pdf";
+                    link.click();
+                    // $(".loader").hide();
+
+                },
+                error: function(blob) {
+                    console.log(blob);
+                }
+            })
+
+        }
+</script>
+@endpush
+
