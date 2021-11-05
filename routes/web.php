@@ -44,7 +44,8 @@ Route::middleware(['auth'])->group(function () {
         'encuesta' => QuizController::class,
         'reportes' => ReporteController::class,
         'libros' => LibrosController::class,
-        'solicitud' => SolicitudesController::class
+        'solicitud' => SolicitudesController::class,
+        'datosG' => \App\Http\Controllers\DatosGeneralesUController::class
     ]);
 
     Route::get('/logout', function(){
