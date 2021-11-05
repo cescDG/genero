@@ -41,7 +41,12 @@
 
 </head>
 <!-- END: Head-->
+<style>
+    .sombreado{
+        background-color:rgba(131, 127, 127, 0.151);
 
+    }
+</style>
 <body class="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark preload-transitions 2-columns   " data-open="click" data-menu="vertical-menu-nav-dark" data-col="2-columns">
 
     <!-- BEGIN: Header-->
