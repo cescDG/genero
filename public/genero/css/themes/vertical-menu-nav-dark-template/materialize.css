@@ -6661,14 +6661,14 @@ small
     letter-spacing: .5px;
 
     color: #fff;
-    background-color: #808184;
+    background-color: #f35c33;
 }
 
 .btn:hover,
 .btn-large:hover,
 .btn-small:hover
 {
-    background-color: #00d3ee;
+    background-color: #f35c33;
 }
 
 .btn-floating
@@ -9629,7 +9629,7 @@ input[type=range]::-ms-thumb
 .sidenav li > a.btn-small:hover,
 .sidenav li > a.btn-large:hover
 {
-    background-color: #00d3ee;
+    background-color: #f35c33;
 }
 
 .sidenav li > a.btn-floating:hover

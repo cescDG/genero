@@ -466,19 +466,19 @@
                                 <div class="step-title waves-effect">Permanencia y promoción</div>
                                 <div class="step-content">
                                     <div class="row">
-                                        <div class="input-field col m6"  style="font-weight: bolder;">
+                                        <div class="input-field col m6" style="font-weight: bolder;">
                                             <center>Pregunta</center>
                                         </div>
-                                        <div class="input-field col m1"  style="font-weight: bolder;">
+                                        <div class="input-field col m1" style="font-weight: bolder;">
                                             <center>Sí</center>
                                         </div>
-                                        <div class="input-field col m1"  style="font-weight: bolder;">
+                                        <div class="input-field col m1" style="font-weight: bolder;">
                                             <center>No</center>
                                         </div>
-                                        <div class="input-field col m2"  style="font-weight: bolder;">
+                                        <div class="input-field col m2" style="font-weight: bolder;">
                                             <center>Algunas veces</center>
                                         </div>
-                                        <div class="input-field col m2"  style="font-weight: bolder;">
+                                        <div class="input-field col m2" style="font-weight: bolder;">
                                             <center>Lo desconozco</center>
                                         </div>
                                     </div>
@@ -572,16 +572,16 @@
                                 <div class="step-title waves-effect">Capacitación y formación</div>
                                 <div class="step-content">
                                     <div class="row">
-                                        <div class="input-field col m6"  style="font-weight: bolder;">
+                                        <div class="input-field col m6" style="font-weight: bolder;">
                                             <center>Pregunta</center>
                                         </div>
-                                        <div class="input-field col m1"  style="font-weight: bolder;">
+                                        <div class="input-field col m1" style="font-weight: bolder;">
                                             <center>Sí</center>
                                         </div>
-                                        <div class="input-field col m1"  style="font-weight: bolder;">
+                                        <div class="input-field col m1" style="font-weight: bolder;">
                                             <center>No</center>
                                         </div>
-                                        <div class="input-field col m2"  style="font-weight: bolder;">
+                                        <div class="input-field col m2" style="font-weight: bolder;">
                                             <center>Algunas veces</center>
                                         </div>
                                         <div class="input-field col m2" style="font-weight: bolder;">
@@ -598,7 +598,7 @@
                                                 @if ($i >= 16 )
 
                                                     <section class="row">
-                                                        <div class="input-field col m6" style="font-weight: bolder;">>
+                                                        <div class="input-field col m6" style="font-weight: bolder;">
                                                             <p>{{ $preg->texto }}</p>
                                                         </div>
                                                         <div class="input-field col m1">
@@ -675,13 +675,13 @@
                                 <div class="step-title waves-effect">Corresponsabilidad entre la vida laboral, familiar y personal</div>
                                 <div class="step-content">
                                     <div class="row">
-                                        <div class="input-field col m6"  style="font-weight: bolder;">
+                                        <div class="input-field col m6" style="font-weight: bolder;">
                                             <center>Pregunta</center>
                                         </div>
-                                        <div class="input-field col m1"  style="font-weight: bolder;">
+                                        <div class="input-field col m1" style="font-weight: bolder;">
                                             <center>Sí</center>
                                         </div>
-                                        <div class="input-field col m1"  style="font-weight: bolder;">
+                                        <div class="input-field col m1" style="font-weight: bolder;">
                                             <center>No</center>
                                         </div>
                                         <div class="input-field col m2" style="font-weight: bolder;">
@@ -702,7 +702,7 @@
                                                 @if ($i >= 21 )
 
                                                     <section class="row">
-                                                        <div class="input-field col m6" style="font-weight: bolder;">>
+                                                        <div class="input-field col m6" style="font-weight: bolder;">
                                                             <p>{{ $preg->texto }}</p>
                                                         </div>
                                                         <div class="input-field col m1">
@@ -780,10 +780,10 @@
                                 <div class="step-title waves-effect">Sección 6</div>
                                 <div class="step-content">
                                     <div class="row">
-                                        <div class="input-field col m6"  style="font-weight: bolder;">
+                                        <div class="input-field col m6" style="font-weight: bolder;">
                                             <center>Pregunta</center>
                                         </div>
-                                        <div class="input-field col m1"  style="font-weight: bolder;">
+                                        <div class="input-field col m1" style="font-weight: bolder;">
                                             <center>Sí</center>
                                         </div>
                                         <div class="input-field col m1" style="font-weight: bolder;">
@@ -806,7 +806,7 @@
                                                 @if ($i >= 26 )
 
                                                     <section class="row">
-                                                        <div class="input-field col m6" style="font-weight: bolder;">>
+                                                        <div class="input-field col m6" style="font-weight: bolder;">
                                                             <p>{{ $preg->texto }}</p>
                                                         </div>
                                                         <div class="input-field col m1">

@@ -1,31 +1,40 @@
 @if (count($libros))
     <div class="row">
         @foreach ($libros as $libro)
-        <div class="input-field col s4">
-            
+        <div class="input-field col s3">
+
             <div class="form-group">
                 <center>
 
-                    @if (isset($libro->disponible))
-                        <img class="imagen"
-                            src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
-                            style="
-                        width: 190px;
-                        height: 190px;
-                       " title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
-                        <br>
-                        <strong>Disponible a partir del {{ $libro->disponible }}</strong>
+                    @if ($libro->disponible)
+
+
+                        <img class="materialboxed"
+                             src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
+                             style="
+                                                width: 200px;
+                                                height: 200px;
+                                               " alt="name" class="circle"
+                             title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
+
+
+                        <a disabled class="waves-effect waves-light btn"
+                           href="{{ route('solicitar', [$libro->id]) }}"><i
+                                class="material-icons left">help</i>Disponible el {{ $libro->disponible }}</a>
+
+
                     @else
-                        <a href="{{ route('solicitar', [$libro->id]) }}">
-                            <img class="imagen"
-                                src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
-                                style="
-                        width: 190px;
-                        height: 190px;
-                       " alt="name" class="circle"
-                                title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}"><br>
-                            <strong>Disponible</strong>
-                        </a>
+
+                        <img class="materialboxed"
+                             src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
+                             style="
+                                                width: 200px;
+                                                height: 200px;
+                                               " alt="name" class="circle"
+                             title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
+                        <a class="waves-effect waves-light btn"
+                           href="{{ route('solicitar', [$libro->id]) }}"><i
+                                class="material-icons left">cloud</i>Disponible</a>
                     @endif
                 </center>
             </div>
@@ -45,3 +54,18 @@
         </div>
     </div>
 @endif
+
+@push('scripts')
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.materialboxed');
+        var instances = M.Materialbox.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('.materialboxed').materialbox();
+    });
+
+</script>

@@ -1,51 +1,46 @@
-<style>
-    .imagen:hover{
-        border-radius:50%;
-        -webkit-border-radius:10%;
-        box-shadow: 0px 0px 15px 15px #ec731e;
-        -webkit-box-shadow: 0px 0px 15px 15px #ec731e;
-        /*-transform: rotate(360deg);*/
-        /*-webkit-transform: rotate(360deg);*/
-        -webkit-transform:scale(1.3);
-        transform:scale(1.3)
-    }
-</style>
 <div class="container">
     <div class="section">
         <div class="card">
             <div class="card-content">
-                <h1>Solicitud prestamo de libros</h1>
-                <div class="row">
-                    <div class="col s12">
-                        <ul class="collapsible popout">
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons">help</i>
-                                    <strong>Ayuda</strong><br>
-                                </div>
-                                <div class="collapsible-body">
-                                    <div class="row">
-                                        <div class="col-md-12" align="center">
-                                            <p align="justify"> El presente diagnóstico permitirá visibilizar situaciones de asimetría individual y colectiva entre mujeres y hombres al interior del Poder Legislativo con el propósito de reducir brechas de desigualdad y discriminación en su espacio laboral, asimismo la consolidación de buenas prácticas que promuevan una cultura institucional que integre, como principio básico, la igualdad entre sexos. <br>
-                                                A continuación, se presenta un listado de posibles situaciones que puede estar viviendo. Manifieste las respuestas que mejor describan lo que percibe o siente actualmente en su unidad administrativa de adscripción.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col m12" >
-                        <div class="input-field col m12">
-                            <center><img class="imagen" src="{{ asset('genero/images/libros/'.$libro->id.'.png')}}" width="30%" height="30%" style="border-radius: 20px;"  alt="name" class="circle" title="Titulo: {{$libro->nombre}} / Autor: {{$libro->autor}}"></center>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="row">
-                    <div class="input-field col m12">
+                    <div class="input-field col m4">
+                        <div class="input-field col m5">
+
+                            <img class="materialboxed"
+                                 src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
+                                 style="
+                                                width: 200px;
+                                                height: 200px;
+                                               " alt="name" class="circle"
+                                 title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
+                            <br>
+
+                        </div>
+                    </div>
+
+                    <div class="input-field col m8">
+
                         <div class="row">
+                            <h1>Formato de préstamo de libro(s)</h1>
+
+                            La Persona servidora pública solicitante deberá:
+                            <ol>
+                                <li>Acudir personalmente a la Unidad de Igualdad de Género y Erradicación de la Violencia, a efecto de concluir el trámite de préstamo y entrega del libro.</li>
+                                <li>Informar a la Unidad de Igualdad de Género y Erradicación de la Violencia, cualquier desperfecto o incidente con el libro.</li>
+                                <li>No maltratar, doblar, subrayar, manchar, arrancar hojas o imágenes del libro.</li>
+                                <li>Contemplar que el período de  préstamo es por 30 días, en su caso, podrá realizar la renovación del período en caso de disponibilidad.</li>
+
+                            </ol>
+
+
+
+
+
+
+
+
                             <div class="input-field col m6">
                                 <div class="form-group">
                                     <label class="control-label"><strong>Libro solicidado: </strong></label>
@@ -55,7 +50,8 @@
                             </div>
                             <div class="input-field col m6">
                                 <div class="form-group">
-                                    <label class="control-label"><strong>Fecha de recolección del libro: </strong></label>
+                                    <label class="control-label"><strong>Fecha de recolección del
+                                            libro: </strong></label>
                                     {!! Form::date('libro[fecha_recoleccion]',null, ['class' => 'form-control text-uppercase','id' => 'fecha_recoleccion', 'name' => 'fecha_recoleccion', 'required' =>true]) !!}
                                 </div>
                             </div>
@@ -63,11 +59,12 @@
                         <div class="row">
                             <div class="input-field col m6">
                                 <div class="form-group">
-                                    <label class="control-label"><strong>Hora de recolección del libro: </strong></label>
+                                    <label class="control-label"><strong>Hora de recolección del
+                                            libro: </strong></label>
                                     {!! Form::time('libro[hora_recoleccion]',null, ['class' => 'form-control text-uppercase','id' => 'hora_recoleccion', 'name' => 'hora_recoleccion', 'required' =>true]) !!}
                                 </div>
                             </div>
-                            <div class="input-field col m6" >
+                            <div class="input-field col m6">
                                 <div class="form-group">
                                     <label class="control-label"><strong>Fecha de entrega del libro: </strong></label>
                                     {!! Form::date('libro[fecha_entrega_usuario]', null, ['class' => 'form-control text-uppercase','id' => 'fecha_entrega_usuario', 'name' => 'fecha_entrega_usuario', 'required' =>true]) !!}
@@ -77,7 +74,8 @@
                         <div class="row">
                             <div class="input-field col m12">
                                 <center>
-                                    <button class="waves-effect waves-dark btn btn-primary" type="submit" id="b1" style="background-color: #ec731e; border-radius: 10px;">
+                                    <button class="waves-effect waves-dark btn btn-primary" type="submit" id="b1"
+                                            style="background-color: #ec731e; border-radius: 10px;">
                                         Guardar
                                     </button>
                                 </center>
@@ -89,3 +87,6 @@
         </div>
     </div>
 </div>
+
+
+

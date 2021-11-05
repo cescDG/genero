@@ -9593,9 +9593,8 @@ tr.group:hover {
 
     text-align: center;
 
-    color: #fff;
-    border: 1px solid #eee;
-    background-color: #ff6347;
+    /*color: #fff;
+    border: 1px solid #eee;*/
 }
 
 .col.grid-example span {
