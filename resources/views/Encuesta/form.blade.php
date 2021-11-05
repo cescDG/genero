@@ -7,14 +7,269 @@
                         <h1>Diagnóstico de igualdad de trato y oportunidades entre mujeres y hombres</h1>
                         <div class="row">
                             <div class="col s12">
+                                <h5>Datos generales</h5>
+                                <div class="input-field col m12 center-align" style="font-weight: bolder;">
+                                    <div class="sombreado"><p align="justify" style="font-size: 15px;"><strong>Sexo</strong></p></div><br>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>Mujer</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>Hombre</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="input-field col m12 center-align" style="font-weight: bolder;">
+                                   <div class="sombreado"> <p align="justify" style="font-size: 15px;"><strong>Edad</strong></p></div><br>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>Entre 18-20 años</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>Entre 21-30 años</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>Entre 31-40 años</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>Entre 41-50 años</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>Entre 51-65 años</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>De 66 años en adelante</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="input-field col m12 center-align" style="font-weight: bolder;">
+                                   <div class="sombreado"> <p align="justify" style="font-size: 15px;"><strong>Estado Civi o conyugal</strong></p></div><br>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>Soltera/o</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>Casada/o</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="input-field col m12 center-align" style="font-weight: bolder;">
+                                   <div class="sombreado"> <p align="justify" style="font-size: 15px;"><strong>¿Tiene alguna discapacidad?</strong></p></div><br>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>Sí</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <p>
+                                            <label>
+                                                {!! Form::checkbox('','') !!}
+                                                <span>No</span>
+                                            </label>
+                                        </p>
+                                    </div>
+                                </div>
 
-                                <span><strong>Instrucciones:</strong> Selecciona la opción en el círculo que corresponda al valor de su respuesta. </span>
+                            <div class="input-field col m12 center-align" style="font-weight: bolder;">
+                               <div class="sombreado"> <p align="justify" style="font-size: 15px;"><strong>Antigüedad en el Poder Legislativo</strong></p></div><br>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>Menos de 6 meses</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>De 6 meses a 1 año</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>De 1 año a 3 años</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>De 3 años a 6 años</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>De 6 años a 10 años</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>Más de 10 años </span>
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="input-field col m12 center-align" style="font-weight: bolder;">
+                               <div class="sombreado"> <p align="justify" style="font-size: 15px;"><strong>Antigüedad en el puesto</strong></p></div><br>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>Menos de 6 meses</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>De 6 meses a 1 año</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>De 1 año a 3 años</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>De 3 años a 6 años</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>De 6 años a 10 años</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>Más de 10 años </span>
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="input-field col m12 center-align" style="font-weight: bolder;">
+                               <div class="sombreado"> <p align="justify" style="font-size: 15px;"><strong>Nivel de puesto</strong></p></div><br>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>Mando superior</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>Mando Medio</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>Nivel operativo</span>
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="input-field col m12 center-align" style="font-weight: bolder;">
+                               <div class="sombreado"> <p align="justify" style="font-size: 15px;"><strong>Tipo de contratación</strong></p></div><br>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>General</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="input-field col s4">
+                                    <p>
+                                        <label>
+                                            {!! Form::checkbox('','') !!}
+                                            <span>Confianza</span>
+                                        </label>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-
+                        <span><strong>Instrucciones:</strong> Selecciona la opción en el círculo que corresponda al valor de su respuesta. </span>
                         <ul class="stepper horizontal" id="horizStepper">
                             <li class="step active">
-                                <div class="step-title waves-effect">Sección 1</div>
+                                <div class="step-title waves-effect"> Ambiente de trabajo y discriminación</div>
                                 <div class="step-content">
                                     <div class="row">
                                         <div class="input-field col m6 center-align" style="font-weight: bolder;">
@@ -103,7 +358,7 @@
                             </li>
 
                             <li class="step">
-                                <div class="step-title waves-effect">Sección 2</div>
+                                <div class="step-title waves-effect">Condiciones de trabajo</div>
                                 <div class="step-content">
                                     <div class="row">
                                         <div class="input-field col m6  center-align" style="font-weight: bolder;">
@@ -208,7 +463,7 @@
                             </li>
 
                             <li class="step">
-                                <div class="step-title waves-effect">Sección 3</div>
+                                <div class="step-title waves-effect">Permanencia y promoción</div>
                                 <div class="step-content">
                                     <div class="row">
                                         <div class="input-field col m6"  style="font-weight: bolder;">
@@ -314,7 +569,7 @@
                             </li>
 
                             <li class="step">
-                                <div class="step-title waves-effect">Sección 4</div>
+                                <div class="step-title waves-effect">Capacitación y formación</div>
                                 <div class="step-content">
                                     <div class="row">
                                         <div class="input-field col m6"  style="font-weight: bolder;">
@@ -417,7 +672,7 @@
                             </li>
 
                             <li class="step">
-                                <div class="step-title waves-effect">Sección 5</div>
+                                <div class="step-title waves-effect">Corresponsabilidad entre la vida laboral, familiar y personal</div>
                                 <div class="step-content">
                                     <div class="row">
                                         <div class="input-field col m6"  style="font-weight: bolder;">

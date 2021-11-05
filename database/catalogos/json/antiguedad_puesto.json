@@ -1,0 +1,25 @@
+[
+    {
+        "respuesta": "Menos de 6 meses "
+
+    },
+    {
+        "respuesta": "De 6 meses a 1 año "
+
+    },
+    {
+        "respuesta": "De 1 año a 3 años "
+
+    },{
+        "respuesta": "De 3 años a 6 años "
+
+    },
+    {
+        "respuesta": "De 6 años a 10 años"
+
+    },
+    {
+        "respuesta": "Más de 10 años"
+
+    }
+]
