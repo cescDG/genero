@@ -6,18 +6,17 @@
 
                 <div class="row">
                     <div class="input-field col m4">
-                        <div class="input-field col m5">
 
-                            <img class="materialboxed"
-                                 src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
-                                 style="
-                                                width: 200px;
-                                                height: 200px;
-                                               " alt="name" class="circle"
-                                 title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
-                            <br>
+                        <br>
+                        <br>
+                        <br>
+                        <img class="materialboxed"
+                             src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
+                             style="width: 100%; " alt="name" class="circle"
+                             title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
+                        <br>
 
-                        </div>
+
                     </div>
 
                     <div class="input-field col m8">
@@ -27,18 +26,18 @@
 
                             La Persona servidora pública solicitante deberá:
                             <ol>
-                                <li>Acudir personalmente a la Unidad de Igualdad de Género y Erradicación de la Violencia, a efecto de concluir el trámite de préstamo y entrega del libro.</li>
-                                <li>Informar a la Unidad de Igualdad de Género y Erradicación de la Violencia, cualquier desperfecto o incidente con el libro.</li>
+                                <li>Acudir personalmente a la Unidad de Igualdad de Género y Erradicación de la
+                                    Violencia, a efecto de concluir el trámite de préstamo y entrega del libro.
+                                </li>
+                                <li>Informar a la Unidad de Igualdad de Género y Erradicación de la Violencia, cualquier
+                                    desperfecto o incidente con el libro.
+                                </li>
                                 <li>No maltratar, doblar, subrayar, manchar, arrancar hojas o imágenes del libro.</li>
-                                <li>Contemplar que el período de  préstamo es por 30 días, en su caso, podrá realizar la renovación del período en caso de disponibilidad.</li>
+                                <li>Contemplar que el período de préstamo es por 30 días, en su caso, podrá realizar la
+                                    renovación del período en caso de disponibilidad.
+                                </li>
 
                             </ol>
-
-
-
-
-
-
 
 
                             <div class="input-field col m6">

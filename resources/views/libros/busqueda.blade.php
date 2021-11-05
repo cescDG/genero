@@ -1,7 +1,7 @@
 @if (count($libros))
     <div class="row">
         @foreach ($libros as $libro)
-        <div class="input-field col s3">
+        <div class="input-field col s6">
 
             <div class="form-group">
                 <center>
@@ -12,8 +12,7 @@
                         <img class="materialboxed"
                              src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
                              style="
-                                                width: 200px;
-                                                height: 200px;
+                                                 width: 100%;
                                                " alt="name" class="circle"
                              title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
 
@@ -28,8 +27,7 @@
                         <img class="materialboxed"
                              src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
                              style="
-                                                width: 200px;
-                                                height: 200px;
+                                                width: 100%;
                                                " alt="name" class="circle"
                              title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
                         <a class="waves-effect waves-light btn"
