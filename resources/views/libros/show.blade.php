@@ -67,57 +67,56 @@
                 {{--                </div>--}}
                 <div id='showLib' style="display: none;"></div>
                 <div id='showLib1'>
-                    <div class="row">
-                        <div class="col-12" align="center">
-
-                            @foreach ($libros as $libro)
-
-                                <div class="col s12 m12">
-                                    <div class="form-group">
-                                        <center>
-
-
-
-
-
-
-
-
-
-
-
-
-                                            @if ($libro->disponible)
-                                                <img class="materialboxed"
-                                                     src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
-                                                     style="
-                                                width: 70%;
-                                               " alt="name" class="circle"
-                                                     title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
-                                                <a disabled class="waves-effect waves-light btn"
-                                                   href="{{ route('solicitar', [$libro->id]) }}"><i
-                                                        class="material-icons left">help</i>Disponible
-                                                    el {{ $libro->disponible }}</a>
-                                                <br>
-                                                <br>
-                                            @else
-                                                <img class="materialboxed"
-                                                     src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
-                                                     style="
-                                                width: 70%;
-                                               " alt="name" class="circle"
-                                                     title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
-                                                <a class="waves-effect waves-light btn"
-                                                   href="{{ route('solicitar', [$libro->id]) }}"><i
-                                                        class="material-icons left">cloud</i>Disponible</a>
-                                                <br>
-                                                <br>
-                                            @endif
-                                        </center>
+                    <br><br>
+                        @php $imagen = 1;
+                             $libro = 0;
+                        @endphp
+                        @for ($i= 0; $i <= count($libros); $i++)
+                        <div class="row">
+                                @for ($a= 1; $a <= 4; $a++)
+                                @if($libro >= 40)
+                                    @php break; @endphp
+                                @endif
+                                    <div class="col m3">
+                                        <div class="form-group">
+                                            <center>
+                                                @if ($libros[$libro]->disponible)
+                                                    <img class="materialboxed"
+                                                         src="{{ asset('genero/images/libros/' . $imagen . '.png') }}"
+                                                         style="
+                                                    width: 70%;
+                                                   " alt="name" class="circle"
+                                                         title="Titulo: {{ $libros[$libro]->nombre }} / Autor: {{ $libros[$libro]->autor }}">
+                                                    <a disabled class="waves-effect waves-light btn"
+                                                       href="{{ route('solicitar', [$libros[$libro]->id]) }}"><i
+                                                            class="material-icons left">help</i>Disponible
+                                                        el {{ $libros[$libro]->disponible }}</a>
+                                                    <br>
+                                                    <br>
+                                                @else
+                                                    <img class="materialboxed"
+                                                         src="{{ asset('genero/images/libros/' . $imagen . '.png') }}"
+                                                         style="
+                                                    width: 70%;
+                                                   " alt="name" class="circle"
+                                                         title="Titulo: {{ $libros[$libro]->nombre }} / Autor: {{ $libros[$libro]->autor }}">
+                                                    <a class="waves-effect waves-light btn"
+                                                       href="{{ route('solicitar', [$libros[$libro]->id]) }}"><i
+                                                            class="material-icons left">cloud</i>Disponible</a>
+                                                    <br>
+                                                    <br>
+                                                @endif
+                                            </center>
+                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
+{{--                                @endforeach--}}
+                                    @php $imagen = $imagen+1;  $libro = $libro+1; @endphp
+                                @endfor
+{{-- @php $imagen = $imagen+1; $libro = $libro+1;@endphp--}}
                         </div>
+                        @endfor
+                    </div>
+
                     </div>
                 </div>
             </div>
