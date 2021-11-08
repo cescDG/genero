@@ -75,6 +75,18 @@
                                 <div class="col s12 m12">
                                     <div class="form-group">
                                         <center>
+
+
+
+
+
+
+
+
+
+
+
+
                                             @if ($libro->disponible)
                                                 <img class="materialboxed"
                                                      src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
