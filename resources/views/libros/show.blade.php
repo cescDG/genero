@@ -73,11 +73,11 @@
                         @endphp
                         @for ($i= 0; $i <= count($libros); $i++)
                         <div class="row">
-                                @for ($a= 1; $a <= 4; $a++)
+                                @for ($a= 1; $a <= 3; $a++)
                                 @if($libro >= 40)
                                     @php break; @endphp
                                 @endif
-                                    <div class="col m3">
+                                    <div class="col m4">
                                         <div class="form-group">
                                             <center>
                                                 @if ($libros[$libro]->disponible)
