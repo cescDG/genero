@@ -35,7 +35,7 @@ class ReporteController extends Controller
 
         $Dependencia = Arr::pluck(\App\Models\Dependencia::all(), "Nombre","id_Dependencia");
         $Direccion = Arr::pluck(\App\Models\Direccion::all(), "Nombre","id_Direccion");
-        $Departamento = Arr::pluck(\App\Models\Departamento::all(), "Nombre","id_Departamento");
+        $Departamento = Arr::pluck(\App\Models\Departamento::all(), "nombre_completo","id_Departamento");
 
         return view('reportes.dependencia', compact('Dependencia', 'Direccion', 'Departamento'));
     }

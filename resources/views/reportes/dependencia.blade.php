@@ -7,7 +7,7 @@
     <div class="container">
         <div class="section">
             <div class="height-30vh">
-               
+
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@
                    $("#departamento_id").find('option').remove();
                    $("#departamento_id").append('<option value="">SELECCIONE UNA OPCIÓN </option>');
                    $(data).each(function(i, v) { // indice, valor
-                       $("#departamento_id").append('<option value="' + v.id_Departamento + '">' + v.Nombre + '</option>');
+                       $("#departamento_id").append('<option value="' + v.id_Departamento + '">' + v.nombre_completo + '</option>');
                    });
                });
                $("#departamento_id").prop('disabled', false);

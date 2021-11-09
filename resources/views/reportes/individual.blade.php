@@ -17,9 +17,7 @@
                                     <tr>
                                         <th>Nombre</th>
                                         <th>RFC</th>
-                                        <th>Dependencia</th>
-                                        <th>Dirección</th>
-                                        <th>Departamento</th>
+                                        <th>Adscripción</th>
                                         <th>Estatus</th>
                                     </tr>
                                     </thead>
@@ -28,9 +26,10 @@
                                         <tr>
                                             <th>{{$usuario->Nombre}}</th>
                                             <th>{{$usuario->N_Usuario}}</th>
-                                            <th>{{$usuario->dependencia->Nombre}}</th>
-                                            <th>{{$usuario->direccion->Nombre}}</th>
-                                            <th>{{$usuario->departamento->Nombre}}</th>
+                                            <th><strong>Dependencia:</strong> {{$usuario->dependencia->Nombre}}<br>
+                                                <strong>Dirección:</strong> {{$usuario->direccion->Nombre}}<br>
+                                                <strong>Departamento:</strong> {{$usuario->departamento->nombre_completo}}<br>
+                                            </th>
                                             <th> <a title="Ver" class="tooltipped" data-position="bottom"
                                                      data-tooltip="Ver"
                                                     href="{{ route('verReporte', [$usuario->id_Usuario]) }}" target="_blank">
