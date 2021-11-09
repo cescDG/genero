@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style='background-color: #7e57c2;'>
 
 <head>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -116,11 +116,6 @@
         .footer-img {
             width: 80%;
         }
-
-        body {
-            margin: 80px 80px 75px 80px;
-        }
-
         .firma {
             background-color: transparent !important;
             text-align: center;
@@ -130,13 +125,6 @@
         .tabla2 {
             border: 1px solid #000000;
             font-size: 10px;
-        }
-
-        .tablita2 {
-            font-size: 12px;
-            justify;
-            style="line-height:.5px;
-padding-left: 20px;
         }
 
         @font-face {
@@ -156,7 +144,6 @@ padding-left: 20px;
             font-style: normal;
             font-size: 7.7px;
         }
-
         h1 {
             font-size: 12px;
             font-weight: bold;
@@ -251,33 +238,29 @@ padding-left: 20px;
 
     </style>
 </head>
-
+<header>
+    <center>
+        <div class="row">
+            <img src="{{ asset('genero/images/logo/sup.png') }}" alt=" avatar" style="width: 100%;" />
+        </div>
+    </center>
+</header>
 <body>
    <p style="color:rgb(150,0,72);">Fecha: {{$dia}}</p>
-    <header>
-        <br>
-        <center>
-            <div class="row">
-                <img src="{{ asset('genero/images/logo/membrete2.jpg') }}" alt=" avatar" style="width: 90%;" />
-
-            </div>
-
-        </center>
-    </header>
     <main>
         <br>
 
-        <table width="100%" border="0" cellpadding="4">
+        <table width="100%" border="0" cellpadding="6">
             <tbody>
                 <tr>
                     <td align="center" style="font-size: 13px;" bgcolor="#DCD6D4"><strong>
-                            {{ mb_strtoupper($ubicacion->Nombre) }}</strong></td>
+                            {{ mb_strtoupper($ubicacion->nombre_completo) }}</strong></td>
                 </tr>
             </tbody>
         </table>
         <br>
 
-        <table width="100%" border="1" cellpadding="4">
+        <table width="100%" border="1" cellpadding="6">
             <tbody>
                 <tr>
                     <td align="left" width="100%"> TOTAL SI: <STRONG>{{ $si }}</STRONG>
@@ -297,33 +280,24 @@ padding-left: 20px;
         <br>
 
         <div class="row">
-            <table width="100%" style="border:1px solid;">
-
-
+            <table width="100%" style="border:1px solid;" cellpadding="6">
+                <thead>
+                <tr>
+                    <th style="width: 50%;">Pregunta</th>
+                    <th>Sí</th>
+                    <th>No</th>
+                    <th>Algunas veces</th>
+                    <th>Desconozo</th>
+                </tr>
+                </thead>
+                <tbody>
                 @foreach ($preguntas as $pregunta)
-                    <thead>
                         <tr>
-                            <th style="width: 50%;">{{ $pregunta->texto }}</th>
-                            <th>Sí</th>
-                            <th>No</th>
-                            <th>Algunas veces</th>
-                            <th>Desconozo</th>
-
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td align="center" width="10%"></td>
-
+                            <td>{{ $pregunta->texto }}</td>
                             <td align="center" width="10%" style="color:rgb(150,0,72);">
                                 @foreach ($sumaA as $key => $value)
                                     @if ($key == $pregunta->id)
-
                                         {{ $value }}
-
-
-
                                     @endif
                                 @endforeach
                             </td>
@@ -331,38 +305,27 @@ padding-left: 20px;
                             <td align="center" width="10%" style="color:rgb(150,0,72);">
                                 @foreach ($sumaB as $key => $value)
                                     @if ($key == $pregunta->id)
-
                                         {{ $value }}
-
                                     @endif
                                 @endforeach
                             </td>
                             <td align="center" width="10%" style="color:rgb(150,0,72);">
                                 @foreach ($sumaC as $key => $value)
                                     @if ($key == $pregunta->id)
-
                                         {{ $value }}
-
                                     @endif
                                 @endforeach
                             </td>
                             <td align="center" width="10%" style="color:rgb(150,0,72);">
-
                                 @foreach ($sumaD as $key => $value)
                                     @if ($key == $pregunta->id)
                                         {{ $value }}
-
                                     @endif
                                 @endforeach
                             </td>
-
-
                         </tr>
-
-                    </tbody>
-
                 @endforeach
-
+                </tbody>
             </table>
             <br>
         </div>
@@ -371,15 +334,13 @@ padding-left: 20px;
     <br>
     <br>
     <br>
-    <footer>
-
-        <center>
-            <div class="row">
-                <img src="{{ asset('genero/images/logo/membrete3.png') }}" alt=" avatar" style="width: 90%;" />
-            </div>
-
-        </center>
-    </footer>
+   <footer>
+       <center>
+           <div class="row">
+               <img src="{{ asset('genero/images/logo/inf.png') }}" alt=" avatar" style="width: 85%;" />
+           </div>
+       </center>
+   </footer>
 </body>
 
 </html>
