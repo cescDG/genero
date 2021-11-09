@@ -254,7 +254,7 @@
     </center>
 </header>
 <body>
-   <p style="color:rgb(150,0,72);">Fecha: {{$dia}}</p>
+   <p style="color:rgb(150,0,72);"> Toluca, Estado de México;{{$fDia}} de {{ucfirst($fMes)}} de {{$fAnio}}</p>
     <main>
         <br>
 
@@ -289,7 +289,6 @@
                                     @endif
                                 @endforeach
                             </td>
-
                             <td align="center" width="10%" style="color:rgb(150,0,72);">
                                 @foreach ($sumaB as $key => $value)
                                     @if ($key == $pregunta->id)
@@ -313,23 +312,12 @@
                             </td>
                         </tr>
                 @endforeach
-                </tbody>
-            </table>
-            <br>
-            <table width="100%" border="1" cellpadding="6">
-                <tbody>
                 <tr>
-                    <td align="left" width="100%"> TOTAL SI: <STRONG>{{ $si }}</STRONG>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="left" width="100%">TOTAL NO: <strong> {{ $no }}</strong> </td>
-                </tr>
-                <tr>
-                    <td align="left" width="100%">TOTAL ALGUNAS VECES: <strong> {{ $alg }} </strong> </td>
-                </tr>
-                <tr>
-                    <td align="left" width="100%">TOTAL DESCONOZCO: <strong> {{ $desco }} </strong> </td>
+                    <td  style="width: 50%;">Total</td>
+                    <td align="center"> <STRONG>{{ $si }}</STRONG></td>
+                    <td align="center"><strong> {{ $no }}</strong> </td>
+                    <td align="center"><strong> {{ $alg }} </strong> </td>
+                    <td align="center"> <strong> {{ $desco }} </strong> </td>
                 </tr>
                 </tbody>
             </table>

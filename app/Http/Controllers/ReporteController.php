@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -15,7 +16,7 @@ use App\Models\Respuestas;
 use App\Models\ServidorPulbicoDetail;
 use App\Exports\DependenciaExport;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Jenssegers\Date\Date;
 
 
 class ReporteController extends Controller
@@ -49,11 +50,13 @@ class ReporteController extends Controller
     }
 
     public function pdfDependencia(Request $request){
-
-        //dd($request->departamento);
-        date_default_timezone_set('America/Mexico_City');
         $timestam = date('Y-m-d H:i:s');
-        $dia = date('Y-m-d');
+        date_default_timezone_set('America/Mexico_City');
+               $dia = date('Y-M-w');
+        $fDia = date('d');
+        $fMes =  Date::now()->format('F');
+        $fAnio = date('Y');
+
         $preguntas = Preguntas::all();
         $collection1 = collect([]);
         $collection2 = collect([]);
@@ -132,7 +135,7 @@ class ReporteController extends Controller
         $datas['desco']= $desco;
 
 
-        $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','si','no','alg','desco','dia'));
+        $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','si','no','alg','desco','dia','fAnio','fDia','fMes'));
         return $pdf->stream('dependencia.pdf');
 
     }
