@@ -236,6 +236,14 @@
             page-break-before: always;
         }
 
+        table{
+            border-color: #848585;
+        }
+
+        th{
+            border-color: #848585;
+        }
+
     </style>
 </head>
 <header>
@@ -253,7 +261,7 @@
         <table width="100%" border="0" cellpadding="6">
             <tbody>
                 <tr>
-                    <td align="center" style="font-size: 13px;" bgcolor="#DCD6D4"><strong>
+                    <td align="center" style="font-size: 13px;" bgcolor="#CCCBCB"><strong>
                             {{ mb_strtoupper($ubicacion->nombre_completo) }}</strong></td>
                 </tr>
             </tbody>
