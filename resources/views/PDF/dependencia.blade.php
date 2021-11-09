@@ -259,26 +259,6 @@
             </tbody>
         </table>
         <br>
-
-        <table width="100%" border="1" cellpadding="6">
-            <tbody>
-                <tr>
-                    <td align="left" width="100%"> TOTAL SI: <STRONG>{{ $si }}</STRONG>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="left" width="100%">TOTAL NO: <strong> {{ $no }}</strong> </td>
-                </tr>
-                <tr>
-                    <td align="left" width="100%">TOTAL ALGUNAS VECES: <strong> {{ $alg }} </strong> </td>
-                </tr>
-                <tr>
-                    <td align="left" width="100%">TOTAL DESCONOZCO: <strong> {{ $desco }} </strong> </td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
-
         <div class="row">
             <table width="100%" style="border:1px solid;" cellpadding="6">
                 <thead>
@@ -328,6 +308,25 @@
                 </tbody>
             </table>
             <br>
+            <table width="100%" border="1" cellpadding="6">
+                <tbody>
+                <tr>
+                    <td align="left" width="100%"> TOTAL SI: <STRONG>{{ $si }}</STRONG>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" width="100%">TOTAL NO: <strong> {{ $no }}</strong> </td>
+                </tr>
+                <tr>
+                    <td align="left" width="100%">TOTAL ALGUNAS VECES: <strong> {{ $alg }} </strong> </td>
+                </tr>
+                <tr>
+                    <td align="left" width="100%">TOTAL DESCONOZCO: <strong> {{ $desco }} </strong> </td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+
         </div>
 
     </main>
