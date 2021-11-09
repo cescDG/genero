@@ -12,10 +12,7 @@
             -webkit-transform: scale(1.4);
             transform: scale(1.4)
         }
-
     </style>
-
-
 
     <div class="container">
         <div class="section">
@@ -37,7 +34,6 @@
                             </center>
                         </div>
                         <div class="col s6">
-
                             <nav>
                                 <div class="nav-wrapper">
                                     <form>
@@ -49,107 +45,79 @@
                                     </form>
                                 </div>
                             </nav>
-
-
                         </div>
                     </div>
                 </div>
-
-
-                {{--                <div class="col s12">--}}
-                {{--                    <div id="search-wrapper" class="card z-depth-0 search-image center-align p-35">--}}
-                {{--                        <div class="card-content">--}}
-                {{--                            <h5 class="center-align mb-3">Búsqueda</h5>--}}
-                {{--                            <input placeholder="Ingresa búsqueda..." id="buscarLib" name="buscarLib"--}}
-                {{--                                   class="search-box validate white search-circle search-shadow" onkeyup="buscarL();">--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
                 <div id='showLib' style="display: none;"></div>
                 <div id='showLib1'>
-                    <div class="row">
-                        <div class="col-12" align="center">
+                    <br><br>
+                        @php $imagen = 1;
+                             $libro = 0;
+                        @endphp
+                        @for ($i= 0; $i <= count($libros); $i++)
+                        <div class="row">
+                                @for ($a= 1; $a <= 3; $a++)
+                                @if($libro >= 40)
+                                    @php break; @endphp
+                                @endif
+                                    <div class="col m4">
+                                        <div class="form-group">
+                                            <center>
+                                                @if ($libros[$libro]->disponible)
+                                                    <img class="materialboxed"
+                                                         src="{{ asset('genero/images/libros/' . $imagen . '.png') }}"
+                                                         style="
+                                                    width: 70%;
+                                                   " alt="name" class="circle"
+                                                         title="Titulo: {{ $libros[$libro]->nombre }} / Autor: {{ $libros[$libro]->autor }}">
+                                                    <a disabled class="waves-effect waves-light btn"
+                                                       href="{{ route('solicitar', [$libros[$libro]->id]) }}"><i
+                                                            class="material-icons left">help</i>Disponible
+                                                        el {{ $libros[$libro]->disponible }}</a>
+                                                    <br>
+                                                    <br>
+                                                @else
+                                                    <img class="materialboxed"
+                                                         src="{{ asset('genero/images/libros/' . $imagen . '.png') }}"
+                                                         style="
+                                                    width: 70%;
+                                                   " alt="name" class="circle"
+                                                         title="Titulo: {{ $libros[$libro]->nombre }} / Autor: {{ $libros[$libro]->autor }}">
 
-                            @foreach ($libros as $libro)
-
-                                <div class="col s12 m12">
-                                    <div class="form-group">
-                                        <center>
-
-
-
-
-
-
-
-
-
-
-
-
-                                            @if ($libro->disponible)
-                                                <img class="materialboxed"
-                                                     src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
-                                                     style="
-                                                width: 70%;
-                                               " alt="name" class="circle"
-                                                     title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
-                                                <a disabled class="waves-effect waves-light btn"
-                                                   href="{{ route('solicitar', [$libro->id]) }}"><i
-                                                        class="material-icons left">help</i>Disponible
-                                                    el {{ $libro->disponible }}</a>
-                                                <br>
-                                                <br>
-                                            @else
-                                                <img class="materialboxed"
-                                                     src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
-                                                     style="
-                                                width: 70%;
-                                               " alt="name" class="circle"
-                                                     title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
-                                                <a class="waves-effect waves-light btn"
-                                                   href="{{ route('solicitar', [$libro->id]) }}"><i
-                                                        class="material-icons left">cloud</i>Disponible</a>
-                                                <br>
-                                                <br>
-                                            @endif
-                                        </center>
+                                                    <a class="waves-effect waves-light btn"
+                                                       href="{{ route('solicitar', [$libros[$libro]->id]) }}"><i
+                                                            class="material-icons left">cloud</i>Disponible</a>
+                                                    <br>
+                                                    <br>
+                                                @endif
+                                            </center>
+                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                    @php $imagen = $imagen+1;  $libro = $libro+1; @endphp
+                                @endfor
                         </div>
+                        @endfor
+                    </div>
+
                     </div>
                 </div>
             </div>
-
-        </div>
     </div>
 
 
 
 @endsection
 @push('scripts')
-
-
-
-
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.materialboxed');
             var instances = M.Materialbox.init(elems, options);
         });
-
         // Or with jQuery
-
         $(document).ready(function () {
             $('.materialboxed').materialbox();
         });
 
-    </script>
-
-
-
-    <script type="text/javascript">
         function buscarL() {
             var search = $("#buscarLib").val();
             console.log('holi');
@@ -157,8 +125,8 @@
 
             if (search == '') {
                 var search = 'o';
-                // $("#showLib1").show();
-                // $("#showLib").hide();
+                 $("#showLib1").show();
+                 $("#showLib").hide();
             }
 
             $.ajax({
@@ -178,8 +146,6 @@
                     console.log('Falló con exito');
                 }
             });
-
-
         }
     </script>
 @endpush
