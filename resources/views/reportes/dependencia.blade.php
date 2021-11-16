@@ -19,27 +19,27 @@
 
                 <div class="row">
                     <div class="col s12">
-                        <h4 align="center">Reporte Dependencia</h4>
+                        <h4 align="center">Reporte Dependencia</h4><br>
                             {!! Form::open(['route'=>'pdf.dependencia', 'method'=>'POST','files' => true, 'role' => 'form','id' => 'frmReporteDep']) !!}
                                 @csrf
                                 <div class="input-field col s4">
                                     {!! Form::select('dependencia', $Dependencia, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'dependencia_id']) !!}
 
-                                    <label>Seleccione Dependencia</label>
+                                    <label>Dependencia:</label>
 
                                 </div>
 
                                 <div class="input-field col s4">
                                     {!! Form::select('direccion', $Direccion, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'direccion_id', 'disabled' => 'true']) !!}
 
-                                    <label>Seleccione Direccion</label>
+                                    <label>Dirección:</label>
 
                                 </div>
 
                                 <div class="input-field col s4">
                                     {!! Form::select('departamento', $Departamento, null, ['class' => 'select2 browser-default','placeholder' => 'SELECCIONA UNA OPCIÓN ', 'id' => 'departamento_id', 'disabled' => 'true']) !!}
 
-                                    <label>Seleccione Departamento</label>
+                                    <label>Departamento:</label>
 
                                 </div>
 

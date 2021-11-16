@@ -64,7 +64,7 @@ return [
         ],
         'mysql2' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST_SAF', '127.0.0.1'),
+            'host'      => env('DB_HOST_SAF', 'localhost'),
             'database'  => env('DB_DATABASE_SAF','adminple_saf'),
             'username'  => env('DB_USERNAME_SAF','root'),
             'password'  => env('DB_PASSWORD_SAF',''),

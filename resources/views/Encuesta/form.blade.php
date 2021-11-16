@@ -9,7 +9,7 @@
                         <span><strong>Instrucciones:</strong> Selecciona la opción en el círculo que corresponda al valor de su respuesta. </span>
                         <ul class="stepper horizontal" id="horizStepper">
                             <li class="step active">
-                                <div class="step-title waves-effect tooltipped" data-tooltip="Ambiente de trabajo y discriminación"> Ambiente de trabaj...</div>
+                                <div class="step-title waves-effect tooltipped" data-tooltip="Ambiente de trabajo y discriminación"> Ambiente de trabajo y<br> discriminación</div>
                                 <div class="step-content">
                                     <div class="row">
                                         <div class="input-field col m6 center-align" style="font-weight: bolder;">
