@@ -1,11 +1,31 @@
 <div class="container">
     <div class="section">
+
+
+        <div class="row"  style="background-color: rgba(198, 198, 198, .5);">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card-content">
+                        <center>
+                            <img style="width: 90%;"
+                                 src="{{ asset('genero/images/logo/banner_logos.png' ) }}">
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
         <div class="card">
             <div class="card-content">
 
 
                 <div class="row">
                     <div class="input-field col m4">
+
+
 
                         <br>
                         <br>

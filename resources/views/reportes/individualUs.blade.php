@@ -11,35 +11,16 @@
                         <div class="col s12">
                             @if(count($reporte))
                                 <h3 class="card-title mb-0"><strong>DIAGNÓSTICO DE IGUALDAD DE TRATO Y OPORTUNIDADES ENTRE MUJERES Y HOMBRES</strong></h3>
-                                <div class="row">
-                                    <div class="col s12">
-                                        <ul class="collapsible popout">
-                                            <li>
-                                                <div class="collapsible-header"><i class="material-icons">help</i>
-                                                    <strong>Ayuda</strong><br>
-                                                </div>
-                                                <div class="collapsible-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12" align="center">
-                                                            <p align="justify">
-                                                                En esta sección podrás consular los resultados de la encuesta aplicada al Servidor Público que seleccionaste.<br>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <br>
 
                                 <table id="striped" class="display">
                                     <thead>
-                                    <tr style="background: #96124B;">
-                                        <th  style="color: white;">Pregunta</th>
-                                        <th  style="color: white;">Sí</th>
-                                        <th  style="color: white;">No</th>
-                                        <th  style="color: white;">Algunas veces</th>
-                                        <th  style="color: white;">Desconozco</th>
+                                    <tr style="background-color: rgba(198, 198, 198, .5);">
+                                        <th  style="color: black; width: 50%;">Pregunta</th>
+                                        <th  style="color: black;width: 10%;">Sí</th>
+                                        <th  style="color: black;width: 10%;">No</th>
+                                        <th  style="color: black;width: 10%;">Algunas veces</th>
+                                        <th  style="color: black;width: 10%;">Desconozco</th>
                                     </tr>
                                     </thead>
                                     <tbody>

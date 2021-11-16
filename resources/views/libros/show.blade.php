@@ -17,23 +17,20 @@
     <div class="container">
         <div class="section">
             <div>
-                <div class="row">
+                <div class="row"  style="background-color: rgba(198, 198, 198, .5);">
                     <div class="row">
                         <div class="col s12">
                             <div class="card-content">
-                                <img style="width: 100%;"
-                                     src="{{ asset('genero/images/libros/pleca_gris_saf_libros.png' ) }}">
+                                <center>
+                                <img style="width: 90%;"
+                                     src="{{ asset('genero/images/logo/banner_logos.png' ) }}">
+                                    </center>
                             </div>
                         </div>
                     </div>
                     <div class="row" style="background-color: rgba(198, 198, 198, .5);">
-                        <div class="col s12 m6 l6">
-                            <center>
-                                <img style="width: 50%; display: flex; justify-content: center; align-items: center;"
-                                     src="{{ asset('genero/images/libros/frase_apoyo.png' ) }}">
-                            </center>
-                        </div>
-                        <div class="col s6">
+
+                        <div class="col s12">
                             <nav>
                                 <div class="nav-wrapper">
                                     <form>

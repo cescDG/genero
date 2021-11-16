@@ -7,7 +7,7 @@
                         <h1>Diagnóstico de igualdad de trato y oportunidades entre mujeres y hombres</h1>
                         <div class="row">
                             <div class="col s12">
-                                <h5>Datos generales</h5>
+                                <h5 style="text-align: left;">Datos generales</h5>
                             </div>
                         </div>
                         <div class="row">
@@ -27,13 +27,13 @@
                         <div class="row">
                             <div class="input-field col m6">
                                 <div class="form-group">
-                                    <label for="estado_civil" class="control-label">Estado Civi o conyugal: *</label>
+                                    <label for="estado_civil" class="control-label">Estado civi o conyugal: *</label>
                                     {!! Form::select('registro[estado_civil]',$estadoC, isset($responsable) ? $responsable->estado_civil : [], ['class' => 'browser-default form-control text-uppercase   ', 'placeholder'=>'Seleccione una opción', 'id' => 'estado_civil', 'name' => 'estado_civil', 'required' => true]) !!}
                                 </div>
                             </div>
                             <div class="input-field col m6">
                                 <div class="form-group">
-                                    <label for="discapacidad" class="control-label">¿Tiene alguna discapacidad?: *</label>
+                                    <label for="discapacidad" class="control-label">¿Tiene alguna discapacidad? *</label>
                                     {!! Form::select('registro[discapacidad]',$discapacidad, isset($responsable) ? $responsable->discapacidad : [], ['class' => 'browser-default form-control text-uppercase   ', 'placeholder'=>'Seleccione una opción', 'id' => 'discapacidad', 'name' => 'discapacidad', 'required' => true]) !!}
                                 </div>
                             </div>
