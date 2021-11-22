@@ -39,6 +39,7 @@
                                                     </a>
 
 
+
                                                     {{--
                                                       @if(isset($libro->status))--}}
 {{--                                                         @if ($libro->status == 'Pendiente por aprobar')--}}
@@ -59,6 +60,7 @@
 {{--                                                         </a>--}}
 {{--                                                        @endif--}}
 {{--                                                    @endif--}}
+
                                                 </td>
                                             </tr>
 
