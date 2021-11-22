@@ -33,25 +33,34 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if(isset($libro->status))
-                                                         @if ($libro->status == 'Pendiente por aprobar')
-                                                            <a title="aprobar" class="tooltipped" data-position="bottom" data-tooltip="Aprobar"
-                                                               href="{{ route('aprobar', [$libro->id]) }}">
-                                                                <i class="material-icons iconlegislatura">visibility</i>
-                                                            </a>
+                                                    <a title="ver" class="tooltipped" data-position="bottom" data-tooltip="ver"
+                                                       href="{{ route('verLibrosAprobar', [$libro->id]) }}">
+                                                        <i class="material-icons iconlegislatura">visibility</i>
+                                                    </a>
 
-                                                        @elseif($libro->status == 'Prestado')
-                                                            <a title="ver" class="tooltipped" data-position="bottom" data-tooltip="Ver"
-                                                               href="{{ route('pdf', [$libro->id])}}">
-                                                                <i class="material-icons iconlegislatura">visibility</i>
-                                                            </a>
 
-                                                            <a  title="PDF" data-position="bottom" data-tooltip="PDF"
-                                                            href="{{ route('pdf', $libro->id)}}"  target="_blank" class=" tooltipped ">
-                                                             <i class="material-icons iconlegislatura">picture_as_pdf</i>
-                                                         </a>
-                                                        @endif
-                                                    @endif
+
+                                                    {{--
+                                                      @if(isset($libro->status))--}}
+{{--                                                         @if ($libro->status == 'Pendiente por aprobar')--}}
+{{--                                                            <a title="aprobar" class="tooltipped" data-position="bottom" data-tooltip="Aprobar"--}}
+{{--                                                               href="{{ route('aprobar', [$libro->id]) }}">--}}
+{{--                                                                <i class="material-icons iconlegislatura">visibility</i>--}}
+{{--                                                            </a>--}}
+
+{{--                                                        @elseif($libro->status == 'Prestado')--}}
+{{--                                                            <a title="ver" class="tooltipped" data-position="bottom" data-tooltip="Ver"--}}
+{{--                                                               href="{{ route('pdf', [$libro->id])}}">--}}
+{{--                                                                <i class="material-icons iconlegislatura">visibility</i>--}}
+{{--                                                            </a>--}}
+
+{{--                                                            <a  title="PDF" data-position="bottom" data-tooltip="PDF"--}}
+{{--                                                            onclick="pdf({{$libro->id}});" class=" tooltipped ">--}}
+{{--                                                             <i class="material-icons iconlegislatura">picture_as_pdf</i>--}}
+{{--                                                         </a>--}}
+{{--                                                        @endif--}}
+{{--                                                    @endif--}}
+
                                                 </td>
                                             </tr>
 

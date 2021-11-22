@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('pdf/{id}', 'App\Http\Controllers\LibrosController@pdf')->name('pdf');
     Route::get('busquedaLibro/{id}', 'App\Http\Controllers\LibrosController@busquedaLibro')->name('busquedaLibro');
     Route::get('getLibros', 'App\Http\Controllers\LibrosController@getLibros')->name('getLibros');
+    Route::get('verLibrosAprobar/{id}', 'App\Http\Controllers\LibrosController@verLibrosAprobar')->name('verLibrosAprobar');
 
     Route::resources([
         'encuesta' => QuizController::class,

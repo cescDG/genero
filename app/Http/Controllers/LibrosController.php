@@ -144,7 +144,8 @@ class LibrosController extends Controller
     }
 
     public function aprobar($id){
-        $solicitud = Solicitud::where('libro_id', $id)->where('status',0)->orwhere('status',1)->first();
+    //    dd($id);
+        $solicitud = Solicitud::find($id);
         $validacion =Arr::pluck(Validacion::all(), "tipo", "id");
         return view('libros.aprobar', compact('solicitud','validacion'));
     }
@@ -175,5 +176,11 @@ class LibrosController extends Controller
 
     public function busquedaLibro(Request $request){
         $libro = Libros::all();
+    }
+
+    public function verLibrosAprobar($id){
+        $solicitudes = Solicitud::where('status','!=','2')->where('libro_id', $id)->get();
+
+        return view('libros.verSolicitudesGnal', compact('solicitudes'));
     }
 }
