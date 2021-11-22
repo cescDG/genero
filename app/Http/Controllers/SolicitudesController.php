@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Libros;
 use App\Models\Solicitud;
+use Facade\Ignition\SolutionProviders\DefaultDbNameSolutionProvider;
 use http\Exception;
 use Illuminate\Http\Request;
 
@@ -39,16 +40,20 @@ class SolicitudesController extends Controller
     {
         $Us = auth()->user()->servidorPublico;
         $registro = $request ->except('_token');
-        $fecha_actual = date("Y-m-d");
-        $fecha_entrega_sistema = date("Y-m-d",strtotime($fecha_actual."+ 30 days"));
-        $registro['solicitante'] = $Us->N_Usuario;
-        $registro['fecha_entrega_sistema'] = $fecha_entrega_sistema;
+        $libro = Libros::find($registro['libro_id']);
+        $stock =$libro['stock'];
+        if ($stock >0){
+            $stock = $stock -1;
+            $lib['stock'] = $stock;
+            $libro->update($lib);
 
-        $libros = Solicitud::create($registro);
-
+            $fecha_actual = date("Y-m-d");
+            $fecha_entrega_sistema = date("Y-m-d",strtotime($fecha_actual."+ 30 days"));
+            $registro['solicitante'] = $Us->N_Usuario;
+            $registro['fecha_entrega_sistema'] = $fecha_entrega_sistema;
+            $libros = Solicitud::create($registro);
+        }
         return redirect('libros');
-
-
     }
 
     /**
