@@ -165,11 +165,11 @@ class LibrosController extends Controller
 
 
         // $usuarios = ServidorPulbicoDetail::where('id_Departamento',140)->first();
-         dd($departamento);
+        // dd();
 
 
-        // $pdf = PDF::loadView('libros.pdfPrestamo', compact('data','dir','departamento','sp'));
-        // return $pdf->stream('dependencia.pdf');
+        $pdf = PDF::loadView('libros.pdfPrestamo', compact('data','dir','departamento','sp'));
+        return $pdf->stream('dependencia.pdf');
     }
 
     public function busquedaLibro(Request $request){
