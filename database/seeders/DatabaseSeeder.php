@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PreguntasSeeder::class);
         $this->call(ValidacionSeed::class);
         $this->call(FactorSeeder::class);
+        
     }
 }
