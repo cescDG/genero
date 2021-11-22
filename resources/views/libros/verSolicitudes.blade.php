@@ -47,7 +47,7 @@
                                                             </a>
 
                                                             <a  title="PDF" data-position="bottom" data-tooltip="PDF"
-                                                            onclick="pdf({{$libro->id}});" class=" tooltipped ">
+                                                            href="{{ route('pdf', $libro->id)}}"  target="_blank" class=" tooltipped ">
                                                              <i class="material-icons iconlegislatura">picture_as_pdf</i>
                                                          </a>
                                                         @endif
