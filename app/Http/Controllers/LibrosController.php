@@ -27,7 +27,10 @@ class LibrosController extends Controller
         foreach ($libros as $libro){
             $solicitudes = Solicitud::where('status','!=','2')->where('libro_id', $libro->id)->first();
             if ($solicitudes){
-                $libro['disponible'] = $solicitudes->fecha_entrega_sistema;
+                $libroStock = Libros::find($libro->id);
+                if($libroStock->stock == 0) {
+                    $libro['disponible'] = $solicitudes->fecha_entrega_sistema;
+                }
             }
         }
 

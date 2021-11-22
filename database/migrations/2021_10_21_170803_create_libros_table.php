@@ -18,6 +18,7 @@ class CreateLibrosTable extends Migration
             $table->string("nombre");
             $table->text("autor")->nullable();
             $table->text("descripcion")->nullable();
+            $table->integer("stock")->nullable();
             $table->timestamps();
         });
     }
