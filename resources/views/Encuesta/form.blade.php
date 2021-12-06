@@ -4,9 +4,9 @@
             <div class="section">
                 <div class="card">
                     <div class="card-content">
-                        <h1>Diagnóstico de igualdad de trato y oportunidades entre mujeres y hombres</h1>
+                        <h1>DIAGNÓSTICO DE IGUALDAD DE TRATO Y OPORTUNIDADES ENTRE MUJERES Y HOMBRES.</h1>
 
-                        <span><strong>Instrucciones:</strong> Selecciona la opción en el círculo que corresponda al valor de su respuesta. </span>
+                        <span><strong>Instrucciones:</strong> El diagnóstico está conformado por siete secciones, por favor lea cuidadosamente cada una de las preguntas y elija el círculo que corresponda a su respuesta. </span>
                         <ul class="stepper horizontal" id="horizStepper">
                             <li class="step active">
                                 <div class="step-title waves-effect tooltipped" data-tooltip="Ambiente de trabajo y discriminación"> Ambiente de trabajo y<br> discriminación</div>
