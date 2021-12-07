@@ -56,7 +56,10 @@ class DatosGeneralesUController extends Controller
         $reg['rfc_usuario'] = $servidorP->rfc;
         $encuesta = DatosGeneralesU::create($reg);
 
-        return redirect('encuesta');
+        $usuario = auth()->user();
+        $respuestas = DatosGeneralesU::where('rfc_usuario',$usuario->rfc)->get();
+        return view('home', compact('respuestas'));
+     //   return redirect('encuesta');
     }
 
     /**
