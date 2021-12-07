@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('encuesta.resources.views.layouts.app')
 
 @section('content')
 <div class="container">
