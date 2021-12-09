@@ -14,7 +14,7 @@
 </html>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        window.location.href = "{{asset('/home')}}";
+        window.location.href = "{{asset('home')}}";
     }, false);
 </script>
 
