@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta name="author" content="ThemeSelect">
     <title>Ingreso</title>
-    <link rel="apple-touch-icon" href="{{ asset('genero/images/logo/legisfav.svg') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('genero/images/logo/legisfav.svg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('generos/images/logo/legisfav.svg') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('generos/images/logo/legisfav.svg') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- BEGIN: VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('genero/vendors/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('generos/vendors/vendors.min.css') }}">
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('genero/css/themes/vertical-menu-nav-dark-template/materialize.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('genero/css/themes/vertical-menu-nav-dark-template/style.cs') }}s">
-    <link rel="stylesheet" type="text/css" href="{{ asset('genero/css/pages/login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('generos/css/themes/vertical-menu-nav-dark-template/materialize.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('generos/css/themes/vertical-menu-nav-dark-template/style.cs') }}s">
+    <link rel="stylesheet" type="text/css" href="{{ asset('generos/css/pages/login.css') }}">
     <!-- END: Page Level CSS-->
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('genero/css/custom/custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('generos/css/custom/custom.css') }}">
     <!-- END: Custom CSS-->
 </head>
 <!-- END: Head-->
@@ -77,14 +77,14 @@
 </div>
 
 <!-- BEGIN VENDOR JS-->
-<script src="{{ asset('genero/js/vendors.min.js') }}"></script>
+<script src="{{ asset('generos/js/vendors.min.js') }}"></script>
 <!-- BEGIN VENDOR JS-->
 <!-- BEGIN PAGE VENDOR JS-->
 <!-- END PAGE VENDOR JS-->
 <!-- BEGIN THEME  JS-->
-<script src="{{ asset('genero/js/plugins.js') }}"></script>
-<script src="{{ asset('genero/js/search.js') }}"></script>
-<script src="{{ asset('genero/js/custom/custom-script.js') }}"></script>
+<script src="{{ asset('generos/js/plugins.js') }}"></script>
+<script src="{{ asset('generos/js/search.js') }}"></script>
+<script src="{{ asset('generos/js/custom/custom-script.js') }}"></script>
 <!-- END THEME  JS-->
 <!-- BEGIN PAGE LEVEL JS-->
 <!-- END PAGE LEVEL JS-->

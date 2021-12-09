@@ -23,7 +23,7 @@
                             <div class="card-content">
                                 <center>
                                 <img style="width: 90%;"
-                                     src="{{ asset('genero/images/logo/banner_logos.png' ) }}">
+                                     src="{{ asset('generos/images/logo/banner_logos.png' ) }}">
                                     </center>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                                             <center>
                                                 @if ($libros[$libro]->disponible)
                                                     <img class="materialboxed"
-                                                         src="{{ asset('genero/images/libros/' . $imagen . '.png') }}"
+                                                         src="{{ asset('generos/images/libros/' . $imagen . '.png') }}"
                                                          style="
                                                     width: 70%;
                                                    " alt="name" class="circle"
@@ -75,7 +75,7 @@
                                                     <br>
                                                 @else
                                                     <img class="materialboxed"
-                                                         src="{{ asset('genero/images/libros/' . $imagen . '.png') }}"
+                                                         src="{{ asset('generos/images/libros/' . $imagen . '.png') }}"
                                                          style="
                                                     width: 70%;
                                                    " alt="name" class="circle"

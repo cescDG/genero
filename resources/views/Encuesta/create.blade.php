@@ -11,7 +11,7 @@
             <div class="container">
                 <br>
                 <center>
-                    <img class="collection-item avatar" src="{{ asset('genero/images/logo/warning.png')}}" width="25" height="25"  alt="name" class="circle">
+                    <img class="collection-item avatar" src="{{ asset('generos/images/logo/warning.png')}}" width="25" height="25"  alt="name" class="circle">
 
                     <strong class>ENCUESTA REALIZADA</strong>
                     <br>

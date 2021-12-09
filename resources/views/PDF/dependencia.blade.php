@@ -249,7 +249,7 @@
 <header>
     <center>
         <div class="row">
-            <img src="{{ asset('genero/images/logo/sup.png') }}" alt=" avatar" style="width: 100%;" />
+            <img src="{{ asset('generos/images/logo/sup.png') }}" alt=" avatar" style="width: 100%;" />
         </div>
     </center>
 </header>
@@ -332,7 +332,7 @@
    <footer>
        <center>
            <div class="row">
-               <img src="{{ asset('genero/images/logo/inf.png') }}" alt=" avatar" style="width: 85%;" />
+               <img src="{{ asset('generos/images/logo/inf.png') }}" alt=" avatar" style="width: 85%;" />
            </div>
        </center>
    </footer>
