@@ -8,7 +8,7 @@
                     <div class="card-content">
                         <center>
                             <img style="width: 90%;"
-                                 src="{{ asset('genero/images/logo/banner_logos.png' ) }}">
+                                 src="{{ asset('generos/images/logo/banner_logos.png' ) }}">
                         </center>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                         <br>
                         <br>
                         <img class="materialboxed"
-                             src="{{ asset('genero/images/libros/' . $libro->id . '.png') }}"
+                             src="{{ asset('generos/images/libros/' . $libro->id . '.png') }}"
                              style="width: 100%; " alt="name" class="circle"
                              title="Titulo: {{ $libro->nombre }} / Autor: {{ $libro->autor }}">
                         <br>

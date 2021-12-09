@@ -257,7 +257,7 @@ padding-left: 20px;
         <br>
         <center>
             <div class="row">
-                <img src="{{ asset('genero/images/logo/librosg.png') }}" alt=" avatar" style="width: 40%;" />
+                <img src="{{ asset('generos/images/logo/librosg.png') }}" alt=" avatar" style="width: 40%;" />
 
             </div>
 
@@ -377,7 +377,7 @@ padding-left: 20px;
 
         <center>
             <div class="row">
-                <img src="{{ asset('genero/images/logo/membrete3.png') }}" alt=" avatar" style="width: 90%;" />
+                <img src="{{ asset('generos/images/logo/membrete3.png') }}" alt=" avatar" style="width: 90%;" />
             </div>
 
         </center>

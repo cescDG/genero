@@ -2,7 +2,7 @@
     data-menu="menu-navigation" data-collapsible="menu-accordion">
     <h1 class="logo-wrapper img">
         <a class="brand-logo center darken-1" style="color: #000000; text-align: center !important;" href="">
-            <img src="{{ asset('genero/images/libros/logo_legislatura.png') }}" alt=" avatar" width="100%"/>
+            <img src="{{ asset('generos/images/libros/logo_legislatura.png') }}" alt=" avatar" width="100%"/>
         </a>
     </h1>
 
