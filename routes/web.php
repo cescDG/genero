@@ -15,7 +15,10 @@ use \App\Http\Controllers\SolicitudesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
 
 Auth::routes();
 
