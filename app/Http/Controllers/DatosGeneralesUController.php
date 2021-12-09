@@ -58,8 +58,8 @@ class DatosGeneralesUController extends Controller
 
         $usuario = auth()->user();
         $respuestas = DatosGeneralesU::where('rfc_usuario',$usuario->rfc)->get();
-        return view('home', compact('respuestas'));
-     //   return redirect('encuesta');
+     //   return view('home', compact('respuestas'));
+        return redirect('encuesta');
     }
 
     /**
