@@ -306,9 +306,12 @@ class ReporteController extends Controller
     }
 
     public function verReporte($id){
-      //  dd($id);
-        $user = User::find($id);
-        $reporte = Respuestas::where('user_rfc', $user->rfc)->get();
+      //  dd($user->rfc);
+
+        $usuarios = ServidorPulbicoDetail::find($id);
+    //    dd($usuarios);
+        $reporte = Respuestas::where('user_rfc', $usuarios->N_Usuario)->get();
+//dd($reporte);
         $si = 0;
         $no = 0;
         $alg = 0;
