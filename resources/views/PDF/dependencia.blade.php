@@ -275,10 +275,12 @@
                     <th>Sí</th>
                     <th>No</th>
                     <th>Algunas veces</th>
-                    <th>Desconozo</th>
+                    <th>Desconozco</th>
+                    <th>Total</th>
                 </tr>
                 </thead>
                 <tbody>
+                    @php $tot = 0; @endphp
                 @foreach ($preguntas as $pregunta)
                         <tr>
                             <td>{{ $pregunta->texto }}</td>
@@ -288,6 +290,7 @@
                                         {{ $value }}
                                     @endif
                                 @endforeach
+                                @php $tot = $tot + $value; @endphp
                             </td>
                             <td align="center" width="10%" style="color:rgb(150,0,72);">
                                 @foreach ($sumaB as $key => $value)
@@ -295,6 +298,7 @@
                                         {{ $value }}
                                     @endif
                                 @endforeach
+                                @php $tot = $tot + $value; @endphp
                             </td>
                             <td align="center" width="10%" style="color:rgb(150,0,72);">
                                 @foreach ($sumaC as $key => $value)
@@ -302,6 +306,7 @@
                                         {{ $value }}
                                     @endif
                                 @endforeach
+                                @php $tot = $tot + $value; @endphp
                             </td>
                             <td align="center" width="10%" style="color:rgb(150,0,72);">
                                 @foreach ($sumaD as $key => $value)
@@ -309,7 +314,9 @@
                                         {{ $value }}
                                     @endif
                                 @endforeach
+                                @php $tot = $tot + $value; @endphp
                             </td>
+                            <td>{{$tot}}</td>
                         </tr>
                 @endforeach
                 <tr>
