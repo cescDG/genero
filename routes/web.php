@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("reporte/dependencia",  [ReporteController::class, 'dependencia'])->name('reportes.dependencia');
     Route::get("reporte/pregunta",  [ReporteController::class, 'pregunta'])->name('reportes.pregunta');
     Route::get("reporte/individual",  [ReporteController::class, 'individual'])->name('reportes.individual');
+    Route::get("reporte/sinRegistro",  [ReporteController::class, 'sinRegistro'])->name('reportes.sinRegistro');
     Route::get('getdireccion/{dependencia_id}', [ReporteController::class, 'obtenerDireccion']);
     Route::get('getDep/{id}', [ReporteController::class, 'getDep']);
     Route::get('getdepartamento/{direccion_id}', [ReporteController::class, 'obtenerDepto']);

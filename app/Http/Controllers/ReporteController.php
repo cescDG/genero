@@ -17,6 +17,7 @@ use App\Models\ServidorPulbicoDetail;
 use App\Exports\DependenciaExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Jenssegers\Date\Date;
+use PhpParser\Node\Stmt\DeclareDeclare;
 
 
 class ReporteController extends Controller
@@ -338,6 +339,28 @@ class ReporteController extends Controller
         $datas['desco']= $desco;
 
         return view('reportes.individualUs', compact('reporte','si','no','alg','desco','datas'));
+    }
+
+    public function sinRegistro(){
+        $timestam = date('Y-m-d H:i:s');
+        date_default_timezone_set('America/Mexico_City');
+        $dia = date('Y-M-w');
+        $fDia = date('d');
+        $fMes =  Date::now()->format('F');
+        $fAnio = date('Y');
+        $usuarioss = ServidorPulbicoDetail::all()->where('Estado',1);
+
+        $usuarios = [];
+        foreach ($usuarioss as $us){
+            if($us->user){
+                $respuestas = Respuestas::where('user_rfc', $us->user->rfc)->first();
+                if(!$respuestas){
+                    array_push($usuarios,$us);
+                }
+            }
+        }
+        $pdf = PDF::loadView('PDF.sinR', compact('usuarios','dia','fDia','fMes','fAnio'));
+        return $pdf->stream('sinRegistro.pdf');
     }
 }
 

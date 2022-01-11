@@ -2,7 +2,6 @@
         <h4>{{$ubicacion->Nombre}}</h4>
         @foreach ($preguntas as $pregunta)
             <table >
-
                 <thead>
                     <tr>
                         <th >{{ $pregunta->texto }}</th>
