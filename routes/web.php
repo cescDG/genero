@@ -29,11 +29,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get("reporte/pregunta",  [ReporteController::class, 'pregunta'])->name('reportes.pregunta');
     Route::get("reporte/individual",  [ReporteController::class, 'individual'])->name('reportes.individual');
     Route::get("reporte/sinRegistro",  [ReporteController::class, 'sinRegistro'])->name('reportes.sinRegistro');
+    Route::get("reporte/sinRegistroExp",  [ReporteController::class, 'sinRegistroExp'])->name('reportes.sinRegistroExp');
     Route::get('getdireccion/{dependencia_id}', [ReporteController::class, 'obtenerDireccion']);
     Route::get('getDep/{id}', [ReporteController::class, 'getDep']);
     Route::get('getdepartamento/{direccion_id}', [ReporteController::class, 'obtenerDepto']);
     route::post("pdf/dependencia", [ReporteController::class, "pdfDependencia"])->name('pdf.dependencia');
     Route::GET('verReporte/{id}', 'App\Http\Controllers\ReporteController@verReporte')->name('verReporte');
+    Route::get('verGrafica/{id}', 'App\Http\Controllers\ReporteController@verGrafica')->name('verGrafica');
     Route::get('imprimir/{id}', [ReporteController::class, 'generarExcel']);
     Route::get('solicitar/{id}', 'App\Http\Controllers\SolicitudesController@solicitar')->name('solicitar');
     Route::get('solicitudes', 'App\Http\Controllers\LibrosController@solicitudes')->name('solicitudes');

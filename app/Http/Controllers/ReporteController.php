@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Exports\ExpedienteExport;
+use App\Exports\SinRegistroExcelExport;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -230,7 +232,7 @@ class ReporteController extends Controller
         $sumaC = $collection3->pluck('id_pregunta')->countBy();
         $sumaD = $collection4->pluck('id_pregunta')->countBy();
 
-        return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion'));
+        return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','id'));
 
 
     }
@@ -348,7 +350,7 @@ class ReporteController extends Controller
         $fDia = date('d');
         $fMes =  Date::now()->format('F');
         $fAnio = date('Y');
-        $usuarioss = ServidorPulbicoDetail::all()->where('Estado',1);
+        $usuarioss = ServidorPulbicoDetail::orderby('id_Direccion', 'asc')->orderby('id_Departamento', 'asc')->where('Estado',1)->get();
 
         $usuarios = [];
         foreach ($usuarioss as $us){
@@ -361,6 +363,149 @@ class ReporteController extends Controller
         }
         $pdf = PDF::loadView('PDF.sinR', compact('usuarios','dia','fDia','fMes','fAnio'));
         return $pdf->stream('sinRegistro.pdf');
+    }
+
+    public function sinRegistroExp(){
+        $timestam = date('Y-m-d H:i:s');
+        date_default_timezone_set('America/Mexico_City');
+        $dia = date('Y-M-w');
+        $fDia = date('d');
+        $fMes =  Date::now()->format('F');
+        $fAnio = date('Y');
+        $usuarioss = ServidorPulbicoDetail::orderby('id_Direccion', 'asc')->orderby('id_Departamento', 'asc')->where('Estado',1)->get();
+
+        $usuarios = [];
+        foreach ($usuarioss as $us){
+            if($us->user){
+                $respuestas = Respuestas::where('user_rfc', $us->user->rfc)->first();
+                if(!$respuestas){
+                    array_push($usuarios,$us);
+                }
+            }
+        }
+        return Excel::download(new SinRegistroExcelExport($usuarios), "SinRegistro.xlsx");
+    }
+
+
+    public function verGrafica($id)
+    {
+
+        $collection1 = collect([]);
+        $collection2 = collect([]);
+        $collection3 = collect([]);
+        $collection4 = collect([]);
+        $respuestas = [];
+
+        $ubicacion = Dependencia::whereidDependencia($id)->first();
+
+        $preguntas = Preguntas::all();
+        $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+
+        foreach ($usuarios as $usuario) {
+            if ($usuario->user) {
+                $res = Respuestas::where('user_rfc', $usuario->user->rfc)->get();
+                if (!$res->isEmpty()) {
+                    array_push($respuestas, $res);
+                }
+            }
+        }
+
+        foreach ($respuestas as $respuesta) {
+            foreach ($respuesta as $item) {
+                if ($item->respuesta == "A") {
+
+                    $collection1->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+                } elseif ($item->respuesta == "B") {
+
+                    $collection2->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+
+                } elseif ($item->respuesta == "C") {
+
+                    $collection3->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+
+                } elseif ($item->respuesta == "D") {
+
+                    $collection4->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+
+                }
+            }
+
+        }
+
+        $sumaA = $collection1->pluck('id_pregunta')->countBy();
+        $sumaB = $collection2->pluck('id_pregunta')->countBy();
+        $sumaC = $collection3->pluck('id_pregunta')->countBy();
+        $sumaD = $collection4->pluck('id_pregunta')->countBy();
+         $siP1 = 0;
+         $noP1 = 0;
+         $alP1 = 0;
+         $descoP1 = 0;
+
+         foreach ($preguntas as $pregunta){
+             foreach ($sumaA as $key => $value){
+                 if ($key == $pregunta->id){
+                     if ($key == $pregunta->id){
+                         if (empty($value)){
+                             $sii = $value;
+                         }else{
+                             $sii = 0;
+                         }
+                         if($pregunta->id == 1){
+                             $siP1 = $sii;
+                         }
+                        if($pregunta->id == 2){
+                            $siP2 = $sii;
+                            dd($siP2);
+                        }
+                        if($pregunta->id == 3){
+                            $siP3 = $sii;
+                        }
+                        if($pregunta->id == 4){
+                            $siP4 = $sii;
+                        }
+                       if($pregunta->id == 5){
+                           $siP5 = $sii;
+                       }
+
+                       if($pregunta->id == 6){
+                           $siP6 = $sii;
+                       }
+
+                       if($pregunta->id == 7){
+                           $siP7 = $sii;
+                       }
+
+                       if($pregunta->id == 8){
+                           $siP8 = $sii;
+                       }
+
+                       if($pregunta->id == 9){
+                           $siP9 = $sii;
+                       }
+
+
+                     }
+                 }
+
+             }
+         }
+
+
     }
 }
 
