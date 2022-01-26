@@ -24,9 +24,13 @@ class HomeController extends Controller
     {
         $preguntas = Preguntas::all();
         $usuario = auth()->user();
+        if(auth()->user()->rfc =='DIRG940621' || auth()->user()->rfc =='MATD810802' || auth()->user()->rfc =='DOOJ900120'){
+            $respuestas = Respuestas::where('user_rfc',$usuario->rfc)->get();
+            return view('home', compact('respuestas'));
+        }else{
+            return redirect('logout');
+        }
 
-        $respuestas = Respuestas::where('user_rfc',$usuario->rfc)->get();
-        return view('home', compact('respuestas'));
     }
 
     /**
