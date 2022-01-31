@@ -50,8 +50,12 @@
 
     <input type="hidden" name="tit" id="tit" value="<?php echo $tit; ?>">
 
-    <figure class="highcharts-figure">
-    <div id="container"></div>
+    <figure class="highcharts-figure" style="width: 95%; height: 150%">
+        <br>
+        <br>
+    <div id="container" style="width: 100%; height: 150%">
+
+    </div>
     </figure>
 
 @endsection
@@ -156,185 +160,53 @@
                     categories: [
                         '¿En su unidad administrativa existe un ambiente de trabajo cordial?',
                         '¿Su jefa(e) inmediato fomenta la igualdad y no discriminación entre mujeres y hombres?',
-                        '¿El trato entre mujeres y hombres es respetuoso, sin importar el nivel jerárquico o sexo?\t',
+                        '¿El trato entre mujeres y hombres es respetuoso, sin importar el nivel jerárquico o sexo?',
                         '¿Ha sido discriminada(o) por su apariencia física, sexo, edad, discapacidad, condición de salud, estado civil, embarazo o preferencia sexual?',
                         '¿Existen actos, hechos o expresiones que refuercen actitudes de desigualdad entre mujeres y hombres?',
                         '¿Se respeta y promueve la opinión por igual de mujeres y hombres sin distinción en su ámbito de trabajo?',
                         '¿Se respeta y promueve la opinión por igual de mujeres y hombres sin distinción en su ámbito de trabajo?',
                         '¿Ha sentido intimidación o maltrato por causa de su sexo?',
                         '¿Se respeta por igual la autoridad de mujeres y hombres?'
-                    ],
-                    crosshair: true
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'Respuestas'
-                    }
-                },
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} SP</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
-                    }
-                },
-                series: [{
-                    name: 'SÍ',
-                    data: [si1, si2,si3, si4, si5, si6, si7, si8, si9]
-
-                }, {
-                    name: 'NO',
-                    data: [no1, no2, no3, no4, no5, no6, no7, no8, no9]
-
-                }, {
-                    name: 'ALGUNAS VECES',
-                    data: [al1, al2, al3, al4, al5, al6, al7, al8,al9]
-
-                }, {
-                    name: 'DESCONOZCO',
-                    data: [de1, de2, de3, de4, de5, de6, de7, de8, de9]
-
-                }]
-            });
-        })
-    </script>
-@endpush
-
-@push('scripts')
-
-    <script>
-        $(document).ready(function() {
-            var siP = document.getElementById("si1").value;
-            let si1 =  parseInt(siP);
-            var noP = document.getElementById("no1").value;
-            let no1 =  parseInt(noP);
-            var alP = document.getElementById("al1").value;
-            let al1 =  parseInt(alP);
-            var deP = document.getElementById("de1").value;
-            let de1 =  parseInt(deP);
-
-            var siP2 = document.getElementById("si2").value;
-            let si2 =  parseInt(siP2);
-            var noP2 = document.getElementById("no2").value;
-            let no2 =  parseInt(noP2);
-            var alP2 = document.getElementById("al2").value;
-            let al2 =  parseInt(alP2);
-            var deP2 = document.getElementById("de2").value;
-            let de2 =  parseInt(deP2);
-
-            var siP3 = document.getElementById("si3").value;
-            let si3 =  parseInt(siP3);
-            var noP3 = document.getElementById("no3").value;
-            let no3 =  parseInt(noP3);
-            var alP3 = document.getElementById("al3").value;
-            let al3 =  parseInt(alP3);
-            var deP3 = document.getElementById("de3").value;
-            let de3 =  parseInt(deP3);
-
-            var siP4 = document.getElementById("si4").value;
-            let si4 =  parseInt(siP4);
-            var noP4 = document.getElementById("no4").value;
-            let no4 =  parseInt(noP4);
-            var alP4 = document.getElementById("al4").value;
-            let al4 =  parseInt(alP4);
-            var deP4 = document.getElementById("de4").value;
-            let de4 =  parseInt(deP4);
-
-            var siP5 = document.getElementById("si5").value;
-            let si5 =  parseInt(siP5);
-            var noP5 = document.getElementById("no5").value;
-            let no5 =  parseInt(noP5);
-            var alP5 = document.getElementById("al5").value;
-            let al5 =  parseInt(alP5);
-            var deP5 = document.getElementById("de5").value;
-            let de5 =  parseInt(deP5);
-
-            var siP6 = document.getElementById("si6").value;
-            let si6 =  parseInt(siP6);
-            var noP6 = document.getElementById("no6").value;
-            let no6 =  parseInt(noP6);
-            var alP6 = document.getElementById("al6").value;
-            let al6 =  parseInt(alP6);
-            var deP6 = document.getElementById("de6").value;
-            let de6 =  parseInt(deP6);
-
-            var siP7 = document.getElementById("si7").value;
-            let si7 =  parseInt(siP7);
-            var noP7 = document.getElementById("no7").value;
-            let no7 =  parseInt(noP7);
-            var alP7 = document.getElementById("al7").value;
-            let al7 =  parseInt(alP7);
-            var deP7 = document.getElementById("de7").value;
-            let de7 =  parseInt(deP7);
-
-            var siP8 = document.getElementById("si8").value;
-            let si8 =  parseInt(siP8);
-            var noP8 = document.getElementById("no8").value;
-            let no8 =  parseInt(noP8);
-            var alP8 = document.getElementById("al8").value;
-            let al8 =  parseInt(alP8);
-            var deP8 = document.getElementById("de8").value;
-            let de8 =  parseInt(deP8);
-
-            var siP9 = document.getElementById("si9").value;
-            let si9 =  parseInt(siP9);
-            var noP9 = document.getElementById("no9").value;
-            let no9 =  parseInt(noP9);
-            var alP9 = document.getElementById("al9").value;
-            let al9 =  parseInt(alP9);
-            var deP9 = document.getElementById("de9").value;
-            let de9 =  parseInt(deP9);
-
-            var titulo = document.getElementById("tit").value;
-
-
-            var chart = Highcharts.chart('container', {
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: titulo
-                },
-                xAxis: {
-                    categories: [
-                        '¿En su unidad administrativa existe un ambiente de trabajo cordial?',
-                        '¿Su jefa(e) inmediato fomenta la igualdad y no discriminación entre mujeres y hombres?',
-                        '¿El trato entre mujeres y hombres es respetuoso, sin importar el nivel jerárquico o sexo?\t',
-                        '¿Ha sido discriminada(o) por su apariencia física, sexo, edad, discapacidad, condición de salud, estado civil, embarazo o preferencia sexual?',
-                        '¿Existen actos, hechos o expresiones que refuercen actitudes de desigualdad entre mujeres y hombres?',
-                        '¿Se respeta y promueve la opinión por igual de mujeres y hombres sin distinción en su ámbito de trabajo?',
-                        '¿La asignación de responsabilidades y cargas de trabajo son las mismas para mujeres y hombres en el mismo nivel jerárquico?',
-                        '¿Ha sentido intimidación o maltrato por causa de su sexo?',
-                        '¿Se respeta por igual la autoridad de mujeres y hombres?'
-                    ],
-                    crosshair: true
+                    ]
                 },
                 yAxis: {
                     min: 0,
                     title: {
                         text: 'Servidores Públicos'
+                    },
+                    stackLabels: {
+                        enabled: true,
+                        style: {
+                            fontWeight: 'bold',
+                            color: ( // theme
+                                Highcharts.defaultOptions.title.style &&
+                                Highcharts.defaultOptions.title.style.color
+                            ) || 'gray'
+                        }
                     }
                 },
+                legend: {
+                    align: 'right',
+                    x: -20,
+                    verticalAlign: 'top',
+                    y: 25,
+                    floating: false,
+                    backgroundColor:
+                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                    borderColor: '#CCC',
+                    borderWidth: 1,
+                    shadow: false
+                },
                 tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} Servidores Públicos </b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
+                    headerFormat: '<b>{point.x}</b><br/>',
+                    pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
                 },
                 plotOptions: {
                     column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: true
+                        }
                     }
                 },
                 series: [{
@@ -353,7 +225,10 @@
                     name: 'DESCONOZCO',
                     data: [de1, de2, de3, de4, de5, de6, de7, de8, de9]
 
-                }]
+                }],
+                style: {
+                   fontsize: '10px'
+                }
             });
         })
     </script>
