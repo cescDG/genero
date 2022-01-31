@@ -119,26 +119,46 @@
                         '¿Ha participado en cursos o talleres de sensibilización o desarrollo que promuevan igualdad de trato y oportunidades entre mujeres y hombres?',
                         '¿Cuándo recibe alguna capacitación en el tema de género, le permite reflexionar sobre su actuar?'
                     ],
-                    crosshair: true
+                 //   crosshair: true
                 },
                 yAxis: {
                     min: 0,
                     title: {
-                        text: 'Servidor público'
+                        text: 'Servidores Públicos'
+                    },
+                    stackLabels: {
+                        enabled: true,
+                        style: {
+                            fontWeight: 'bold',
+                            color: ( // theme
+                                Highcharts.defaultOptions.title.style &&
+                                Highcharts.defaultOptions.title.style.color
+                            ) || 'gray'
+                        }
                     }
                 },
+                legend: {
+                    align: 'right',
+                    x: -30,
+                    verticalAlign: 'top',
+                    y: 25,
+                    floating: true,
+                    backgroundColor:
+                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                    borderColor: '#CCC',
+                    borderWidth: 1,
+                    shadow: false
+                },
                 tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} Servidor público</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
+                    headerFormat: '<b>{point.x}</b><br/>',
+                    pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
                 },
                 plotOptions: {
                     column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
+                        stacking: 'normal',
+                        dataLabels: {
+                            enabled: true
+                        }
                     }
                 },
                 series: [{

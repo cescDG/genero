@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Exports\ExpedienteExport;
 use App\Exports\SinRegistroExcelExport;
+use App\Models\DatosGeneralesU;
+use App\Models\Sexo;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -189,52 +191,39 @@ class ReporteController extends Controller
                 }
             }
         }
-
         foreach ($respuestas as $respuesta) {
             foreach ($respuesta as $item) {
                 if($item->respuesta == "A"){
-
                     $collection1->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
-
                 }elseif($item->respuesta == "B"){
-
                     $collection2->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
-
-
                 }elseif ($item->respuesta == "C") {
-
                     $collection3->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
-
-
                 }elseif($item->respuesta == "D"){
-
                     $collection4->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
-
                 }
             }
-
         }
-
         $sumaA = $collection1->pluck('id_pregunta')->countBy();
         $sumaB = $collection2->pluck('id_pregunta')->countBy();
         $sumaC = $collection3->pluck('id_pregunta')->countBy();
         $sumaD = $collection4->pluck('id_pregunta')->countBy();
 
-        return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','id'));
-
-
+        $genero = false;
+        $genero_id = 0;
+        return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','id','genero','genero_id'));
     }
 
 
@@ -389,6 +378,10 @@ class ReporteController extends Controller
 
     public function verGrafica($id)
     {
+        $datos = explode("-", $id);
+        $id = $datos[0];
+        $genero = $datos[1];
+        $genero_id = $datos[2];
 
         $collection1 = collect([]);
         $collection2 = collect([]);
@@ -399,7 +392,23 @@ class ReporteController extends Controller
         $ubicacion = Dependencia::whereidDependencia($id)->first();
 
         $preguntas = Preguntas::all();
-        $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+
+        if ($genero == 1){
+            $usuariosDep = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+            foreach ($usuariosDep as $uDep){
+                $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->where('rfc_usuario',$uDep->N_Usuario)->first();
+                if ($usGeneroG){
+                    $usGenero[] = $usGeneroG;
+                }
+            }
+            foreach ($usGenero as $usG){
+                $usuarioss = ServidorPulbicoDetail::where('N_Usuario',$usG->rfc_usuario)->first();
+                $usuarios[] = $usuarioss;
+            }
+        }else{
+            $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+        }
+
 
         foreach ($usuarios as $usuario) {
             if ($usuario->user) {
@@ -746,6 +755,12 @@ class ReporteController extends Controller
     }
 
     public function verGrafica2($id){
+
+        $datos = explode("-", $id);
+        $id = $datos[0];
+        $genero = $datos[1];
+        $genero_id = $datos[2];
+
         $collection1 = collect([]);
         $collection2 = collect([]);
         $collection3 = collect([]);
@@ -755,7 +770,23 @@ class ReporteController extends Controller
         $ubicacion = Dependencia::whereidDependencia($id)->first();
 
         $preguntas = Preguntas::all();
-        $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+
+        if ($genero == 1){
+            $usuariosDep = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+            foreach ($usuariosDep as $uDep){
+                $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->where('rfc_usuario',$uDep->N_Usuario)->first();
+                if ($usGeneroG){
+                    $usGenero[] = $usGeneroG;
+                }
+            }
+            foreach ($usGenero as $usG){
+                $usuarioss = ServidorPulbicoDetail::where('N_Usuario',$usG->rfc_usuario)->first();
+                $usuarios[] = $usuarioss;
+            }
+        }else{
+            $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+        }
+
 
         foreach ($usuarios as $usuario) {
             if ($usuario->user) {
@@ -1026,6 +1057,11 @@ class ReporteController extends Controller
     }
 
     public function verGrafica3($id){
+        $datos = explode("-", $id);
+        $id = $datos[0];
+        $genero = $datos[1];
+        $genero_id = $datos[2];
+
         $collection1 = collect([]);
         $collection2 = collect([]);
         $collection3 = collect([]);
@@ -1035,7 +1071,22 @@ class ReporteController extends Controller
         $ubicacion = Dependencia::whereidDependencia($id)->first();
 
         $preguntas = Preguntas::all();
-        $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+
+        if ($genero == 1){
+            $usuariosDep = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+            foreach ($usuariosDep as $uDep){
+                $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->where('rfc_usuario',$uDep->N_Usuario)->first();
+                if ($usGeneroG){
+                    $usGenero[] = $usGeneroG;
+                }
+            }
+            foreach ($usGenero as $usG){
+                $usuarioss = ServidorPulbicoDetail::where('N_Usuario',$usG->rfc_usuario)->first();
+                $usuarios[] = $usuarioss;
+            }
+        }else{
+            $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+        }
 
         foreach ($usuarios as $usuario) {
             if ($usuario->user) {
@@ -1306,6 +1357,11 @@ class ReporteController extends Controller
     }
 
     public function verGrafica4($id){
+        $datos = explode("-", $id);
+        $id = $datos[0];
+        $genero = $datos[1];
+        $genero_id = $datos[2];
+
         $collection1 = collect([]);
         $collection2 = collect([]);
         $collection3 = collect([]);
@@ -1315,7 +1371,22 @@ class ReporteController extends Controller
         $ubicacion = Dependencia::whereidDependencia($id)->first();
 
         $preguntas = Preguntas::all();
-        $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+
+        if ($genero == 1){
+            $usuariosDep = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+            foreach ($usuariosDep as $uDep){
+                $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->where('rfc_usuario',$uDep->N_Usuario)->first();
+                if ($usGeneroG){
+                    $usGenero[] = $usGeneroG;
+                }
+            }
+            foreach ($usGenero as $usG){
+                $usuarioss = ServidorPulbicoDetail::where('N_Usuario',$usG->rfc_usuario)->first();
+                $usuarios[] = $usuarioss;
+            }
+        }else{
+            $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+        }
 
         foreach ($usuarios as $usuario) {
             if ($usuario->user) {
@@ -1587,6 +1658,10 @@ class ReporteController extends Controller
 
     public function verGrafica5($id)
     {
+        $datos = explode("-", $id);
+        $id = $datos[0];
+        $genero = $datos[1];
+        $genero_id = $datos[2];
 
         $collection1 = collect([]);
         $collection2 = collect([]);
@@ -1597,7 +1672,22 @@ class ReporteController extends Controller
         $ubicacion = Dependencia::whereidDependencia($id)->first();
 
         $preguntas = Preguntas::all();
-        $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+
+        if ($genero == 1){
+            $usuariosDep = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+            foreach ($usuariosDep as $uDep){
+                $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->where('rfc_usuario',$uDep->N_Usuario)->first();
+                if ($usGeneroG){
+                    $usGenero[] = $usGeneroG;
+                }
+            }
+            foreach ($usGenero as $usG){
+                $usuarioss = ServidorPulbicoDetail::where('N_Usuario',$usG->rfc_usuario)->first();
+                $usuarios[] = $usuarioss;
+            }
+        }else{
+            $usuarios = ServidorPulbicoDetail::where('id_Dependencia', $ubicacion->id_Dependencia)->get();
+        }
 
         foreach ($usuarios as $usuario) {
             if ($usuario->user) {
@@ -1920,7 +2010,81 @@ class ReporteController extends Controller
         return view('reportes.verGraficas5', compact('siP1','siP2','siP3','siP4','siP5','siP6','siP7','siP8', 'noP1','noP2','noP3','noP4','noP5','noP6','noP7','noP8','alP1','alP2','alP3','alP4','alP5','alP6','alP7','alP8','descoP1','descoP2','descoP3','descoP4','descoP5','descoP6','descoP7', 'descoP8','tit'));
 
     }
+
+    public function preguntaG()
+    {
+        $Dependencia = Arr::pluck(\App\Models\Dependencia::all(), "Nombre","id_Dependencia");
+        $genero = Arr::pluck(Sexo::all(),'respuesta','id');
+        //    $preguntas= Preguntas::paginate(5);
+        return view('reportes.preguntaG', compact('Dependencia','genero'));
+    }
+
+    public function getDepG($id, $genero_id){
+
+        $usuariosDep = ServidorPulbicoDetail::where('id_Dependencia', $id)->get();
+        foreach ($usuariosDep as $uDep){
+            $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->where('rfc_usuario',$uDep->N_Usuario)->first();
+            if ($usGeneroG){
+                $usGenero[] = $usGeneroG;
+            }
+        }
+
+        $collection1 = collect([]);
+        $collection2 = collect([]);
+        $collection3 = collect([]);
+        $collection4 = collect([]);
+        $respuestas = [];
+
+        $ubicacion = Dependencia::whereidDependencia($id)->first();
+
+        $preguntas = Preguntas::all();
+        foreach ($usGenero as $usG){
+            $usuarioss = ServidorPulbicoDetail::where('N_Usuario',$usG->rfc_usuario)->first();
+            $usuarios[] = $usuarioss;
+        }
+
+        //dd($usuarios);
+
+        foreach ($usuarios as $usuario) {
+           // dd($usuario);
+            if($usuario->user){
+                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
+                if(!$res->isEmpty()){
+                    array_push($respuestas,$res);
+                }
+            }
+        }
+        foreach ($respuestas as $respuesta) {
+           // dd($respuesta);
+            foreach ($respuesta as $item) {
+                if($item->respuesta == "A"){
+                    $collection1->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+                }elseif($item->respuesta == "B"){
+                    $collection2->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+                }elseif ($item->respuesta == "C") {
+                    $collection3->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+                }elseif($item->respuesta == "D"){
+                    $collection4->push([
+                        "id_pregunta" => $item->pregunta,
+                        "respuesta" => $item->respuesta
+                    ]);
+                }
+            }
+        }
+        $sumaA = $collection1->pluck('id_pregunta')->countBy();
+        $sumaB = $collection2->pluck('id_pregunta')->countBy();
+        $sumaC = $collection3->pluck('id_pregunta')->countBy();
+        $sumaD = $collection4->pluck('id_pregunta')->countBy();
+        $genero = true;
+        return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','id','genero','genero_id'));
+    }
 }
-
-
-
