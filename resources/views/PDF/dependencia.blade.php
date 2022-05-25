@@ -280,7 +280,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                   
+
                 @foreach ($preguntas as $pregunta)
                 @php $tot = 0; @endphp
                         <tr>
@@ -292,7 +292,7 @@
                                         @php $tot = $tot + $value; @endphp
                                     @endif
                                 @endforeach
-            
+
                             </td>
                             <td align="center" width="10%" style="color:rgb(150,0,72);">
                                 @foreach ($sumaB as $key => $value)

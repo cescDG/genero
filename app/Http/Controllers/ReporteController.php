@@ -57,7 +57,7 @@ class ReporteController extends Controller
     public function pdfDependencia(Request $request){
         $timestam = date('Y-m-d H:i:s');
         date_default_timezone_set('America/Mexico_City');
-               $dia = date('Y-M-w');
+        $dia = date('Y-M-w');
         $fDia = date('d');
         $fMes =  Date::now()->format('F');
         $fAnio = date('Y');
@@ -75,24 +75,22 @@ class ReporteController extends Controller
         if($request->departamento){
             $ubicacion = Departamento::whereidDepartamento($request->departamento)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Departamento',$request->departamento)->get();
-
         }elseif($request->direccion){
             $ubicacion = Direccion::whereidDireccion($request->direccion)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Direccion',$request->direccion)->get();
-
         }elseif($request->dependencia){
             $ubicacion = Dependencia::whereidDependencia($request->dependencia)->first();
             $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$request->dependencia)->get();
-
         }
 
         foreach ($usuarios as $usuario) {
-            if($usuario->user){
-                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
+           // dd($usuario);
+//            if($usuario->user){
+                $res = Respuestas::where('user_rfc',$usuario->N_Usuario)->get();
                 if(!$res->isEmpty()){
                     array_push($respuestas,$res);
                 }
-            }
+//            }
         }
 
         foreach ($respuestas as $respuesta) {
@@ -103,31 +101,26 @@ class ReporteController extends Controller
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
-
                 }elseif($item->respuesta == "B"){
                     $no +=1;
                     $collection2->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
-
                 }elseif ($item->respuesta == "C") {
                     $alg +=1;
                     $collection3->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
-
                 }elseif($item->respuesta == "D"){
                     $desco +=1;
                     $collection4->push([
                         "id_pregunta" => $item->pregunta,
                         "respuesta" => $item->respuesta
                     ]);
-
                 }
             }
-
         }
 
         $sumaA = $collection1->pluck('id_pregunta')->countBy();
@@ -2020,40 +2013,50 @@ class ReporteController extends Controller
     }
 
     public function getDepG($id, $genero_id){
-
-        $usuariosDep = ServidorPulbicoDetail::where('id_Dependencia', $id)->get();
-        foreach ($usuariosDep as $uDep){
-            $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->where('rfc_usuario',$uDep->N_Usuario)->first();
-            if ($usGeneroG){
-                $usGenero[] = $usGeneroG;
-            }
-        }
-
-        $collection1 = collect([]);
-        $collection2 = collect([]);
-        $collection3 = collect([]);
-        $collection4 = collect([]);
         $respuestas = [];
-
-        $ubicacion = Dependencia::whereidDependencia($id)->first();
-
-        $preguntas = Preguntas::all();
-        foreach ($usGenero as $usG){
-            $usuarioss = ServidorPulbicoDetail::where('N_Usuario',$usG->rfc_usuario)->first();
-            $usuarios[] = $usuarioss;
-        }
-
-        //dd($usuarios);
-
-        foreach ($usuarios as $usuario) {
-           // dd($usuario);
-            if($usuario->user){
-                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
+        $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->get();
+        foreach ($usGeneroG as $uDep){
+            $usuariosDep = ServidorPulbicoDetail::where('N_Usuario',$uDep->rfc_usuario)->first();
+            if ($usuariosDep->id_Dependencia == $id){
+                $res = Respuestas::where('user_rfc',$uDep->rfc_usuario)->get();
                 if(!$res->isEmpty()){
                     array_push($respuestas,$res);
                 }
             }
         }
+
+//        foreach ($usuariosDep as $uDep){
+////            $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->where('rfc_usuario',$uDep->N_Usuario)->first();
+//            if ($usGeneroG){
+//                $usGenero[] = $usGeneroG;
+//            }
+//        }
+
+        $collection1 = collect([]);
+        $collection2 = collect([]);
+        $collection3 = collect([]);
+        $collection4 = collect([]);
+
+
+        $ubicacion = Dependencia::whereidDependencia($id)->first();
+
+        $preguntas = Preguntas::all();
+//        foreach ($usGenero as $usG){
+//            $usuarioss = ServidorPulbicoDetail::where('N_Usuario',$usG->rfc_usuario)->first();
+//            $usuarios[] = $usuarioss;
+//        }
+
+        //dd($usuarios);
+
+//        foreach ($usuarios as $usuario) {
+//           // dd($usuario);
+//            if($usuario->user){
+//                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
+//                if(!$res->isEmpty()){
+//                    array_push($respuestas,$res);
+//                }
+//            }
+//        }
         foreach ($respuestas as $respuesta) {
            // dd($respuesta);
             foreach ($respuesta as $item) {
