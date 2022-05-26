@@ -75,13 +75,13 @@ class ReporteController extends Controller
         $desco = 0;
         if($request->departamento){
             $ubicacion = Departamento::whereidDepartamento($request->departamento)->first();
-            $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Departamento', $request->departamento)->get();
+            $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario_genero','s_usuario_genero.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario_genero.id_Departamento', $request->departamento)->get();
         }elseif($request->direccion){
             $ubicacion = Direccion::whereidDireccion($request->direccion)->first();
-            $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Direccion', $request->direccion)->get();
+            $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario_genero','s_usuario_genero.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario_genero.id_Direccion', $request->direccion)->get();
         }elseif($request->dependencia){
             $ubicacion = Dependencia::whereidDependencia($request->dependencia)->first();
-            $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Dependencia', $request->dependencia)->get();
+            $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario_genero','s_usuario_genero.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario_genero.id_Dependencia', $request->dependencia)->get();
         }
 
         foreach ($usuarios as $usuario) {
@@ -168,7 +168,7 @@ class ReporteController extends Controller
         $ubicacion = Dependencia::whereidDependencia($id)->first();
 
         $preguntas = Preguntas::all();
-        $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Dependencia', $id)->get();
+        $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario_genero','s_usuario_genero.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario_genero.id_Dependencia', $id)->get();
 
         foreach ($usuarios as $usuario) {
             $res = Respuestas::where('user_rfc',$usuario->N_Usuario)->get();
@@ -208,7 +208,9 @@ class ReporteController extends Controller
 
         $genero = false;
         $genero_id = 0;
-        return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','id','genero','genero_id'));
+        $datos['dep'] = $id;
+        $datos['genero_id'] = $genero_id ;
+        return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','datos','genero'));
     }
 
 
@@ -2008,9 +2010,9 @@ class ReporteController extends Controller
     public function getDepG(Request $request){
         $datos = $request->except('_token');
         if($datos['edad_id']){
-            $usuarios = DatosGeneralesU::where('sexo', $datos['genero_id'])->where('edad', $datos['edad_id'])->join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Dependencia', $datos['dep'])->get();
+            $usuarios = DatosGeneralesU::where('sexo', $datos['genero_id'])->where('edad', $datos['edad_id'])->join('adminple_saf.s_usuario_genero','s_usuario_genero.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario_genero.id_Dependencia', $datos['dep'])->get();
         }else{
-            $usuarios = DatosGeneralesU::where('sexo', $datos['genero_id'])->join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Dependencia', $datos['dep'])->get();
+            $usuarios = DatosGeneralesU::where('sexo', $datos['genero_id'])->join('adminple_saf.s_usuario_genero','s_usuario_genero.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario_genero.id_Dependencia', $datos['dep'])->get();
         }
 
         $collection1 = collect([]);
