@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Exports\ExpedienteExport;
 use App\Exports\SinRegistroExcelExport;
 use App\Models\DatosGeneralesU;
+use App\Models\Edades;
 use App\Models\Sexo;
 use App\Models\User;
 use Carbon\Carbon;
@@ -74,23 +75,20 @@ class ReporteController extends Controller
         $desco = 0;
         if($request->departamento){
             $ubicacion = Departamento::whereidDepartamento($request->departamento)->first();
-            $usuarios = ServidorPulbicoDetail::where('id_Departamento',$request->departamento)->get();
+            $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Departamento', $request->departamento)->get();
         }elseif($request->direccion){
             $ubicacion = Direccion::whereidDireccion($request->direccion)->first();
-            $usuarios = ServidorPulbicoDetail::where('id_Direccion',$request->direccion)->get();
+            $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Direccion', $request->direccion)->get();
         }elseif($request->dependencia){
             $ubicacion = Dependencia::whereidDependencia($request->dependencia)->first();
-            $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$request->dependencia)->get();
+            $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Dependencia', $request->dependencia)->get();
         }
 
         foreach ($usuarios as $usuario) {
-           // dd($usuario);
-//            if($usuario->user){
-                $res = Respuestas::where('user_rfc',$usuario->N_Usuario)->get();
-                if(!$res->isEmpty()){
-                    array_push($respuestas,$res);
-                }
-//            }
+            $res = Respuestas::where('user_rfc',$usuario->N_Usuario)->get();
+            if(!$res->isEmpty()){
+                array_push($respuestas,$res);
+            }
         }
 
         foreach ($respuestas as $respuesta) {
@@ -135,13 +133,11 @@ class ReporteController extends Controller
 
         $pdf = PDF::loadView('PDF.dependencia', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','si','no','alg','desco','dia','fAnio','fDia','fMes'));
         return $pdf->stream('dependencia.pdf');
-
     }
 
     public function pregunta()
     {
         $Dependencia = Arr::pluck(\App\Models\Dependencia::all(), "Nombre","id_Dependencia");
-    //    $preguntas= Preguntas::paginate(5);
         return view('reportes.pregunta', compact('Dependencia'));
     }
 
@@ -163,8 +159,6 @@ class ReporteController extends Controller
 
 
     public function getDep($id){
-
-
         $collection1 = collect([]);
         $collection2 = collect([]);
         $collection3 = collect([]);
@@ -174,14 +168,12 @@ class ReporteController extends Controller
         $ubicacion = Dependencia::whereidDependencia($id)->first();
 
         $preguntas = Preguntas::all();
-        $usuarios = ServidorPulbicoDetail::where('id_Dependencia',$ubicacion->id_Dependencia)->get();
+        $usuarios = DatosGeneralesU::join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Dependencia', $id)->get();
 
         foreach ($usuarios as $usuario) {
-            if($usuario->user){
-                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
-                if(!$res->isEmpty()){
-                    array_push($respuestas,$res);
-                }
+            $res = Respuestas::where('user_rfc',$usuario->N_Usuario)->get();
+            if(!$res->isEmpty()){
+                array_push($respuestas,$res);
             }
         }
         foreach ($respuestas as $respuesta) {
@@ -2008,55 +2000,36 @@ class ReporteController extends Controller
     {
         $Dependencia = Arr::pluck(\App\Models\Dependencia::all(), "Nombre","id_Dependencia");
         $genero = Arr::pluck(Sexo::all(),'respuesta','id');
+        $edad = Arr::pluck(Edades::all(),'respuesta','id');
         //    $preguntas= Preguntas::paginate(5);
-        return view('reportes.preguntaG', compact('Dependencia','genero'));
+        return view('reportes.preguntaG', compact('Dependencia','genero','edad'));
     }
 
-    public function getDepG($id, $genero_id){
-        $respuestas = [];
-        $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->get();
-        foreach ($usGeneroG as $uDep){
-            $usuariosDep = ServidorPulbicoDetail::where('N_Usuario',$uDep->rfc_usuario)->first();
-            if ($usuariosDep->id_Dependencia == $id){
-                $res = Respuestas::where('user_rfc',$uDep->rfc_usuario)->get();
-                if(!$res->isEmpty()){
-                    array_push($respuestas,$res);
-                }
-            }
+    public function getDepG(Request $request){
+        $datos = $request->except('_token');
+        if($datos['edad_id']){
+            $usuarios = DatosGeneralesU::where('sexo', $datos['genero_id'])->where('edad', $datos['edad_id'])->join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Dependencia', $datos['dep'])->get();
+        }else{
+            $usuarios = DatosGeneralesU::where('sexo', $datos['genero_id'])->join('adminple_saf.s_usuario','s_usuario.N_Usuario', '=', 'datos_generales_u_s.rfc_usuario')->where('s_usuario.id_Dependencia', $datos['dep'])->get();
         }
-
-//        foreach ($usuariosDep as $uDep){
-////            $usGeneroG = DatosGeneralesU::where('sexo', $genero_id)->where('rfc_usuario',$uDep->N_Usuario)->first();
-//            if ($usGeneroG){
-//                $usGenero[] = $usGeneroG;
-//            }
-//        }
 
         $collection1 = collect([]);
         $collection2 = collect([]);
         $collection3 = collect([]);
         $collection4 = collect([]);
+        $respuestas = [];
 
-
-        $ubicacion = Dependencia::whereidDependencia($id)->first();
+        $ubicacion = Dependencia::whereidDependencia($datos['dep'])->first();
 
         $preguntas = Preguntas::all();
-//        foreach ($usGenero as $usG){
-//            $usuarioss = ServidorPulbicoDetail::where('N_Usuario',$usG->rfc_usuario)->first();
-//            $usuarios[] = $usuarioss;
-//        }
 
-        //dd($usuarios);
+        foreach ($usuarios as $usuario) {
+            $res = Respuestas::where('user_rfc',$usuario->N_Usuario)->get();
+            if(!$res->isEmpty()){
+                array_push($respuestas,$res);
+            }
+        }
 
-//        foreach ($usuarios as $usuario) {
-//           // dd($usuario);
-//            if($usuario->user){
-//                $res = Respuestas::where('user_rfc',$usuario->user->rfc)->get();
-//                if(!$res->isEmpty()){
-//                    array_push($respuestas,$res);
-//                }
-//            }
-//        }
         foreach ($respuestas as $respuesta) {
            // dd($respuesta);
             foreach ($respuesta as $item) {
@@ -2083,11 +2056,11 @@ class ReporteController extends Controller
                 }
             }
         }
+        $genero = true;
         $sumaA = $collection1->pluck('id_pregunta')->countBy();
         $sumaB = $collection2->pluck('id_pregunta')->countBy();
         $sumaC = $collection3->pluck('id_pregunta')->countBy();
         $sumaD = $collection4->pluck('id_pregunta')->countBy();
-        $genero = true;
-        return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','id','genero','genero_id'));
+        return view('reportes.show', compact('preguntas','sumaA','sumaB','sumaC','sumaD','ubicacion','genero','datos'));
     }
 }
