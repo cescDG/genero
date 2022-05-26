@@ -27,10 +27,16 @@
                                         <label>DEPENDENCIA</label>
                                     </div>
                                 </div>
-                                <div class="input-field col s6">
+                                <div class="input-field col s3">
                                     <div class="form-group">
                                         {!! Form::select('genero_id', $genero, null, ['class' => 'select2 browser-default', 'placeholder' => 'SELECCIONA UNA OPCIÓN ', 'required', 'id' => 'genero_id']) !!}
                                         <label>Genero</label>
+                                    </div>
+                                </div>
+                                <div class="input-field col s3">
+                                    <div class="form-group">
+                                        {!! Form::select('edad_id', $edad, null, ['class' => 'select2 browser-default', 'placeholder' => 'SELECCIONA UNA OPCIÓN ',  'id' => 'edad_id']) !!}
+                                        <label>Edad</label>
                                     </div>
                                 </div>
                             </center>
@@ -61,10 +67,16 @@
         function searchDep() {
             var dep = $("#dependencia_id").val();
             var genero_id = $("#genero_id").val();
+            var edad_id = $("#edad_id").val();
             console.log(dep);
             $.ajax({
                 type: 'GET',
-                url: "{{ url('getDepG') }}" + "/" + dep  + genero_id,
+                url: "{{ url('getDepG') }}",
+                data: {
+                    'dep': dep,
+                    'genero_id': genero_id,
+                    'edad_id': edad_id
+                },
                 beforeSend: function() {},
                 success: function(response) {
                     $("#detailDep").show();

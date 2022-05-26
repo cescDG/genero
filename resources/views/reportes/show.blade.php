@@ -14,9 +14,9 @@
                 <div class="row">
                     <div class="col s12">
                         <h4 align="center">{{$ubicacion->Nombre}}</h4>
-                        <input type="hidden" name="dependencia" id="dependencia" value="<?php echo $id; ?>">
+                        <input type="hidden" name="dependencia" id="dependencia" value="<?php echo $datos['dep']; ?>">
                         <input type="hidden" name="genero" id="genero" value="<?php echo $genero; ?>">
-                        <input type="hidden" name="genero_id" id="genero_id" value="<?php echo $genero_id; ?>">
+                        <input type="hidden" name="genero_id" id="genero_id" value="<?php echo $datos['genero_id']; ?>">
                         @php $i = 1;@endphp
                         <table>
                             <thead>
@@ -70,7 +70,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <a  href="{{ route('verGrafica', [$id.'-'.$genero.'-'.$genero_id]) }}"  type="submit" name="action" target="_blank">  <p style="text-align: right;">Ver gráfico </p></a>
+                        <a  href="{{ route('verGrafica', [$datos['dep'].'-'.$genero.'-'.$datos['genero_id']]) }}"  type="submit" name="action" target="_blank">  <p style="text-align: right;">Ver gráfico </p></a>
 
                         <br>
                         <br>
@@ -130,7 +130,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <a href="{{ route('verGrafica2', [$id.'-'.$genero.'-'.$genero_id]) }}" target="_blank">  <p style="text-align: right;">Ver gráfico</p></a>
+                        <a href="{{ route('verGrafica2', [$datos['dep'].'-'.$genero.'-'.$datos['genero_id']]) }}" target="_blank">  <p style="text-align: right;">Ver gráfico</p></a>
                         <br>
                         <br>
                         <table>
@@ -189,7 +189,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <a href="{{ route('verGrafica3', [$id.'-'.$genero.'-'.$genero_id]) }}" target="_blank">  <p style="text-align: right;">Ver gráfico</p></a>
+                        <a href="{{ route('verGrafica3', [$datos['dep'].'-'.$genero.'-'.$datos['genero_id']]) }}" target="_blank">  <p style="text-align: right;">Ver gráfico</p></a>
                         <br>
                         <br>
                         <table>
@@ -248,7 +248,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <a href="{{ route('verGrafica4', [$id.'-'.$genero.'-'.$genero_id]) }}" target="_blank">  <p style="text-align: right;">Ver gráfico</p></a>
+                        <a href="{{ route('verGrafica4', [$datos['dep'].'-'.$genero.'-'.$datos['genero_id']]) }}" target="_blank">  <p style="text-align: right;">Ver gráfico</p></a>
                         <br>
                         <br>
                         <table>
@@ -309,7 +309,7 @@
                         </table>
                         <div class="row">
                             <div class="col s12">
-                                <a href="{{ route('verGrafica5', [$id.'-'.$genero.'-'.$genero_id]) }}" target="_blank"> <p style="text-align: right;">Ver gráfico</p></a>
+                                <a href="{{ route('verGrafica5', [$datos['dep'].'-'.$genero.'-'.$datos['genero_id']]) }}" target="_blank"> <p style="text-align: right;">Ver gráfico</p></a>
                             </div>
                         </div>
 

@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get("reporte/sinRegistroExp",  [ReporteController::class, 'sinRegistroExp'])->name('reportes.sinRegistroExp');
     Route::get('getdireccion/{dependencia_id}', [ReporteController::class, 'obtenerDireccion']);
     Route::get('getDep/{id}', [ReporteController::class, 'getDep']);
-    Route::get('getDepG/{id}{genero}', [ReporteController::class, 'getDepG']);
+    Route::get('getDepG', [ReporteController::class, 'getDepG']);
     Route::get('getdepartamento/{direccion_id}', [ReporteController::class, 'obtenerDepto']);
     route::post("pdf/dependencia", [ReporteController::class, "pdfDependencia"])->name('pdf.dependencia');
     Route::GET('verReporte/{id}', 'App\Http\Controllers\ReporteController@verReporte')->name('verReporte');
