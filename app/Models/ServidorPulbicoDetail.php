@@ -9,7 +9,7 @@ class ServidorPulbicoDetail extends Model
 {
     use HasFactory;
     protected $connection = "mysql2";
-    protected $table = "s_usuario";
+    protected $table = "s_usuario_genero";
     protected $primaryKey = "id_Usuario";
     protected $guarded = ["id_Usuario", "created_at", "updated_at","delete_at"];
 
